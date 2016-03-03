@@ -22,7 +22,7 @@ ahead-of-time compiled | 事先編譯                      |
 libraries              | 函式庫                        |
 configuration          | 配置                          |
 package                | 套件                          |
-type                   | 類別                          |
+type                   | 型別                          |
 Deque                  | 雙向佇列                      | Double-ended queue
 formalization          | 正規化                        |
 Abstract Syntax Tree   | 抽象語法樹                    |
@@ -34,7 +34,7 @@ operators              | 運算子                        |
 symbols                | 符號                          |
 pattern                | 模式                          |
 annotations            | 註釋                          |
-type inference         | 類別推斷                      |
+type inference         | 型別推斷                      |
 signed integer         | 帶號整數                      |
 unsigned integer       | 非帶號整數                    |
 Mutability             | 可變性                        |
@@ -44,7 +44,7 @@ mutation               | 可變數                        |
 string interpolation   | 字串差值                      |
 scope                  | 有效範圍                      |
 shadowing              | 遮蔽                          |
-
+best-practice          | 最佳做法                      |
 
 ## 不確定
 

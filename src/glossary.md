@@ -40,14 +40,14 @@ let z = (8, 2, 6);
 
 ## 界線 (Bounds)
 
-界線是類別或 [trait][traits] 的限制。
-例如，如果界線在函式的參數，那麼傳遞給函式的參數類型必須遵守這樣的限制。
+界線是型別或 [trait][traits] 的限制。
+例如，如果界線在函式的參數，那麼傳遞給函式的參數型別必須遵守這樣的限制。
 
 [traits]: traits.html
 
-## 動態大小類別 (DST - Dynamically Sized Type)
+## 動態大小型別 (DST - Dynamically Sized Type)
 
-靜態大小或 alignment 未知的類別。（[更多資訊][link]）
+靜態大小或 alignment 未知的型別。（[更多資訊][link]）
 
 [link]: https://doc.rust-lang.org/nomicon/exotic-sizes.html#dynamically-sized-types-dsts
 

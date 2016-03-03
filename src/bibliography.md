@@ -5,7 +5,7 @@
 
 > 譯註：以下出版物名稱與註解皆保留原文。
 
-## 類別系統
+## 型別系統
 
 * [Region based memory management in Cyclone](http://209.68.42.137/ucsd-pages/Courses/cse227.w03/handouts/cyclone-regions.pdf)
 * [Safe manual memory management in Cyclone](http://www.cs.umd.edu/projects/PL/cyclone/scp.pdf)
