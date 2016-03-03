@@ -1,0 +1,401 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Rust 程式語言 正體中文版</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="The Rust Programming Language">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <base href="">
+
+        <link rel="stylesheet" href="book.css">
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+        <link rel="shortcut icon" href="favicon.png">
+
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+
+        <!-- MathJax -->
+        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+        <!-- Fetch JQuery from CDN but have a local fallback -->
+        <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <script>
+            if (typeof jQuery == 'undefined') {
+                document.write(unescape("%3Cscript src='jquery.js'%3E%3C/script%3E"));
+            }
+        </script>
+    </head>
+    <body>
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme = localStorage.getItem('theme');
+            if (theme == null) { theme = 'light'; }
+            $('body').removeClass().addClass(theme);
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var sidebar = localStorage.getItem('sidebar');
+            if (sidebar === "hidden") { $("html").addClass("sidebar-hidden") }
+            else if (sidebar === "visible") { $("html").addClass("sidebar-visible") }
+        </script>
+
+        <div id="sidebar" class="sidebar">
+            <ul class="chapter"><li><a href="README.html"><strong>1.</strong> 簡介</a></li><li><a href="getting-started.html"><strong>2.</strong> 準備</a></li><li><a href="guessing-game.html"><strong>3.</strong> 教學: 猜謎遊戲</a></li><li><a href="syntax-and-semantics.html"><strong>4.</strong> 語法及語意</a></li><li><ul class="section"><li><a href="variable-bindings.html"><strong>4.1.</strong> 變數綁定</a></li><li><a href="functions.html"><strong>4.2.</strong> Functions</a></li><li><a href="primitive-types.html"><strong>4.3.</strong> Primitive Types</a></li><li><a href="comments.html"><strong>4.4.</strong> Comments</a></li><li><a href="if.html"><strong>4.5.</strong> if</a></li><li><a href="loops.html"><strong>4.6.</strong> Loops</a></li><li><a href="ownership.html"><strong>4.7.</strong> Ownership</a></li><li><a href="references-and-borrowing.html"><strong>4.8.</strong> References and Borrowing</a></li><li><a href="lifetimes.html"><strong>4.9.</strong> Lifetimes</a></li><li><a href="mutability.html"><strong>4.10.</strong> Mutability</a></li><li><a href="structs.html"><strong>4.11.</strong> Structs</a></li><li><a href="enums.html"><strong>4.12.</strong> Enums</a></li><li><a href="match.html"><strong>4.13.</strong> Match</a></li><li><a href="patterns.html"><strong>4.14.</strong> Patterns</a></li><li><a href="method-syntax.html"><strong>4.15.</strong> Method Syntax</a></li><li><a href="vectors.html"><strong>4.16.</strong> Vectors</a></li><li><a href="strings.html"><strong>4.17.</strong> Strings</a></li><li><a href="generics.html"><strong>4.18.</strong> Generics</a></li><li><a href="traits.html"><strong>4.19.</strong> Traits</a></li><li><a href="drop.html"><strong>4.20.</strong> Drop</a></li><li><a href="if-let.html"><strong>4.21.</strong> if let</a></li><li><a href="trait-objects.html"><strong>4.22.</strong> Trait Objects</a></li><li><a href="closures.html"><strong>4.23.</strong> Closures</a></li><li><a href="ufcs.html"><strong>4.24.</strong> Universal Function Call Syntax</a></li><li><a href="crates-and-modules.html"><strong>4.25.</strong> Crates and Modules</a></li><li><a href="const-and-static.html"><strong>4.26.</strong> <code>const</code> and <code>static</code></a></li><li><a href="attributes.html"><strong>4.27.</strong> Attributes</a></li><li><a href="type-aliases.html"><strong>4.28.</strong> <code>type</code> aliases</a></li><li><a href="casting-between-types.html"><strong>4.29.</strong> Casting between types</a></li><li><a href="associated-types.html"><strong>4.30.</strong> Associated Types</a></li><li><a href="unsized-types.html"><strong>4.31.</strong> Unsized Types</a></li><li><a href="operators-and-overloading.html"><strong>4.32.</strong> Operators and Overloading</a></li><li><a href="deref-coercions.html"><strong>4.33.</strong> Deref coercions</a></li><li><a href="macros.html"><strong>4.34.</strong> Macros</a></li><li><a href="raw-pointers.html"><strong>4.35.</strong> Raw Pointers</a></li><li><a href="unsafe.html"><strong>4.36.</strong> <code>unsafe</code></a></li></ul></li><li><a href="effective-rust.html"><strong>5.</strong> Effective Rust</a></li><li><ul class="section"><li><a href="the-stack-and-the-heap.html"><strong>5.1.</strong> The Stack and the Heap</a></li><li><a href="testing.html"><strong>5.2.</strong> Testing</a></li><li><a href="conditional-compilation.html"><strong>5.3.</strong> Conditional Compilation</a></li><li><a href="documentation.html"><strong>5.4.</strong> Documentation</a></li><li><a href="iterators.html"><strong>5.5.</strong> Iterators</a></li><li><a href="concurrency.html" class="active"><strong>5.6.</strong> Concurrency</a></li><li><a href="error-handling.html"><strong>5.7.</strong> Error Handling</a></li><li><a href="choosing-your-guarantees.html"><strong>5.8.</strong> Choosing your Guarantees</a></li><li><a href="ffi.html"><strong>5.9.</strong> FFI</a></li><li><a href="borrow-and-asref.html"><strong>5.10.</strong> Borrow and AsRef</a></li><li><a href="release-channels.html"><strong>5.11.</strong> Release Channels</a></li><li><a href="using-rust-without-the-standard-library.html"><strong>5.12.</strong> Using Rust without the standard library</a></li></ul></li><li><a href="nightly-rust.html"><strong>6.</strong> Nightly Rust</a></li><li><ul class="section"><li><a href="compiler-plugins.html"><strong>6.1.</strong> Compiler Plugins</a></li><li><a href="inline-assembly.html"><strong>6.2.</strong> Inline Assembly</a></li><li><a href="no-stdlib.html"><strong>6.3.</strong> No stdlib</a></li><li><a href="intrinsics.html"><strong>6.4.</strong> Intrinsics</a></li><li><a href="lang-items.html"><strong>6.5.</strong> Lang items</a></li><li><a href="advanced-linking.html"><strong>6.6.</strong> Advanced linking</a></li><li><a href="benchmark-tests.html"><strong>6.7.</strong> Benchmark Tests</a></li><li><a href="box-syntax-and-patterns.html"><strong>6.8.</strong> Box Syntax and Patterns</a></li><li><a href="slice-patterns.html"><strong>6.9.</strong> Slice Patterns</a></li><li><a href="associated-constants.html"><strong>6.10.</strong> Associated Constants</a></li><li><a href="custom-allocators.html"><strong>6.11.</strong> Custom Allocators</a></li></ul></li><li><a href="glossary.html"><strong>7.</strong> 詞彙表</a></li><li><a href="syntax-index.html"><strong>8.</strong> 語法索引</a></li><li><a href="bibliography.html"><strong>9.</strong> 參考文獻</a></li><li><a href="CONTRIBUTORS.html"><strong>10.</strong> 翻譯貢獻名單</a></li></ul>
+        </div>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar" class="menu-bar">
+                    <div class="left-buttons">
+                        <i id="sidebar-toggle" class="fa fa-bars"></i>
+                        <i id="theme-toggle" class="fa fa-paint-brush"></i>
+                    </div>
+
+                    <h1 class="menu-title">Rust 程式語言 正體中文版</h1>
+
+                    <div class="right-buttons">
+                        <i id="print-button" class="fa fa-print" title="Print this book"></i>
+                    </div>
+                </div>
+
+                <div id="content" class="content">
+                    <p>% Concurrency</p>
+<p>Concurrency and parallelism are incredibly important topics in computer
+science, and are also a hot topic in industry today. Computers are gaining more
+and more cores, yet many programmers aren't prepared to fully utilize them.</p>
+<p>Rust's memory safety features also apply to its concurrency story too. Even
+concurrent Rust programs must be memory safe, having no data races. Rust's type
+system is up to the task, and gives you powerful ways to reason about
+concurrent code at compile time.</p>
+<p>Before we talk about the concurrency features that come with Rust, it's important
+to understand something: Rust is low-level enough that the vast majority of
+this is provided by the standard library, not by the language. This means that
+if you don't like some aspect of the way Rust handles concurrency, you can
+implement an alternative way of doing things.
+<a href="https://github.com/carllerche/mio">mio</a> is a real-world example of this
+principle in action.</p>
+<h2>Background: <code>Send</code> and <code>Sync</code></h2>
+<p>Concurrency is difficult to reason about. In Rust, we have a strong, static
+type system to help us reason about our code. As such, Rust gives us two traits
+to help us make sense of code that can possibly be concurrent.</p>
+<h3><code>Send</code></h3>
+<p>The first trait we're going to talk about is
+[<code>Send</code>](../std/marker/trait.Send.html). When a type <code>T</code> implements <code>Send</code>, it
+indicates that something of this type is able to have ownership transferred
+safely between threads.</p>
+<p>This is important to enforce certain restrictions. For example, if we have a
+channel connecting two threads, we would want to be able to send some data
+down the channel and to the other thread. Therefore, we'd ensure that <code>Send</code> was
+implemented for that type.</p>
+<p>In the opposite way, if we were wrapping a library with <a href="ffi.html">FFI</a> that isn't
+threadsafe, we wouldn't want to implement <code>Send</code>, and so the compiler will help
+us enforce that it can't leave the current thread.</p>
+<h3><code>Sync</code></h3>
+<p>The second of these traits is called [<code>Sync</code>](../std/marker/trait.Sync.html).
+When a type <code>T</code> implements <code>Sync</code>, it indicates that something
+of this type has no possibility of introducing memory unsafety when used from
+multiple threads concurrently through shared references. This implies that
+types which don't have <a href="mutability.html">interior mutability</a> are inherently
+<code>Sync</code>, which includes simple primitive types (like <code>u8</code>) and aggregate types
+containing them.</p>
+<p>For sharing references across threads, Rust provides a wrapper type called
+<code>Arc&lt;T&gt;</code>. <code>Arc&lt;T&gt;</code> implements <code>Send</code> and <code>Sync</code> if and only if <code>T</code> implements
+both <code>Send</code> and <code>Sync</code>. For example, an object of type <code>Arc&lt;RefCell&lt;U&gt;&gt;</code> cannot
+be transferred across threads because
+[<code>RefCell</code>](choosing-your-guarantees.html#refcellt) does not implement
+<code>Sync</code>, consequently <code>Arc&lt;RefCell&lt;U&gt;&gt;</code> would not implement <code>Send</code>.</p>
+<p>These two traits allow you to use the type system to make strong guarantees
+about the properties of your code under concurrency. Before we demonstrate
+why, we need to learn how to create a concurrent Rust program in the first
+place!</p>
+<h2>Threads</h2>
+<p>Rust's standard library provides a library for threads, which allow you to
+run Rust code in parallel. Here's a basic example of using <code>std::thread</code>:</p>
+<pre><code class="language-rust">use std::thread;
+
+fn main() {
+    thread::spawn(|| {
+        println!(&quot;Hello from a thread!&quot;);
+    });
+}
+</code></pre>
+<p>The <code>thread::spawn()</code> method accepts a <a href="closures.html">closure</a>, which is executed in a
+new thread. It returns a handle to the thread, that can be used to
+wait for the child thread to finish and extract its result:</p>
+<pre><code class="language-rust">use std::thread;
+
+fn main() {
+    let handle = thread::spawn(|| {
+        &quot;Hello from a thread!&quot;
+    });
+
+    println!(&quot;{}&quot;, handle.join().unwrap());
+}
+</code></pre>
+<p>Many languages have the ability to execute threads, but it's wildly unsafe.
+There are entire books about how to prevent errors that occur from shared
+mutable state. Rust helps out with its type system here as well, by preventing
+data races at compile time. Let's talk about how you actually share things
+between threads.</p>
+<h2>Safe Shared Mutable State</h2>
+<p>Due to Rust's type system, we have a concept that sounds like a lie: &quot;safe
+shared mutable state.&quot; Many programmers agree that shared mutable state is
+very, very bad.</p>
+<p>Someone once said this:</p>
+<blockquote>
+<p>Shared mutable state is the root of all evil. Most languages attempt to deal
+with this problem through the 'mutable' part, but Rust deals with it by
+solving the 'shared' part.</p>
+</blockquote>
+<p>The same <a href="ownership.html">ownership system</a> that helps prevent using pointers
+incorrectly also helps rule out data races, one of the worst kinds of
+concurrency bugs.</p>
+<p>As an example, here is a Rust program that would have a data race in many
+languages. It will not compile:</p>
+<pre><code class="language-ignore">use std::thread;
+use std::time::Duration;
+
+fn main() {
+    let mut data = vec![1, 2, 3];
+
+    for i in 0..3 {
+        thread::spawn(move || {
+            data[i] += 1;
+        });
+    }
+
+    thread::sleep(Duration::from_millis(50));
+}
+</code></pre>
+<p>This gives us an error:</p>
+<pre><code class="language-text">8:17 error: capture of moved value: `data`
+        data[i] += 1;
+        ^~~~
+</code></pre>
+<p>Rust knows this wouldn't be safe! If we had a reference to <code>data</code> in each
+thread, and the thread takes ownership of the reference, we'd have three
+owners!</p>
+<p>So, we need some type that lets us have more than one reference to a value and
+that we can share between threads, that is it must implement <code>Sync</code>.</p>
+<p>We'll use <code>Arc&lt;T&gt;</code>, Rust's standard atomic reference count type, which
+wraps a value up with some extra runtime bookkeeping which allows us to
+share the ownership of the value between multiple references at the same time.</p>
+<p>The bookkeeping consists of a count of how many of these references exist to
+the value, hence the reference count part of the name.</p>
+<p>The Atomic part means <code>Arc&lt;T&gt;</code> can safely be accessed from multiple threads.
+To do this the compiler guarantees that mutations of the internal count use
+indivisible operations which can't have data races.</p>
+<pre><code class="language-ignore">use std::thread;
+use std::sync::Arc;
+use std::time::Duration;
+
+fn main() {
+    let mut data = Arc::new(vec![1, 2, 3]);
+
+    for i in 0..3 {
+        let data = data.clone();
+        thread::spawn(move || {
+            data[i] += 1;
+        });
+    }
+
+    thread::sleep(Duration::from_millis(50));
+}
+</code></pre>
+<p>We now call <code>clone()</code> on our <code>Arc&lt;T&gt;</code>, which increases the internal count.
+This handle is then moved into the new thread.</p>
+<p>And... still gives us an error.</p>
+<pre><code class="language-text">&lt;anon&gt;:11:24 error: cannot borrow immutable borrowed content as mutable
+&lt;anon&gt;:11                    data[i] += 1;
+                             ^~~~
+</code></pre>
+<p><code>Arc&lt;T&gt;</code> assumes one more property about its contents to ensure that it is safe
+to share across threads: it assumes its contents are <code>Sync</code>. This is true for
+our value if it's immutable, but we want to be able to mutate it, so we need
+something else to persuade the borrow checker we know what we're doing.</p>
+<p>It looks like we need some type that allows us to safely mutate a shared value,
+for example a type that can ensure only one thread at a time is able to
+mutate the value inside it at any one time.</p>
+<p>For that, we can use the <code>Mutex&lt;T&gt;</code> type!</p>
+<p>Here's the working version:</p>
+<pre><code class="language-rust">use std::sync::{Arc, Mutex};
+use std::thread;
+use std::time::Duration;
+
+fn main() {
+    let data = Arc::new(Mutex::new(vec![1, 2, 3]));
+
+    for i in 0..3 {
+        let data = data.clone();
+        thread::spawn(move || {
+            let mut data = data.lock().unwrap();
+            data[i] += 1;
+        });
+    }
+
+    thread::sleep(Duration::from_millis(50));
+}
+</code></pre>
+<p>Note that the value of <code>i</code> is bound (copied) to the closure and not shared
+among the threads.</p>
+<p>Also note that [<code>lock</code>](../std/sync/struct.Mutex.html#method.lock) method of
+[<code>Mutex</code>](../std/sync/struct.Mutex.html) has this signature:</p>
+<pre><code class="language-ignore">fn lock(&amp;self) -&gt; LockResult&lt;MutexGuard&lt;T&gt;&gt;
+</code></pre>
+<p>and because <code>Send</code> is not implemented for <code>MutexGuard&lt;T&gt;</code>, the guard cannot
+cross thread boundaries, ensuring thread-locality of lock acquire and release.</p>
+<p>Let's examine the body of the thread more closely:</p>
+<pre><code class="language-rust"># use std::sync::{Arc, Mutex};
+# use std::thread;
+# use std::time::Duration;
+# fn main() {
+#     let data = Arc::new(Mutex::new(vec![1, 2, 3]));
+#     for i in 0..3 {
+#         let data = data.clone();
+thread::spawn(move || {
+    let mut data = data.lock().unwrap();
+    data[i] += 1;
+});
+#     }
+#     thread::sleep(Duration::from_millis(50));
+# }
+</code></pre>
+<p>First, we call <code>lock()</code>, which acquires the mutex's lock. Because this may fail,
+it returns an <code>Result&lt;T, E&gt;</code>, and because this is just an example, we <code>unwrap()</code>
+it to get a reference to the data. Real code would have more robust error handling
+here. We're then free to mutate it, since we have the lock.</p>
+<p>Lastly, while the threads are running, we wait on a short timer. But
+this is not ideal: we may have picked a reasonable amount of time to
+wait but it's more likely we'll either be waiting longer than
+necessary or not long enough, depending on just how much time the
+threads actually take to finish computing when the program runs.</p>
+<p>A more precise alternative to the timer would be to use one of the
+mechanisms provided by the Rust standard library for synchronizing
+threads with each other. Let's talk about one of them: channels.</p>
+<h2>Channels</h2>
+<p>Here's a version of our code that uses channels for synchronization, rather
+than waiting for a specific time:</p>
+<pre><code class="language-rust">use std::sync::{Arc, Mutex};
+use std::thread;
+use std::sync::mpsc;
+
+fn main() {
+    let data = Arc::new(Mutex::new(0));
+
+    // `tx` is the &quot;transmitter&quot; or &quot;sender&quot;
+    // `rx` is the &quot;receiver&quot;
+    let (tx, rx) = mpsc::channel();
+
+    for _ in 0..10 {
+        let (data, tx) = (data.clone(), tx.clone());
+
+        thread::spawn(move || {
+            let mut data = data.lock().unwrap();
+            *data += 1;
+
+            tx.send(()).unwrap();
+        });
+    }
+
+    for _ in 0..10 {
+        rx.recv().unwrap();
+    }
+}
+</code></pre>
+<p>We use the <code>mpsc::channel()</code> method to construct a new channel. We <code>send</code>
+a simple <code>()</code> down the channel, and then wait for ten of them to come back.</p>
+<p>While this channel is sending a generic signal, we can send any data that
+is <code>Send</code> over the channel!</p>
+<pre><code class="language-rust">use std::thread;
+use std::sync::mpsc;
+
+fn main() {
+    let (tx, rx) = mpsc::channel();
+
+    for i in 0..10 {
+        let tx = tx.clone();
+
+        thread::spawn(move || {
+            let answer = i * i;
+
+            tx.send(answer).unwrap();
+        });
+    }
+
+    for _ in 0..10 {
+        println!(&quot;{}&quot;, rx.recv().unwrap());
+    }
+}
+</code></pre>
+<p>Here we create 10 threads, asking each to calculate the square of a number (<code>i</code>
+at the time of <code>spawn()</code>), and then <code>send()</code> back the answer over the channel.</p>
+<h2>Panics</h2>
+<p>A <code>panic!</code> will crash the currently executing thread. You can use Rust's
+threads as a simple isolation mechanism:</p>
+<pre><code class="language-rust">use std::thread;
+
+let handle = thread::spawn(move || {
+    panic!(&quot;oops!&quot;);
+});
+
+let result = handle.join();
+
+assert!(result.is_err());
+</code></pre>
+<p><code>Thread.join()</code> gives us a <code>Result</code> back, which allows us to check if the thread
+has panicked or not.</p>
+<blockquote>
+<p><em>commit 7f59e06</em></p>
+</blockquote>
+
+                </div>
+
+                <!-- Mobile navigation buttons -->
+                
+                    <a href="iterators.html" class="mobile-nav-chapters previous">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a href="error-handling.html" class="mobile-nav-chapters next">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+
+            </div>
+
+            
+                <a href="iterators.html" class="nav-chapters previous" title="You can navigate through the chapters using the arrow keys">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+            
+
+            
+                <a href="error-handling.html" class="nav-chapters next" title="You can navigate through the chapters using the arrow keys">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            
+
+        </div>
+
+
+        <!-- Local fallback for Font Awesome -->
+        <script>
+            if ($(".fa").css("font-family") !== "FontAwesome") {
+                $('<link rel="stylesheet" type="text/css" href="_FontAwesome/css/font-awesome.css">').prependTo('head');
+            }
+        </script>
+
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+    </body>
+</html>

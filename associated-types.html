@@ -1,0 +1,277 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Rust 程式語言 正體中文版</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="The Rust Programming Language">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <base href="">
+
+        <link rel="stylesheet" href="book.css">
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+        <link rel="shortcut icon" href="favicon.png">
+
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+
+        <!-- MathJax -->
+        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+        <!-- Fetch JQuery from CDN but have a local fallback -->
+        <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <script>
+            if (typeof jQuery == 'undefined') {
+                document.write(unescape("%3Cscript src='jquery.js'%3E%3C/script%3E"));
+            }
+        </script>
+    </head>
+    <body>
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme = localStorage.getItem('theme');
+            if (theme == null) { theme = 'light'; }
+            $('body').removeClass().addClass(theme);
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var sidebar = localStorage.getItem('sidebar');
+            if (sidebar === "hidden") { $("html").addClass("sidebar-hidden") }
+            else if (sidebar === "visible") { $("html").addClass("sidebar-visible") }
+        </script>
+
+        <div id="sidebar" class="sidebar">
+            <ul class="chapter"><li><a href="README.html"><strong>1.</strong> 簡介</a></li><li><a href="getting-started.html"><strong>2.</strong> 準備</a></li><li><a href="guessing-game.html"><strong>3.</strong> 教學: 猜謎遊戲</a></li><li><a href="syntax-and-semantics.html"><strong>4.</strong> 語法及語意</a></li><li><ul class="section"><li><a href="variable-bindings.html"><strong>4.1.</strong> 變數綁定</a></li><li><a href="functions.html"><strong>4.2.</strong> Functions</a></li><li><a href="primitive-types.html"><strong>4.3.</strong> Primitive Types</a></li><li><a href="comments.html"><strong>4.4.</strong> Comments</a></li><li><a href="if.html"><strong>4.5.</strong> if</a></li><li><a href="loops.html"><strong>4.6.</strong> Loops</a></li><li><a href="ownership.html"><strong>4.7.</strong> Ownership</a></li><li><a href="references-and-borrowing.html"><strong>4.8.</strong> References and Borrowing</a></li><li><a href="lifetimes.html"><strong>4.9.</strong> Lifetimes</a></li><li><a href="mutability.html"><strong>4.10.</strong> Mutability</a></li><li><a href="structs.html"><strong>4.11.</strong> Structs</a></li><li><a href="enums.html"><strong>4.12.</strong> Enums</a></li><li><a href="match.html"><strong>4.13.</strong> Match</a></li><li><a href="patterns.html"><strong>4.14.</strong> Patterns</a></li><li><a href="method-syntax.html"><strong>4.15.</strong> Method Syntax</a></li><li><a href="vectors.html"><strong>4.16.</strong> Vectors</a></li><li><a href="strings.html"><strong>4.17.</strong> Strings</a></li><li><a href="generics.html"><strong>4.18.</strong> Generics</a></li><li><a href="traits.html"><strong>4.19.</strong> Traits</a></li><li><a href="drop.html"><strong>4.20.</strong> Drop</a></li><li><a href="if-let.html"><strong>4.21.</strong> if let</a></li><li><a href="trait-objects.html"><strong>4.22.</strong> Trait Objects</a></li><li><a href="closures.html"><strong>4.23.</strong> Closures</a></li><li><a href="ufcs.html"><strong>4.24.</strong> Universal Function Call Syntax</a></li><li><a href="crates-and-modules.html"><strong>4.25.</strong> Crates and Modules</a></li><li><a href="const-and-static.html"><strong>4.26.</strong> <code>const</code> and <code>static</code></a></li><li><a href="attributes.html"><strong>4.27.</strong> Attributes</a></li><li><a href="type-aliases.html"><strong>4.28.</strong> <code>type</code> aliases</a></li><li><a href="casting-between-types.html"><strong>4.29.</strong> Casting between types</a></li><li><a href="associated-types.html" class="active"><strong>4.30.</strong> Associated Types</a></li><li><a href="unsized-types.html"><strong>4.31.</strong> Unsized Types</a></li><li><a href="operators-and-overloading.html"><strong>4.32.</strong> Operators and Overloading</a></li><li><a href="deref-coercions.html"><strong>4.33.</strong> Deref coercions</a></li><li><a href="macros.html"><strong>4.34.</strong> Macros</a></li><li><a href="raw-pointers.html"><strong>4.35.</strong> Raw Pointers</a></li><li><a href="unsafe.html"><strong>4.36.</strong> <code>unsafe</code></a></li></ul></li><li><a href="effective-rust.html"><strong>5.</strong> Effective Rust</a></li><li><ul class="section"><li><a href="the-stack-and-the-heap.html"><strong>5.1.</strong> The Stack and the Heap</a></li><li><a href="testing.html"><strong>5.2.</strong> Testing</a></li><li><a href="conditional-compilation.html"><strong>5.3.</strong> Conditional Compilation</a></li><li><a href="documentation.html"><strong>5.4.</strong> Documentation</a></li><li><a href="iterators.html"><strong>5.5.</strong> Iterators</a></li><li><a href="concurrency.html"><strong>5.6.</strong> Concurrency</a></li><li><a href="error-handling.html"><strong>5.7.</strong> Error Handling</a></li><li><a href="choosing-your-guarantees.html"><strong>5.8.</strong> Choosing your Guarantees</a></li><li><a href="ffi.html"><strong>5.9.</strong> FFI</a></li><li><a href="borrow-and-asref.html"><strong>5.10.</strong> Borrow and AsRef</a></li><li><a href="release-channels.html"><strong>5.11.</strong> Release Channels</a></li><li><a href="using-rust-without-the-standard-library.html"><strong>5.12.</strong> Using Rust without the standard library</a></li></ul></li><li><a href="nightly-rust.html"><strong>6.</strong> Nightly Rust</a></li><li><ul class="section"><li><a href="compiler-plugins.html"><strong>6.1.</strong> Compiler Plugins</a></li><li><a href="inline-assembly.html"><strong>6.2.</strong> Inline Assembly</a></li><li><a href="no-stdlib.html"><strong>6.3.</strong> No stdlib</a></li><li><a href="intrinsics.html"><strong>6.4.</strong> Intrinsics</a></li><li><a href="lang-items.html"><strong>6.5.</strong> Lang items</a></li><li><a href="advanced-linking.html"><strong>6.6.</strong> Advanced linking</a></li><li><a href="benchmark-tests.html"><strong>6.7.</strong> Benchmark Tests</a></li><li><a href="box-syntax-and-patterns.html"><strong>6.8.</strong> Box Syntax and Patterns</a></li><li><a href="slice-patterns.html"><strong>6.9.</strong> Slice Patterns</a></li><li><a href="associated-constants.html"><strong>6.10.</strong> Associated Constants</a></li><li><a href="custom-allocators.html"><strong>6.11.</strong> Custom Allocators</a></li></ul></li><li><a href="glossary.html"><strong>7.</strong> 詞彙表</a></li><li><a href="syntax-index.html"><strong>8.</strong> 語法索引</a></li><li><a href="bibliography.html"><strong>9.</strong> 參考文獻</a></li><li><a href="CONTRIBUTORS.html"><strong>10.</strong> 翻譯貢獻名單</a></li></ul>
+        </div>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar" class="menu-bar">
+                    <div class="left-buttons">
+                        <i id="sidebar-toggle" class="fa fa-bars"></i>
+                        <i id="theme-toggle" class="fa fa-paint-brush"></i>
+                    </div>
+
+                    <h1 class="menu-title">Rust 程式語言 正體中文版</h1>
+
+                    <div class="right-buttons">
+                        <i id="print-button" class="fa fa-print" title="Print this book"></i>
+                    </div>
+                </div>
+
+                <div id="content" class="content">
+                    <p>% Associated Types</p>
+<p>Associated types are a powerful part of Rust’s type system. They’re related to
+the idea of a ‘type family’, in other words, grouping multiple types together. That
+description is a bit abstract, so let’s dive right into an example. If you want
+to write a <code>Graph</code> trait, you have two types to be generic over: the node type
+and the edge type. So you might write a trait, <code>Graph&lt;N, E&gt;</code>, that looks like
+this:</p>
+<pre><code class="language-rust">trait Graph&lt;N, E&gt; {
+    fn has_edge(&amp;self, &amp;N, &amp;N) -&gt; bool;
+    fn edges(&amp;self, &amp;N) -&gt; Vec&lt;E&gt;;
+    // etc
+}
+</code></pre>
+<p>While this sort of works, it ends up being awkward. For example, any function
+that wants to take a <code>Graph</code> as a parameter now <em>also</em> needs to be generic over
+the <code>N</code>ode and <code>E</code>dge types too:</p>
+<pre><code class="language-rust,ignore">fn distance&lt;N, E, G: Graph&lt;N, E&gt;&gt;(graph: &amp;G, start: &amp;N, end: &amp;N) -&gt; u32 { ... }
+</code></pre>
+<p>Our distance calculation works regardless of our <code>Edge</code> type, so the <code>E</code> stuff in
+this signature is a distraction.</p>
+<p>What we really want to say is that a certain <code>E</code>dge and <code>N</code>ode type come together
+to form each kind of <code>Graph</code>. We can do that with associated types:</p>
+<pre><code class="language-rust">trait Graph {
+    type N;
+    type E;
+
+    fn has_edge(&amp;self, &amp;Self::N, &amp;Self::N) -&gt; bool;
+    fn edges(&amp;self, &amp;Self::N) -&gt; Vec&lt;Self::E&gt;;
+    // etc
+}
+</code></pre>
+<p>Now, our clients can be abstract over a given <code>Graph</code>:</p>
+<pre><code class="language-rust,ignore">fn distance&lt;G: Graph&gt;(graph: &amp;G, start: &amp;G::N, end: &amp;G::N) -&gt; u32 { ... }
+</code></pre>
+<p>No need to deal with the <code>E</code>dge type here!</p>
+<p>Let’s go over all this in more detail.</p>
+<h2>Defining associated types</h2>
+<p>Let’s build that <code>Graph</code> trait. Here’s the definition:</p>
+<pre><code class="language-rust">trait Graph {
+    type N;
+    type E;
+
+    fn has_edge(&amp;self, &amp;Self::N, &amp;Self::N) -&gt; bool;
+    fn edges(&amp;self, &amp;Self::N) -&gt; Vec&lt;Self::E&gt;;
+}
+</code></pre>
+<p>Simple enough. Associated types use the <code>type</code> keyword, and go inside the body
+of the trait, with the functions.</p>
+<p>These <code>type</code> declarations can have all the same thing as functions do. For example,
+if we wanted our <code>N</code> type to implement <code>Display</code>, so we can print the nodes out,
+we could do this:</p>
+<pre><code class="language-rust">use std::fmt;
+
+trait Graph {
+    type N: fmt::Display;
+    type E;
+
+    fn has_edge(&amp;self, &amp;Self::N, &amp;Self::N) -&gt; bool;
+    fn edges(&amp;self, &amp;Self::N) -&gt; Vec&lt;Self::E&gt;;
+}
+</code></pre>
+<h2>Implementing associated types</h2>
+<p>Just like any trait, traits that use associated types use the <code>impl</code> keyword to
+provide implementations. Here’s a simple implementation of Graph:</p>
+<pre><code class="language-rust"># trait Graph {
+#     type N;
+#     type E;
+#     fn has_edge(&amp;self, &amp;Self::N, &amp;Self::N) -&gt; bool;
+#     fn edges(&amp;self, &amp;Self::N) -&gt; Vec&lt;Self::E&gt;;
+# }
+struct Node;
+
+struct Edge;
+
+struct MyGraph;
+
+impl Graph for MyGraph {
+    type N = Node;
+    type E = Edge;
+
+    fn has_edge(&amp;self, n1: &amp;Node, n2: &amp;Node) -&gt; bool {
+        true
+    }
+
+    fn edges(&amp;self, n: &amp;Node) -&gt; Vec&lt;Edge&gt; {
+        Vec::new()
+    }
+}
+</code></pre>
+<p>This silly implementation always returns <code>true</code> and an empty <code>Vec&lt;Edge&gt;</code>, but it
+gives you an idea of how to implement this kind of thing. We first need three
+<code>struct</code>s, one for the graph, one for the node, and one for the edge. If it made
+more sense to use a different type, that would work as well, we’re going to
+use <code>struct</code>s for all three here.</p>
+<p>Next is the <code>impl</code> line, which is an implementation like any other trait.</p>
+<p>From here, we use <code>=</code> to define our associated types. The name the trait uses
+goes on the left of the <code>=</code>, and the concrete type we’re <code>impl</code>ementing this
+for goes on the right. Finally, we use the concrete types in our function
+declarations.</p>
+<h2>Trait objects with associated types</h2>
+<p>There’s one more bit of syntax we should talk about: trait objects. If you
+try to create a trait object from an associated type, like this:</p>
+<pre><code class="language-rust,ignore"># trait Graph {
+#     type N;
+#     type E;
+#     fn has_edge(&amp;self, &amp;Self::N, &amp;Self::N) -&gt; bool;
+#     fn edges(&amp;self, &amp;Self::N) -&gt; Vec&lt;Self::E&gt;;
+# }
+# struct Node;
+# struct Edge;
+# struct MyGraph;
+# impl Graph for MyGraph {
+#     type N = Node;
+#     type E = Edge;
+#     fn has_edge(&amp;self, n1: &amp;Node, n2: &amp;Node) -&gt; bool {
+#         true
+#     }
+#     fn edges(&amp;self, n: &amp;Node) -&gt; Vec&lt;Edge&gt; {
+#         Vec::new()
+#     }
+# }
+let graph = MyGraph;
+let obj = Box::new(graph) as Box&lt;Graph&gt;;
+</code></pre>
+<p>You’ll get two errors:</p>
+<pre><code class="language-text">error: the value of the associated type `E` (from the trait `main::Graph`) must
+be specified [E0191]
+let obj = Box::new(graph) as Box&lt;Graph&gt;;
+          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+24:44 error: the value of the associated type `N` (from the trait
+`main::Graph`) must be specified [E0191]
+let obj = Box::new(graph) as Box&lt;Graph&gt;;
+          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+</code></pre>
+<p>We can’t create a trait object like this, because we don’t know the associated
+types. Instead, we can write this:</p>
+<pre><code class="language-rust"># trait Graph {
+#     type N;
+#     type E;
+#     fn has_edge(&amp;self, &amp;Self::N, &amp;Self::N) -&gt; bool;
+#     fn edges(&amp;self, &amp;Self::N) -&gt; Vec&lt;Self::E&gt;;
+# }
+# struct Node;
+# struct Edge;
+# struct MyGraph;
+# impl Graph for MyGraph {
+#     type N = Node;
+#     type E = Edge;
+#     fn has_edge(&amp;self, n1: &amp;Node, n2: &amp;Node) -&gt; bool {
+#         true
+#     }
+#     fn edges(&amp;self, n: &amp;Node) -&gt; Vec&lt;Edge&gt; {
+#         Vec::new()
+#     }
+# }
+let graph = MyGraph;
+let obj = Box::new(graph) as Box&lt;Graph&lt;N=Node, E=Edge&gt;&gt;;
+</code></pre>
+<p>The <code>N=Node</code> syntax allows us to provide a concrete type, <code>Node</code>, for the <code>N</code>
+type parameter. Same with <code>E=Edge</code>. If we didn’t provide this constraint, we
+couldn’t be sure which <code>impl</code> to match this trait object to.</p>
+<blockquote>
+<p><em>commit 6ba9520</em></p>
+</blockquote>
+
+                </div>
+
+                <!-- Mobile navigation buttons -->
+                
+                    <a href="casting-between-types.html" class="mobile-nav-chapters previous">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a href="unsized-types.html" class="mobile-nav-chapters next">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+
+            </div>
+
+            
+                <a href="casting-between-types.html" class="nav-chapters previous" title="You can navigate through the chapters using the arrow keys">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+            
+
+            
+                <a href="unsized-types.html" class="nav-chapters next" title="You can navigate through the chapters using the arrow keys">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            
+
+        </div>
+
+
+        <!-- Local fallback for Font Awesome -->
+        <script>
+            if ($(".fa").css("font-family") !== "FontAwesome") {
+                $('<link rel="stylesheet" type="text/css" href="_FontAwesome/css/font-awesome.css">').prependTo('head');
+            }
+        </script>
+
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+    </body>
+</html>

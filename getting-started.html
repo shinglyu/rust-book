@@ -1,0 +1,487 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Rust 程式語言 正體中文版</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="The Rust Programming Language">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <base href="">
+
+        <link rel="stylesheet" href="book.css">
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+        <link rel="shortcut icon" href="favicon.png">
+
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+
+        <!-- MathJax -->
+        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+        <!-- Fetch JQuery from CDN but have a local fallback -->
+        <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <script>
+            if (typeof jQuery == 'undefined') {
+                document.write(unescape("%3Cscript src='jquery.js'%3E%3C/script%3E"));
+            }
+        </script>
+    </head>
+    <body>
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme = localStorage.getItem('theme');
+            if (theme == null) { theme = 'light'; }
+            $('body').removeClass().addClass(theme);
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var sidebar = localStorage.getItem('sidebar');
+            if (sidebar === "hidden") { $("html").addClass("sidebar-hidden") }
+            else if (sidebar === "visible") { $("html").addClass("sidebar-visible") }
+        </script>
+
+        <div id="sidebar" class="sidebar">
+            <ul class="chapter"><li><a href="README.html"><strong>1.</strong> 簡介</a></li><li><a href="getting-started.html" class="active"><strong>2.</strong> 準備</a></li><li><a href="guessing-game.html"><strong>3.</strong> 教學: 猜謎遊戲</a></li><li><a href="syntax-and-semantics.html"><strong>4.</strong> 語法及語意</a></li><li><ul class="section"><li><a href="variable-bindings.html"><strong>4.1.</strong> 變數綁定</a></li><li><a href="functions.html"><strong>4.2.</strong> Functions</a></li><li><a href="primitive-types.html"><strong>4.3.</strong> Primitive Types</a></li><li><a href="comments.html"><strong>4.4.</strong> Comments</a></li><li><a href="if.html"><strong>4.5.</strong> if</a></li><li><a href="loops.html"><strong>4.6.</strong> Loops</a></li><li><a href="ownership.html"><strong>4.7.</strong> Ownership</a></li><li><a href="references-and-borrowing.html"><strong>4.8.</strong> References and Borrowing</a></li><li><a href="lifetimes.html"><strong>4.9.</strong> Lifetimes</a></li><li><a href="mutability.html"><strong>4.10.</strong> Mutability</a></li><li><a href="structs.html"><strong>4.11.</strong> Structs</a></li><li><a href="enums.html"><strong>4.12.</strong> Enums</a></li><li><a href="match.html"><strong>4.13.</strong> Match</a></li><li><a href="patterns.html"><strong>4.14.</strong> Patterns</a></li><li><a href="method-syntax.html"><strong>4.15.</strong> Method Syntax</a></li><li><a href="vectors.html"><strong>4.16.</strong> Vectors</a></li><li><a href="strings.html"><strong>4.17.</strong> Strings</a></li><li><a href="generics.html"><strong>4.18.</strong> Generics</a></li><li><a href="traits.html"><strong>4.19.</strong> Traits</a></li><li><a href="drop.html"><strong>4.20.</strong> Drop</a></li><li><a href="if-let.html"><strong>4.21.</strong> if let</a></li><li><a href="trait-objects.html"><strong>4.22.</strong> Trait Objects</a></li><li><a href="closures.html"><strong>4.23.</strong> Closures</a></li><li><a href="ufcs.html"><strong>4.24.</strong> Universal Function Call Syntax</a></li><li><a href="crates-and-modules.html"><strong>4.25.</strong> Crates and Modules</a></li><li><a href="const-and-static.html"><strong>4.26.</strong> <code>const</code> and <code>static</code></a></li><li><a href="attributes.html"><strong>4.27.</strong> Attributes</a></li><li><a href="type-aliases.html"><strong>4.28.</strong> <code>type</code> aliases</a></li><li><a href="casting-between-types.html"><strong>4.29.</strong> Casting between types</a></li><li><a href="associated-types.html"><strong>4.30.</strong> Associated Types</a></li><li><a href="unsized-types.html"><strong>4.31.</strong> Unsized Types</a></li><li><a href="operators-and-overloading.html"><strong>4.32.</strong> Operators and Overloading</a></li><li><a href="deref-coercions.html"><strong>4.33.</strong> Deref coercions</a></li><li><a href="macros.html"><strong>4.34.</strong> Macros</a></li><li><a href="raw-pointers.html"><strong>4.35.</strong> Raw Pointers</a></li><li><a href="unsafe.html"><strong>4.36.</strong> <code>unsafe</code></a></li></ul></li><li><a href="effective-rust.html"><strong>5.</strong> Effective Rust</a></li><li><ul class="section"><li><a href="the-stack-and-the-heap.html"><strong>5.1.</strong> The Stack and the Heap</a></li><li><a href="testing.html"><strong>5.2.</strong> Testing</a></li><li><a href="conditional-compilation.html"><strong>5.3.</strong> Conditional Compilation</a></li><li><a href="documentation.html"><strong>5.4.</strong> Documentation</a></li><li><a href="iterators.html"><strong>5.5.</strong> Iterators</a></li><li><a href="concurrency.html"><strong>5.6.</strong> Concurrency</a></li><li><a href="error-handling.html"><strong>5.7.</strong> Error Handling</a></li><li><a href="choosing-your-guarantees.html"><strong>5.8.</strong> Choosing your Guarantees</a></li><li><a href="ffi.html"><strong>5.9.</strong> FFI</a></li><li><a href="borrow-and-asref.html"><strong>5.10.</strong> Borrow and AsRef</a></li><li><a href="release-channels.html"><strong>5.11.</strong> Release Channels</a></li><li><a href="using-rust-without-the-standard-library.html"><strong>5.12.</strong> Using Rust without the standard library</a></li></ul></li><li><a href="nightly-rust.html"><strong>6.</strong> Nightly Rust</a></li><li><ul class="section"><li><a href="compiler-plugins.html"><strong>6.1.</strong> Compiler Plugins</a></li><li><a href="inline-assembly.html"><strong>6.2.</strong> Inline Assembly</a></li><li><a href="no-stdlib.html"><strong>6.3.</strong> No stdlib</a></li><li><a href="intrinsics.html"><strong>6.4.</strong> Intrinsics</a></li><li><a href="lang-items.html"><strong>6.5.</strong> Lang items</a></li><li><a href="advanced-linking.html"><strong>6.6.</strong> Advanced linking</a></li><li><a href="benchmark-tests.html"><strong>6.7.</strong> Benchmark Tests</a></li><li><a href="box-syntax-and-patterns.html"><strong>6.8.</strong> Box Syntax and Patterns</a></li><li><a href="slice-patterns.html"><strong>6.9.</strong> Slice Patterns</a></li><li><a href="associated-constants.html"><strong>6.10.</strong> Associated Constants</a></li><li><a href="custom-allocators.html"><strong>6.11.</strong> Custom Allocators</a></li></ul></li><li><a href="glossary.html"><strong>7.</strong> 詞彙表</a></li><li><a href="syntax-index.html"><strong>8.</strong> 語法索引</a></li><li><a href="bibliography.html"><strong>9.</strong> 參考文獻</a></li><li><a href="CONTRIBUTORS.html"><strong>10.</strong> 翻譯貢獻名單</a></li></ul>
+        </div>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar" class="menu-bar">
+                    <div class="left-buttons">
+                        <i id="sidebar-toggle" class="fa fa-bars"></i>
+                        <i id="theme-toggle" class="fa fa-paint-brush"></i>
+                    </div>
+
+                    <h1 class="menu-title">Rust 程式語言 正體中文版</h1>
+
+                    <div class="right-buttons">
+                        <i id="print-button" class="fa fa-print" title="Print this book"></i>
+                    </div>
+                </div>
+
+                <div id="content" class="content">
+                    <h1>準備</h1>
+<p>本書第一章，將會引領我們使用 Rust 及它的工具。
+首先，我們會安裝 Rust。
+接著，撰寫經典的 &quot;Hello World&quot; 程式。
+最後，我們將談到 Cargo，Rust 的建置系統跟套件管理器。</p>
+<h2>安裝 Rust</h2>
+<p>使用 Rust 的第一步就是安裝。
+一般來說，在本節你需要網路連線去執行指令，因為我們將需要從網路上下載 Rust。</p>
+<p>我們將會提供給你許多終端機的指令，而且這些指令每行都會以 <code>$</code> 開頭。
+我們並不用輸入這些 <code>$</code> 符號，它們只是用來標示各行指令。
+在網路上的教學及範例中常使用以下慣例：以一般使用者身分執行的指令使用 <code>$</code> 標示，而以系統管理員身分執行的指令則使用 <code>#</code> 標示。</p>
+<h3>平台支援</h3>
+<p>Rust 編譯器能編譯並執行在大多數的平台上，但不是所有的平台都有相同的支援性。
+Rust 的支援程度被分為三級。每一級都有不同的保證。</p>
+<p>平台將以 &quot;target triple&quot; 的方式標識，這個字串是用來告知編譯器最終該產出怎樣的輸出。
+而各列代表對應的元件在特定平台的支援性。</p>
+<blockquote>
+<p>譯註：<code>target triple</code> 通常會依 <code>&lt;arch&gt;&lt;sub&gt;-&lt;vendor&gt;-&lt;sys&gt;-&lt;abi&gt;</code> 的規則表示。
+可以參考 Clang 的<a href="http://clang.llvm.org/docs/CrossCompilation.html#target-triple">說明文件</a>。</p>
+</blockquote>
+<h4>Tier 1 一級</h4>
+<p>一級平台可被認為是&quot;被保證可建置且運行&quot;的。
+具體來說，它們都滿足以下要求：</p>
+<ul>
+<li>此平台的已建有自動化測試。</li>
+<li>可否把將修改進到 <code>rust-lang/rust</code> repository 的 master 分支的門檻，是通過測試。</li>
+<li>此平台提供官方發行版。</li>
+<li>已經有如何使用及建置此平台的文件。</li>
+</ul>
+<table><thead><tr><td>  Target                       </td><td> std </td><td>rustc</td><td>cargo</td><td> notes                      </td></tr></thead>
+<tr><td> <code>i686-pc-windows-msvc</code>        </td><td>  ✓  </td><td>  ✓  </td><td>  ✓  </td><td> 32-bit MSVC (Windows 7+)   </td></tr>
+<tr><td> <code>x86_64-pc-windows-msvc</code>      </td><td>  ✓  </td><td>  ✓  </td><td>  ✓  </td><td> 64-bit MSVC (Windows 7+)   </td></tr>
+<tr><td> <code>i686-pc-windows-gnu</code>         </td><td>  ✓  </td><td>  ✓  </td><td>  ✓  </td><td> 32-bit MinGW (Windows 7+)  </td></tr>
+<tr><td> <code>x86_64-pc-windows-gnu</code>       </td><td>  ✓  </td><td>  ✓  </td><td>  ✓  </td><td> 64-bit MinGW (Windows 7+)  </td></tr>
+<tr><td> <code>i686-apple-darwin</code>           </td><td>  ✓  </td><td>  ✓  </td><td>  ✓  </td><td> 32-bit OSX (10.7+, Lion+)  </td></tr>
+<tr><td> <code>x86_64-apple-darwin</code>         </td><td>  ✓  </td><td>  ✓  </td><td>  ✓  </td><td> 64-bit OSX (10.7+, Lion+)  </td></tr>
+<tr><td> <code>i686-unknown-linux-gnu</code>      </td><td>  ✓  </td><td>  ✓  </td><td>  ✓  </td><td> 32-bit Linux (2.6.18+)     </td></tr>
+<tr><td> <code>x86_64-unknown-linux-gnu</code>    </td><td>  ✓  </td><td>  ✓  </td><td>  ✓  </td><td> 64-bit Linux (2.6.18+)     </td></tr>
+</table>
+<h4>Tier 2 二級</h4>
+<p>二級平台可被認為是&quot;被保證可以建置&quot;的。
+因為沒有執行自動化測試，所以不保證能產生可以運行的 build，但此平台通常運行良好，且永遠歡迎上 patches！
+具體來說，這些平台被要求要符合以下各項：</p>
+<ul>
+<li>建有自動建置，但可能沒有執行測試。</li>
+<li>可否把將修改進到 <code>rust-lang/rust</code> repository 的 master 分支的門檻，是能建置成功。
+請注意，這代表在某些平台上只需要標準函式庫被編譯成功，但其他平台將要執行整個 bootstrap。</li>
+<li>此平台提供官方發行版。</li>
+</ul>
+<table><thead><tr><td>  Target                       </td><td> std </td><td>rustc</td><td>cargo</td><td> notes                      </td></tr></thead>
+<tr><td> <code>x86_64-unknown-linux-musl</code>   </td><td>  ✓  </td><td>     </td><td>     </td><td> 64-bit Linux with MUSL     </td></tr>
+<tr><td> <code>arm-linux-androideabi</code>       </td><td>  ✓  </td><td>     </td><td>     </td><td> ARM Android                </td></tr>
+<tr><td> <code>arm-unknown-linux-gnueabi</code>   </td><td>  ✓  </td><td>  ✓  </td><td>     </td><td> ARM Linux (2.6.18+)        </td></tr>
+<tr><td> <code>arm-unknown-linux-gnueabihf</code> </td><td>  ✓  </td><td>  ✓  </td><td>     </td><td> ARM Linux (2.6.18+)        </td></tr>
+<tr><td> <code>aarch64-unknown-linux-gnu</code>   </td><td>  ✓  </td><td>     </td><td>     </td><td> ARM64 Linux (2.6.18+)      </td></tr>
+<tr><td> <code>mips-unknown-linux-gnu</code>      </td><td>  ✓  </td><td>     </td><td>     </td><td> MIPS Linux (2.6.18+)       </td></tr>
+<tr><td> <code>mipsel-unknown-linux-gnu</code>    </td><td>  ✓  </td><td>     </td><td>     </td><td> MIPS (LE) Linux (2.6.18+)  </td></tr>
+</table>
+<h4>Tier 3 三級</h4>
+<p>三級平台是那些 Rust 支援，但提交修改並不被可否成功建置或通過測試所阻擋的平台。
+這些平台可運行的 builds 可能會有小問題，因為它們的可靠度通常由社群貢獻所決定。
+此外，不提供發行版及安裝檔，但可能有在非官方的地方提供社群產生的版本。</p>
+<table><thead><tr><td>  Target                       </td><td> std </td><td>rustc</td><td>cargo</td><td> notes                      </td></tr></thead>
+<tr><td> <code>i686-linux-android</code>          </td><td>  ✓  </td><td>     </td><td>     </td><td> 32-bit x86 Android         </td></tr>
+<tr><td> <code>aarch64-linux-android</code>       </td><td>  ✓  </td><td>     </td><td>     </td><td> ARM64 Android              </td></tr>
+<tr><td> <code>powerpc-unknown-linux-gnu</code>   </td><td>  ✓  </td><td>     </td><td>     </td><td> PowerPC Linux (2.6.18+)    </td></tr>
+<tr><td> <code>powerpc64-unknown-linux-gnu</code> </td><td>  ✓  </td><td>     </td><td>     </td><td> PPC64 Linux (2.6.18+)      </td></tr>
+<tr><td><code>powerpc64le-unknown-linux-gnu</code></td><td>  ✓  </td><td>     </td><td>     </td><td> PPC64LE Linux (2.6.18+)    </td></tr>
+<tr><td><code>armv7-unknown-linux-gnueabihf</code></td><td>  ✓  </td><td>     </td><td>     </td><td> ARMv7 Linux (2.6.18+)      </td></tr>
+<tr><td> <code>i386-apple-ios</code>              </td><td>  ✓  </td><td>     </td><td>     </td><td> 32-bit x86 iOS             </td></tr>
+<tr><td> <code>x86_64-apple-ios</code>            </td><td>  ✓  </td><td>     </td><td>     </td><td> 64-bit x86 iOS             </td></tr>
+<tr><td> <code>armv7-apple-ios</code>             </td><td>  ✓  </td><td>     </td><td>     </td><td> ARM iOS                    </td></tr>
+<tr><td> <code>armv7s-apple-ios</code>            </td><td>  ✓  </td><td>     </td><td>     </td><td> ARM iOS                    </td></tr>
+<tr><td> <code>aarch64-apple-ios</code>           </td><td>  ✓  </td><td>     </td><td>     </td><td> ARM64 iOS                  </td></tr>
+<tr><td> <code>i686-unknown-freebsd</code>        </td><td>  ✓  </td><td>  ✓  </td><td>     </td><td> 32-bit FreeBSD             </td></tr>
+<tr><td> <code>x86_64-unknown-freebsd</code>      </td><td>  ✓  </td><td>  ✓  </td><td>     </td><td> 64-bit FreeBSD             </td></tr>
+<tr><td> <code>x86_64-unknown-openbsd</code>      </td><td>  ✓  </td><td>  ✓  </td><td>     </td><td> 64-bit OpenBSD             </td></tr>
+<tr><td> <code>x86_64-unknown-netbsd</code>       </td><td>  ✓  </td><td>  ✓  </td><td>     </td><td> 64-bit NetBSD              </td></tr>
+<tr><td> <code>x86_64-unknown-bitrig</code>       </td><td>  ✓  </td><td>  ✓  </td><td>     </td><td> 64-bit Bitrig              </td></tr>
+<tr><td> <code>x86_64-unknown-dragonfly</code>    </td><td>  ✓  </td><td>  ✓  </td><td>     </td><td> 64-bit DragonFlyBSD        </td></tr>
+<tr><td> <code>x86_64-rumprun-netbsd</code>       </td><td>  ✓  </td><td>     </td><td>     </td><td> 64-bit NetBSD Rump Kernel  </td></tr>
+<tr><td> <code>x86_64-sun-solaris</code>          </td><td>  ✓  </td><td>  ✓  </td><td>     </td><td> 64-bit Solaris/SunOS       </td></tr>
+<tr><td> <code>i686-pc-windows-msvc</code> (XP)   </td><td>  ✓  </td><td>     </td><td>     </td><td> Windows XP support         </td></tr>
+<tr><td> <code>x86_64-pc-windows-msvc</code> (XP) </td><td>  ✓  </td><td>     </td><td>     </td><td> Windows XP support         </td></tr>
+</table>
+<p>請注意，這個表格可能會隨著時間而增長，這永遠不是三級平台最終的列表！</p>
+<h3>安裝在 Linux 或 Mac 上</h3>
+<p>如果在 Linux 或 Mac 上，我們只需要開啟終端機並輸入：</p>
+<pre><code class="language-bash">$ curl -sSf https://static.rust-lang.org/rustup.sh | sh
+</code></pre>
+<p>這樣就會下載安裝腳本，然後開始安裝。 當全部完成，你將會看到：</p>
+<pre><code class="language-text">Welcome to Rust.
+
+This script will download the Rust compiler and its package manager, Cargo, and
+install them to /usr/local. You may install elsewhere by running this script
+with the --prefix=&lt;path&gt; option.
+
+The installer will run under ‘sudo’ and may ask you for your password. If you do
+not want the script to run ‘sudo’ then pass it the --disable-sudo flag.
+
+You may uninstall later by running /usr/local/lib/rustlib/uninstall.sh,
+or by running this script again with the --uninstall flag.
+
+Continue? (y/N)
+</code></pre>
+<p>接著按下 <code>y</code> 表示同意，接著按照提示安裝。</p>
+<h3>安裝在 Windows 上</h3>
+<p>如果你使用 Windows，請下載合適版本的<a href="https://www.rust-lang.org/install.html">安裝檔</a>。</p>
+<h3>移除</h3>
+<p>移除 Rust 跟安裝一樣簡單。 在 Linux 或 Mac 上，只需執行移除指令：</p>
+<pre><code class="language-bash">$ sudo /usr/local/lib/rustlib/uninstall.sh
+</code></pre>
+<p>如果你是安裝 Windows 安裝檔，重新執行 <code>.msi</code> 檔，然後他會出現移除的選項。</p>
+<h3>故障排除</h3>
+<p>當我們裝好 Rust 後，我們可以開啟 shell，然後輸入：</p>
+<pre><code class="language-bash">$ rustc --version
+</code></pre>
+<p>你將會看到版本號碼、commit hash 及 commit 的日期。</p>
+<p>如果你成功了，代表 Rust 安裝成功了！恭喜！</p>
+<p>如果沒有成功，而你使用 Windows，請確認 Rust 有設定在你的 %PATH% 系統環境變數內。
+如果沒有，重新執行安裝檔，在 &quot;Change, repair, or remove installation&quot; 頁面選擇 &quot;Change&quot;，接著確定 &quot;Add to PATH&quot; 有裝到本機硬碟。</p>
+<p>Rust 不自己做 linking，所以你會需要安裝一個 linker。
+做這件事會依賴於你的特定系統，更多細節請查閱相關文件。</p>
+<p>如果仍然沒有成功，有許多地方可以獲得協助。
+最簡單的是使用 <a href="http://chat.mibbit.com/?server=irc.mozilla.org&amp;channel=%23rust">Mibbit</a> 連上 <a href="irc://irc.mozilla.org/#rust">irc.mozilla.org 的 #rust IRC 頻道</a>。
+按下連結，然後就能跟可以幫助我們的 Rustaceans（我們用以自稱的暱稱）聊天。
+其他的資源還包括了<a href="https://users.rust-lang.org/">使用者論壇</a>和 <a href="http://stackoverflow.com/questions/tagged/rust">Stack Overflow</a>。</p>
+<p>安裝檔同時也安裝了一份文件副本在本機，所以我們可以離線閱讀這份文件。
+在 UNIX 系統的位置是 <code>/usr/local/share/doc/rust</code>。
+在 Windows，文件放在 Rust 安裝目錄下的 <code>share/doc</code> 目錄。</p>
+<h2>Hello, world!</h2>
+<p>現在 Rust 已經裝好了，我們將協助你開始寫你的第一個 Rust 程式。
+學習一個新的語言的傳統是，撰寫一個小程式，在螢幕上印出 &quot;Hello, world!&quot;。
+在本節，我們會遵循這個傳統。</p>
+<p>從這樣一個簡單小程式開始的好處，是你能很快地驗證你的編譯器已經安裝完成，而且正常運行。
+把資訊印在螢幕上也是個很常做的事情，所以早點練習沒什麼不好。</p>
+<blockquote>
+<p>註：本書假設你已經有基本的指令熟悉程度。
+Rust 對你的編輯器、工具、或程式碼放在何處沒有特別要求，所以如果你喜歡使用 IDE 而非 command line，這也是個選擇。
+你也許會想嘗試專為 Rust 建立的 <a href="https://github.com/oakes/SolidOak">SolidOak</a>。
+社群也開發了許多擴充功能，而且 Rust 團隊也替<a href="https://github.com/rust-lang/rust/blob/master/src/etc/CONFIGS.md">許多編輯器</a>發佈了外掛。
+配置你的編輯器或 IDE 不在本教學的範圍內，所以請依據你的設置查閱文件。</p>
+</blockquote>
+<h3>建立專案檔</h3>
+<p>首先，建立一個檔案來放你的程式碼。
+Rust 不在乎你的程式碼放在哪，但在本書中，我建議建立一個 <em>projects</em> 的目錄在你的 home 目錄底下，並且把所有你的專案都放在裡面。
+開啟終端機並輸入以下指令來替專案建立目錄：</p>
+<pre><code class="language-bash">$ mkdir ~/projects
+$ cd ~/projects
+$ mkdir hello_world
+$ cd hello_world
+</code></pre>
+<blockquote>
+<p>註：如果你使用 Windows 而且不是使用 PowerShell，則 ~ 可能沒有作用。
+更多細節請查閱你使用的 shell 的文件。</p>
+</blockquote>
+<h3>撰寫並執行 Rust 程式</h3>
+<p>接著，建立一個新的原始碼檔案，命名為 <em>main.rs</em>。
+Rust 的檔案永遠以 <em>.rs</em> 副檔名為結尾。
+如果你的檔案名稱使用超過一個單字，使用底線去區分它們；例如，你應該使用 <em>hello_world.rs</em> 命名，而不是 <em>helloworld.rs</em>。</p>
+<p>現在開啟建立好的 <em>main.rs</em> 檔案，然後輸入以下程式碼：</p>
+<pre><code class="language-rust">fn main() {
+    println!(&quot;Hello, world!&quot;);
+}
+</code></pre>
+<p>存檔，然後回到你的終端機視窗。
+在 Linux 或 OSX 下，輸入以下指令：</p>
+<pre><code class="language-bash">$ rustc main.rs
+$ ./main
+Hello, world!
+</code></pre>
+<p>在 Windows 下，請把 <code>main</code> 換成 <code>main.exe</code>。
+不論你的作業系統為何，你應該能看到字串 <code>Hello, world!</code> 印在終端機上。
+如果你成功了，那麼恭喜你！
+你已正式地寫出了一個 Rust 程式。
+這讓你成為了 Rust 程式設計師！歡迎你！</p>
+<h3>剖析 Rust 程式</h3>
+<p>現在，讓我們來細細檢視你的 &quot;Hello, world!&quot; 程式到底發生了什麼事。
+這是第一塊謎團：</p>
+<pre><code class="language-rust">fn main() {
+
+}
+</code></pre>
+<p>這幾行定義了 Rust 中的 <em>函式</em> (function)。
+其中 <code>main</code> 函式比較特殊：他是所有 Rust 程式的開始處。
+第一行意指 &quot;我要定義一個叫 <code>main</code> 的函式，它沒有參數也沒有回傳值。&quot;
+如果函式有參數的話，參數會放在括號（<code>(</code> 及 <code>)</code>）中，且因為我們不回傳值，所以可以省略回傳的型態。</p>
+<p>同時留意，函式的內容會被包在大括號（<code>{</code> 及 <code>}</code>）內。
+Rust 要求所有函式的內容都要用它包起來。
+把第一個大括號放在函式宣告的同一行，在中間留一個空白，被認為是一種好的程式風格。</p>
+<p>在 <code>main()</code> 函式中：</p>
+<pre><code class="language-rust">    println!(&quot;Hello, world!&quot;);
+</code></pre>
+<p>這一行做了這個小程式的所有工作：印出文字到螢幕上。
+這邊有許多很重要的細節。
+第一個是縮排是四個空白，而不是 tabs。</p>
+<p>第二個重要的部分是 <code>println!()</code> 這行。
+這個在 Rust 叫做 <em><a href="macros.html">巨集</a></em> (macro)，這是 Rust 達成 metaprogramming 的方式。
+如果此處改用函式的話，會看起來像是 <code>println()</code>（沒有 ! 符號）。
+我們將在之後討論 Rust 巨集的更多細節，但現在你只需知道，當你看到 <code>!</code> 的時候，代表你正在呼叫一個巨集，而不是一般的函式。</p>
+<p>接著 <code>&quot;Hello, world!&quot;</code> 是一個 <em>字串</em> (string)。
+在系統程式語言中，字串是個複雜到令人驚訝的主題，而這是一個 <em><a href="the-stack-and-the-heap.html">靜態分配</a></em> (statically allocated) 的字串。
+我們傳遞這個字串當作參數給 <code>println!</code>，然後它將字串印在螢幕上。
+夠簡單吧！</p>
+<p>程式中每一行都以分號（<code>;</code>）結尾。
+Rust 是個 <em><a href="glossary.html#expression-oriented-language">表達式導向語言</a></em> (expression-oriented language)，這代表大多數的東西都是表達式，而不是陳述式 (statements)。
+<code>;</code> 代表著這個表達式已經結束，而且下一個正準備開始。
+大多數 Rust 程式碼的行都是以 <code>;</code> 結尾。</p>
+<h3>編譯和執行是分開的步驟</h3>
+<p>在 &quot;撰寫並執行 Rust 程式&quot; 中，我們告訴你如何執行一個新建的程式。
+現在讓我們分解流程，檢查每一步。</p>
+<p>執行 Rust 程式之前，你需要編譯它。
+你可以使用 Rust 編譯器，輸入 <code>rustc</code> 指令並傳遞原始碼的檔名給它，像這樣</p>
+<pre><code class="language-bash">$ rustc main.rs
+</code></pre>
+<p>如果你有 C 或 C++ 的背景，你會注意到這跟 <code>gcc</code> 或 <code>clang</code> 很類似。
+編譯成功之後，Rust 應該會輸出一個二進位執行檔，你可以在 Linux 或 OSX 下的 shell 輸入 <code>ls</code> 指令：</p>
+<pre><code class="language-bash">$ ls
+main  main.rs
+</code></pre>
+<p>在 Windows 下，你可以輸入：</p>
+<pre><code class="language-bash">$ dir
+main.exe  main.rs
+</code></pre>
+<p>這表示我們有兩個檔案：以 <code>.rs</code> 作為副檔名的原始檔，以及執行檔（在 Windows 是 <code>main.exe</code>，其他則是 <code>main</code>）。
+接著我們唯一要做的就只剩下執行 <code>main</code> 或 <code>main.exe</code> 了：</p>
+<pre><code class="language-bash">$ ./main  # or main.exe on Windows
+</code></pre>
+<p>如果 <em>main.rs</em> 就是你的 &quot;Hello, world!&quot; 程式，那它將會印出 <code>Hello, world!</code> 在你的終端機上。</p>
+<p>如果你以前是學動態語言，像 Ruby、Python、或 JavaScript，你可能會不習慣把編譯和執行程式分開。
+Rust 是個 <em>事先編譯</em> (ahead-of-time compiled) 的語言，你可以編譯程式，把程式給其他人，他們不用安裝 Rust 就能執行程式。
+如果你給一個人 <code>.rb</code> 或 <code>.py</code> 或 <code>.js</code> 檔，他必須要裝好 Ruby、Python、或 JavaScript 應用，不過只需一個指令去編譯並執行你的程式。
+這都是程式語言的設計中的取捨。</p>
+<p>簡單的程式只需要用 <code>rustc</code> 直接編譯就好了，但是隨著你的專案成長，你會希望能夠管理專案的所有選項，並且能簡單的分享你的程式碼給其他人和專案。
+下一節，我們將會介紹給你一個叫做 Cargo 的工具，他可以幫你撰寫真實世界的 Rust 程式。</p>
+<h2>Hello, Cargo!</h2>
+<p>Cargo 是 Rust 的建置系統跟套件管理器，而且 Rustaceans 會使用 Cargo 去管理他們的 Rust 專案。
+Cargo 管理三件事：建置你的程式碼、下載你的程式碼所依賴的函式庫 (libraries)、以及建置這些函式庫。
+我們把這些你的程式所依賴的函式庫叫做 &quot;dependencies&quot;，因為你的程式碼依賴他們。</p>
+<p>最簡單的 Rust 程式不會有任何 dependencies，所以現在你只會用到第一部份的功能。
+當你撰寫更複雜的 Rust 程式後，你將會希望加入 dependencies，如果你從 Cargo 開始的話，那就會簡單很多。</p>
+<p>許多主要的 Rust 專案都使用 Cargo，我們假設在本書後面的章節你都會使用它。
+如果你使用官方安裝檔，Cargo 將會隨著 Rust 一起裝好。
+如果你用其他方法安裝 Rust，你可以輸入以下指令檢查是否已經裝好 Cargo：</p>
+<pre><code class="language-bash">$ cargo --version
+</code></pre>
+<p>在終端機內，如果你能看到版本號碼，那就太好了！
+如果你看到錯誤訊息像 <code>command not found</code>，則你應該要查閱你所安裝 Rust 的系統的相關文件，確定 Cargo 是否需要另外安裝。</p>
+<h3>轉換到 Cargo</h3>
+<p>讓我們開始轉換 Hello World 程式到 Cargo。
+要將專案 Cargo 化的話，你需要做以下三件事：</p>
+<ol>
+<li>把你的原始碼檔案放到正確的目錄。</li>
+<li>去除舊的執行檔（在 Windows 是 <code>main.exe</code>，其他則是 <code>main</code>）， 並且建立一個新的。</li>
+<li>建立 Cargo 配置 (configuration) 檔。</li>
+</ol>
+<p>讓我們開始吧！</p>
+<h4>建立新的執行檔和原始碼目錄</h4>
+<p>首先，回到你的終端機，移到你的 <em>hello_world</em> 目錄，輸入以下指令：</p>
+<pre><code class="language-bash">$ mkdir src
+$ mv main.rs src/main.rs
+$ rm main  # or 'del main.exe' on Windows
+</code></pre>
+<p>Cargo 預期你的原始碼會放在 <em>src</em> 目錄內，所以我們先做這個。
+最上層的專案目錄（在此為 <em>hello_world</em>）保留來放置 README 檔、授權資訊、及其他與程式碼無關的東西。
+這樣可以讓你保持專案的整潔。
+物有所屬，所有東西都有自己的位置。</p>
+<p>然後，複製 <em>main.rs</em> 到 <em>src</em> 目錄，然後刪除 <code>rustc</code> 編譯出的檔案。
+一如往常地， 在 Windows 下用 <code>main.exe</code> 取代 <code>main</code>。</p>
+<p>這個例子中保留 <code>main.rs</code> 作為原始碼檔名，是因為它可以建立執行檔。
+如果你想要建立一個函式庫 (library)，你應該把檔案命名為 <code>lib.rs</code>。
+Cargo 使用這樣的慣例去編譯你的專案，但是如果你想要的話，你還是可以更改它。</p>
+<h4>建立配置檔</h4>
+<p>接著，在 <em>hello_world</em> 目錄下建立一個新的檔案，命名為 <code>Cargo.toml</code>。</p>
+<p>確保 <code>Cargo.toml</code> 的 <code>C</code> 是大寫，否則 Cargo 會無法處理這樣的配置檔。</p>
+<p>這個檔案使用 <em><a href="https://github.com/toml-lang/toml">TOML</a></em> (Tom's Obvious, Minimal Language) 格式。
+TOML 跟 INI 很類似，但是有些額外的好東西，而且被用來作為 Cargo 的配置格式。</p>
+<p>在檔案內，輸入以下資訊：</p>
+<pre><code class="language-toml">[package]
+
+name = &quot;hello_world&quot;
+version = &quot;0.0.1&quot;
+authors = [ &quot;Your name &lt;you@example.com&gt;&quot; ]
+</code></pre>
+<p>第一行，<code>[package]</code> 表示以下的陳述是用來配置一個套件 (package)。
+當我們要加入更多資訊到這個檔案內，我們會增加其他的小節 (sections)，但是現在，我們只有套件的配置。</p>
+<p>其他三行設定了三項 Cargo 編譯程式所需要知道的配置：程式的名字、它的版本、和誰是作者。</p>
+<p>在 <em>Cargo.toml</em> 檔案內加入這些資訊後，存檔然後結束。</p>
+<h3>建立並執行 Cargo 專案</h3>
+<p>當你的 <em>Cargo.toml</em> 檔案被放在專案的根目錄後，你應該就可以建立並執行你的 Hello World 程式了！
+輸入以下指令：</p>
+<pre><code class="language-bash">$ cargo build
+   Compiling hello_world v0.0.1 (file:///home/yourname/projects/hello_world)
+$ ./target/debug/hello_world
+Hello, world!
+</code></pre>
+<p>蹦！如果一切順利，<code>Hello, world!</code> 應該再次印在終端機上了。</p>
+<p>你可以用 <code>cargo build</code> 建置專案、並透過 <code>./target/debug/hello_world</code> 執行它，但你其實可以直接用 <code>cargo run</code> 一步執行兩者：</p>
+<pre><code class="language-bash">$ cargo run
+     Running `target/debug/hello_world`
+Hello, world!
+</code></pre>
+<p>請注意，這個範例沒有重新建置專案。
+Cargo 判斷檔案沒有更動，所以他直接執行二進位執行檔。
+如果你有修改你的原始碼，Cargo 會在執行前重新建置專案，然後你會看到：</p>
+<pre><code class="language-bash">$ cargo run
+   Compiling hello_world v0.0.1 (file:///home/yourname/projects/hello_world)
+     Running `target/debug/hello_world`
+Hello, world!
+</code></pre>
+<p>Cargo 會檢查是否專案內的檔案有被更改，而且只會在專案有更動的時候重新建置。</p>
+<p>在簡單的專案中，Cargo 無法比 <code>rustc</code> 帶來更多好處，但是它在未來會越來越有用。
+在用到許多 crates 的複雜專案中，使用 Cargo 去協調建置會比較簡單。
+你只需要執行 <code>cargo build</code>，然後一切都會正確的運行。</p>
+<h4>建立發行版</h4>
+<p>當你的專案最終準備好要發行，你應該使用 <code>cargo build --release</code> 來最佳化編譯你的專案。
+這些最佳化讓你的 Rust 程式碼執行得更快，但是你的程式編譯起來會需要多花點時間。
+這也是為什麼會有兩種不同的 profiles，一個用於開發，一個用於建置最終給使用者的程式。</p>
+<h4>什麼是 <code>Cargo.lock</code>？</h4>
+<p>執行 <code>cargo build</code> 也會讓 Cargo 建立一個叫做 <em>Cargo.lock</em> 的檔案，看起來像這樣：</p>
+<pre><code class="language-toml">[root]
+name = &quot;hello_world&quot;
+version = &quot;0.0.1&quot;
+</code></pre>
+<p>Cargo 使用 <em>Cargo.lock</em> 去追蹤你的應用程式的 dependencies。 這是 Hello World 專案的 <em>Cargo.lock</em> 檔。
+這個專案沒有任何 dependencies，所以檔案有點稀疏。
+實際上，你不需要自己去碰這個檔案；只要讓 Cargo 去處理就好了。</p>
+<p>就這樣！如果你一路照著做到現在，你應該已經成功的以 Cargo 建置 <code>hello_world</code> 了。</p>
+<p>即使這個專案很簡單，它也使用到許多之後在你 Rust 生涯中會真實用上的工具。
+事實上，你可以預期，幾乎所有的 Rust 專案都會透過類似以下的指令開始：</p>
+<pre><code class="language-bash">$ git clone someurl.com/foo
+$ cd foo
+$ cargo build
+</code></pre>
+<h3>簡單地開始一個 Cargo 專案</h3>
+<p>當你想要開始一個新專案的時候，你不需要每次都重新執行一遍前面的流程！
+Cargo 可以快速的建立專案目錄的骨架，然後你就可以開始開發。</p>
+<p>用 Cargo 開始一個新專案，只要輸入 <code>cargo new</code>：</p>
+<pre><code class="language-bash">$ cargo new hello_world --bin
+</code></pre>
+<p>這個指令傳遞了 <code>--bin</code> 因為他的目的是直接建立一個可執行的應用程式，而不是函式庫。
+執行檔也常被稱作 <em>二進位檔</em> (binaries)。</p>
+<p>Cargo 產生兩個檔案和一個目錄給我們：<code>Cargo.toml</code> 和內含 <em>main.rs</em> 的 <em>src</em> 目錄。
+他們看起來與我們前面手動建立的很像。</p>
+<p>這些就是我們全部所需要開始的東西。
+首先，打開 <code>Cargo.toml</code>。
+它應該看起來像這樣：</p>
+<pre><code class="language-toml">[package]
+
+name = &quot;hello_world&quot;
+version = &quot;0.1.0&quot;
+authors = [&quot;Your Name &lt;you@example.com&gt;&quot;]
+</code></pre>
+<p>Cargo 會根據你給它的參數和你的 <code>git</code> 環境配置產生有合理預設值的 <em>Cargo.toml</em>。
+而且你可以注意到 Cargo 同時也把 <code>hello_world</code> 目錄初始化成 <code>git</code> 的 repository。</p>
+<p>至於 <code>src/main.rs</code> 內應該會像這樣：</p>
+<pre><code class="language-rust">fn main() {
+    println!(&quot;Hello, world!&quot;);
+}
+</code></pre>
+<p>Cargo 會幫你產生 &quot;Hello World!&quot;，然後你就可以開始寫程式了！</p>
+<blockquote>
+<p>註：如果你想要閱覽更多 Cargo 的細節，可以查閱官方的 <a href="http://doc.crates.io/guide.html">Cargo 指南</a>，其中包含有所有的功能。</p>
+</blockquote>
+<h2>結語</h2>
+<p>本章包含了本書後述部分、及未來你的 Rust 時光的基礎。
+現在你已經有了工具，我們接著將更多地論及 Rust 本身。</p>
+<p>你有兩個選擇：從 &quot;<a href="guessing-game.html">教學: 猜謎遊戲</a>&quot; 深入一個專案，或從 &quot;<a href="syntax-and-semantics.html">語法及語意</a>&quot; 由下而上開始。
+有經驗的系統程式設計師可能會傾向從 &quot;教學: 猜謎遊戲&quot; 開始，而動態語言背景的人也許兩者都可以。
+不同人有不同的學習方式！
+選擇適合自己的方式。</p>
+<blockquote>
+<p><em>commit c3f6122</em></p>
+</blockquote>
+
+                </div>
+
+                <!-- Mobile navigation buttons -->
+                
+                    <a href="README.html" class="mobile-nav-chapters previous">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a href="guessing-game.html" class="mobile-nav-chapters next">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+
+            </div>
+
+            
+                <a href="README.html" class="nav-chapters previous" title="You can navigate through the chapters using the arrow keys">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+            
+
+            
+                <a href="guessing-game.html" class="nav-chapters next" title="You can navigate through the chapters using the arrow keys">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            
+
+        </div>
+
+
+        <!-- Local fallback for Font Awesome -->
+        <script>
+            if ($(".fa").css("font-family") !== "FontAwesome") {
+                $('<link rel="stylesheet" type="text/css" href="_FontAwesome/css/font-awesome.css">').prependTo('head');
+            }
+        </script>
+
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+    </body>
+</html>

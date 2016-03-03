@@ -1,0 +1,382 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Rust 程式語言 正體中文版</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="The Rust Programming Language">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <base href="">
+
+        <link rel="stylesheet" href="book.css">
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+        <link rel="shortcut icon" href="favicon.png">
+
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+
+        <!-- MathJax -->
+        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+        <!-- Fetch JQuery from CDN but have a local fallback -->
+        <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <script>
+            if (typeof jQuery == 'undefined') {
+                document.write(unescape("%3Cscript src='jquery.js'%3E%3C/script%3E"));
+            }
+        </script>
+    </head>
+    <body>
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme = localStorage.getItem('theme');
+            if (theme == null) { theme = 'light'; }
+            $('body').removeClass().addClass(theme);
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var sidebar = localStorage.getItem('sidebar');
+            if (sidebar === "hidden") { $("html").addClass("sidebar-hidden") }
+            else if (sidebar === "visible") { $("html").addClass("sidebar-visible") }
+        </script>
+
+        <div id="sidebar" class="sidebar">
+            <ul class="chapter"><li><a href="README.html"><strong>1.</strong> 簡介</a></li><li><a href="getting-started.html"><strong>2.</strong> 準備</a></li><li><a href="guessing-game.html"><strong>3.</strong> 教學: 猜謎遊戲</a></li><li><a href="syntax-and-semantics.html"><strong>4.</strong> 語法及語意</a></li><li><ul class="section"><li><a href="variable-bindings.html"><strong>4.1.</strong> 變數綁定</a></li><li><a href="functions.html"><strong>4.2.</strong> Functions</a></li><li><a href="primitive-types.html"><strong>4.3.</strong> Primitive Types</a></li><li><a href="comments.html"><strong>4.4.</strong> Comments</a></li><li><a href="if.html"><strong>4.5.</strong> if</a></li><li><a href="loops.html"><strong>4.6.</strong> Loops</a></li><li><a href="ownership.html"><strong>4.7.</strong> Ownership</a></li><li><a href="references-and-borrowing.html"><strong>4.8.</strong> References and Borrowing</a></li><li><a href="lifetimes.html" class="active"><strong>4.9.</strong> Lifetimes</a></li><li><a href="mutability.html"><strong>4.10.</strong> Mutability</a></li><li><a href="structs.html"><strong>4.11.</strong> Structs</a></li><li><a href="enums.html"><strong>4.12.</strong> Enums</a></li><li><a href="match.html"><strong>4.13.</strong> Match</a></li><li><a href="patterns.html"><strong>4.14.</strong> Patterns</a></li><li><a href="method-syntax.html"><strong>4.15.</strong> Method Syntax</a></li><li><a href="vectors.html"><strong>4.16.</strong> Vectors</a></li><li><a href="strings.html"><strong>4.17.</strong> Strings</a></li><li><a href="generics.html"><strong>4.18.</strong> Generics</a></li><li><a href="traits.html"><strong>4.19.</strong> Traits</a></li><li><a href="drop.html"><strong>4.20.</strong> Drop</a></li><li><a href="if-let.html"><strong>4.21.</strong> if let</a></li><li><a href="trait-objects.html"><strong>4.22.</strong> Trait Objects</a></li><li><a href="closures.html"><strong>4.23.</strong> Closures</a></li><li><a href="ufcs.html"><strong>4.24.</strong> Universal Function Call Syntax</a></li><li><a href="crates-and-modules.html"><strong>4.25.</strong> Crates and Modules</a></li><li><a href="const-and-static.html"><strong>4.26.</strong> <code>const</code> and <code>static</code></a></li><li><a href="attributes.html"><strong>4.27.</strong> Attributes</a></li><li><a href="type-aliases.html"><strong>4.28.</strong> <code>type</code> aliases</a></li><li><a href="casting-between-types.html"><strong>4.29.</strong> Casting between types</a></li><li><a href="associated-types.html"><strong>4.30.</strong> Associated Types</a></li><li><a href="unsized-types.html"><strong>4.31.</strong> Unsized Types</a></li><li><a href="operators-and-overloading.html"><strong>4.32.</strong> Operators and Overloading</a></li><li><a href="deref-coercions.html"><strong>4.33.</strong> Deref coercions</a></li><li><a href="macros.html"><strong>4.34.</strong> Macros</a></li><li><a href="raw-pointers.html"><strong>4.35.</strong> Raw Pointers</a></li><li><a href="unsafe.html"><strong>4.36.</strong> <code>unsafe</code></a></li></ul></li><li><a href="effective-rust.html"><strong>5.</strong> Effective Rust</a></li><li><ul class="section"><li><a href="the-stack-and-the-heap.html"><strong>5.1.</strong> The Stack and the Heap</a></li><li><a href="testing.html"><strong>5.2.</strong> Testing</a></li><li><a href="conditional-compilation.html"><strong>5.3.</strong> Conditional Compilation</a></li><li><a href="documentation.html"><strong>5.4.</strong> Documentation</a></li><li><a href="iterators.html"><strong>5.5.</strong> Iterators</a></li><li><a href="concurrency.html"><strong>5.6.</strong> Concurrency</a></li><li><a href="error-handling.html"><strong>5.7.</strong> Error Handling</a></li><li><a href="choosing-your-guarantees.html"><strong>5.8.</strong> Choosing your Guarantees</a></li><li><a href="ffi.html"><strong>5.9.</strong> FFI</a></li><li><a href="borrow-and-asref.html"><strong>5.10.</strong> Borrow and AsRef</a></li><li><a href="release-channels.html"><strong>5.11.</strong> Release Channels</a></li><li><a href="using-rust-without-the-standard-library.html"><strong>5.12.</strong> Using Rust without the standard library</a></li></ul></li><li><a href="nightly-rust.html"><strong>6.</strong> Nightly Rust</a></li><li><ul class="section"><li><a href="compiler-plugins.html"><strong>6.1.</strong> Compiler Plugins</a></li><li><a href="inline-assembly.html"><strong>6.2.</strong> Inline Assembly</a></li><li><a href="no-stdlib.html"><strong>6.3.</strong> No stdlib</a></li><li><a href="intrinsics.html"><strong>6.4.</strong> Intrinsics</a></li><li><a href="lang-items.html"><strong>6.5.</strong> Lang items</a></li><li><a href="advanced-linking.html"><strong>6.6.</strong> Advanced linking</a></li><li><a href="benchmark-tests.html"><strong>6.7.</strong> Benchmark Tests</a></li><li><a href="box-syntax-and-patterns.html"><strong>6.8.</strong> Box Syntax and Patterns</a></li><li><a href="slice-patterns.html"><strong>6.9.</strong> Slice Patterns</a></li><li><a href="associated-constants.html"><strong>6.10.</strong> Associated Constants</a></li><li><a href="custom-allocators.html"><strong>6.11.</strong> Custom Allocators</a></li></ul></li><li><a href="glossary.html"><strong>7.</strong> 詞彙表</a></li><li><a href="syntax-index.html"><strong>8.</strong> 語法索引</a></li><li><a href="bibliography.html"><strong>9.</strong> 參考文獻</a></li><li><a href="CONTRIBUTORS.html"><strong>10.</strong> 翻譯貢獻名單</a></li></ul>
+        </div>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar" class="menu-bar">
+                    <div class="left-buttons">
+                        <i id="sidebar-toggle" class="fa fa-bars"></i>
+                        <i id="theme-toggle" class="fa fa-paint-brush"></i>
+                    </div>
+
+                    <h1 class="menu-title">Rust 程式語言 正體中文版</h1>
+
+                    <div class="right-buttons">
+                        <i id="print-button" class="fa fa-print" title="Print this book"></i>
+                    </div>
+                </div>
+
+                <div id="content" class="content">
+                    <p>% Lifetimes</p>
+<p>This guide is three of three presenting Rust’s ownership system. This is one of
+Rust’s most unique and compelling features, with which Rust developers should
+become quite acquainted. Ownership is how Rust achieves its largest goal,
+memory safety. There are a few distinct concepts, each with its own chapter:</p>
+<ul>
+<li><a href="ownership.html">ownership</a>, the key concept</li>
+<li><a href="references-and-borrowing.html">borrowing</a>, and their associated feature ‘references’</li>
+<li>lifetimes, which you’re reading now</li>
+</ul>
+<p>These three chapters are related, and in order. You’ll need all three to fully
+understand the ownership system.</p>
+<h1>Meta</h1>
+<p>Before we get to the details, two important notes about the ownership system.</p>
+<p>Rust has a focus on safety and speed. It accomplishes these goals through many
+‘zero-cost abstractions’, which means that in Rust, abstractions cost as little
+as possible in order to make them work. The ownership system is a prime example
+of a zero-cost abstraction. All of the analysis we’ll talk about in this guide
+is <em>done at compile time</em>. You do not pay any run-time cost for any of these
+features.</p>
+<p>However, this system does have a certain cost: learning curve. Many new users
+to Rust experience something we like to call ‘fighting with the borrow
+checker’, where the Rust compiler refuses to compile a program that the author
+thinks is valid. This often happens because the programmer’s mental model of
+how ownership should work doesn’t match the actual rules that Rust implements.
+You probably will experience similar things at first. There is good news,
+however: more experienced Rust developers report that once they work with the
+rules of the ownership system for a period of time, they fight the borrow
+checker less and less.</p>
+<p>With that in mind, let’s learn about lifetimes.</p>
+<h1>Lifetimes</h1>
+<p>Lending out a reference to a resource that someone else owns can be
+complicated. For example, imagine this set of operations:</p>
+<ol>
+<li>I acquire a handle to some kind of resource.</li>
+<li>I lend you a reference to the resource.</li>
+<li>I decide I’m done with the resource, and deallocate it, while you still have
+your reference.</li>
+<li>You decide to use the resource.</li>
+</ol>
+<p>Uh oh! Your reference is pointing to an invalid resource. This is called a
+dangling pointer or ‘use after free’, when the resource is memory.</p>
+<p>To fix this, we have to make sure that step four never happens after step
+three. The ownership system in Rust does this through a concept called
+lifetimes, which describe the scope that a reference is valid for.</p>
+<p>When we have a function that takes a reference by argument, we can be implicit
+or explicit about the lifetime of the reference:</p>
+<pre><code class="language-rust">// implicit
+fn foo(x: &amp;i32) {
+}
+
+// explicit
+fn bar&lt;'a&gt;(x: &amp;'a i32) {
+}
+</code></pre>
+<p>The <code>'a</code> reads ‘the lifetime a’. Technically, every reference has some lifetime
+associated with it, but the compiler lets you elide (i.e. omit, see
+<a href="#lifetime-elision">&quot;Lifetime Elision&quot;</a> below) them in common cases.
+Before we get to that, though, let’s break the explicit example down:</p>
+<pre><code class="language-rust,ignore">fn bar&lt;'a&gt;(...)
+</code></pre>
+<p>We previously talked a little about <a href="functions.html">function syntax</a>, but we didn’t
+discuss the <code>&lt;&gt;</code>s after a function’s name. A function can have ‘generic
+parameters’ between the <code>&lt;&gt;</code>s, of which lifetimes are one kind. We’ll discuss
+other kinds of generics <a href="generics.html">later in the book</a>, but for now, let’s
+focus on the lifetimes aspect.</p>
+<p>We use <code>&lt;&gt;</code> to declare our lifetimes. This says that <code>bar</code> has one lifetime,
+<code>'a</code>. If we had two reference parameters, it would look like this:</p>
+<pre><code class="language-rust,ignore">fn bar&lt;'a, 'b&gt;(...)
+</code></pre>
+<p>Then in our parameter list, we use the lifetimes we’ve named:</p>
+<pre><code class="language-rust,ignore">...(x: &amp;'a i32)
+</code></pre>
+<p>If we wanted a <code>&amp;mut</code> reference, we’d do this:</p>
+<pre><code class="language-rust,ignore">...(x: &amp;'a mut i32)
+</code></pre>
+<p>If you compare <code>&amp;mut i32</code> to <code>&amp;'a mut i32</code>, they’re the same, it’s that
+the lifetime <code>'a</code> has snuck in between the <code>&amp;</code> and the <code>mut i32</code>. We read <code>&amp;mut i32</code> as ‘a mutable reference to an <code>i32</code>’ and <code>&amp;'a mut i32</code> as ‘a mutable
+reference to an <code>i32</code> with the lifetime <code>'a</code>’.</p>
+<h1>In <code>struct</code>s</h1>
+<p>You’ll also need explicit lifetimes when working with [<code>struct</code>]<a href="structs.html">structs</a>s that
+contain references:</p>
+<pre><code class="language-rust">struct Foo&lt;'a&gt; {
+    x: &amp;'a i32,
+}
+
+fn main() {
+    let y = &amp;5; // this is the same as `let _y = 5; let y = &amp;_y;`
+    let f = Foo { x: y };
+
+    println!(&quot;{}&quot;, f.x);
+}
+</code></pre>
+<p>As you can see, <code>struct</code>s can also have lifetimes. In a similar way to functions,</p>
+<pre><code class="language-rust">struct Foo&lt;'a&gt; {
+# x: &amp;'a i32,
+# }
+</code></pre>
+<p>declares a lifetime, and</p>
+<pre><code class="language-rust"># struct Foo&lt;'a&gt; {
+x: &amp;'a i32,
+# }
+</code></pre>
+<p>uses it. So why do we need a lifetime here? We need to ensure that any reference
+to a <code>Foo</code> cannot outlive the reference to an <code>i32</code> it contains.</p>
+<h2><code>impl</code> blocks</h2>
+<p>Let’s implement a method on <code>Foo</code>:</p>
+<pre><code class="language-rust">struct Foo&lt;'a&gt; {
+    x: &amp;'a i32,
+}
+
+impl&lt;'a&gt; Foo&lt;'a&gt; {
+    fn x(&amp;self) -&gt; &amp;'a i32 { self.x }
+}
+
+fn main() {
+    let y = &amp;5; // this is the same as `let _y = 5; let y = &amp;_y;`
+    let f = Foo { x: y };
+
+    println!(&quot;x is: {}&quot;, f.x());
+}
+</code></pre>
+<p>As you can see, we need to declare a lifetime for <code>Foo</code> in the <code>impl</code> line. We repeat
+<code>'a</code> twice, like on functions: <code>impl&lt;'a&gt;</code> defines a lifetime <code>'a</code>, and <code>Foo&lt;'a&gt;</code>
+uses it.</p>
+<h2>Multiple lifetimes</h2>
+<p>If you have multiple references, you can use the same lifetime multiple times:</p>
+<pre><code class="language-rust">fn x_or_y&lt;'a&gt;(x: &amp;'a str, y: &amp;'a str) -&gt; &amp;'a str {
+#    x
+# }
+</code></pre>
+<p>This says that <code>x</code> and <code>y</code> both are alive for the same scope, and that the
+return value is also alive for that scope. If you wanted <code>x</code> and <code>y</code> to have
+different lifetimes, you can use multiple lifetime parameters:</p>
+<pre><code class="language-rust">fn x_or_y&lt;'a, 'b&gt;(x: &amp;'a str, y: &amp;'b str) -&gt; &amp;'a str {
+#    x
+# }
+</code></pre>
+<p>In this example, <code>x</code> and <code>y</code> have different valid scopes, but the return value
+has the same lifetime as <code>x</code>.</p>
+<h2>Thinking in scopes</h2>
+<p>A way to think about lifetimes is to visualize the scope that a reference is
+valid for. For example:</p>
+<pre><code class="language-rust">fn main() {
+    let y = &amp;5;     // -+ y goes into scope
+                    //  |
+    // stuff        //  |
+                    //  |
+}                   // -+ y goes out of scope
+</code></pre>
+<p>Adding in our <code>Foo</code>:</p>
+<pre><code class="language-rust">struct Foo&lt;'a&gt; {
+    x: &amp;'a i32,
+}
+
+fn main() {
+    let y = &amp;5;           // -+ y goes into scope
+    let f = Foo { x: y }; // -+ f goes into scope
+    // stuff              //  |
+                          //  |
+}                         // -+ f and y go out of scope
+</code></pre>
+<p>Our <code>f</code> lives within the scope of <code>y</code>, so everything works. What if it didn’t?
+This code won’t work:</p>
+<pre><code class="language-rust,ignore">struct Foo&lt;'a&gt; {
+    x: &amp;'a i32,
+}
+
+fn main() {
+    let x;                    // -+ x goes into scope
+                              //  |
+    {                         //  |
+        let y = &amp;5;           // ---+ y goes into scope
+        let f = Foo { x: y }; // ---+ f goes into scope
+        x = &amp;f.x;             //  | | error here
+    }                         // ---+ f and y go out of scope
+                              //  |
+    println!(&quot;{}&quot;, x);        //  |
+}                             // -+ x goes out of scope
+</code></pre>
+<p>Whew! As you can see here, the scopes of <code>f</code> and <code>y</code> are smaller than the scope
+of <code>x</code>. But when we do <code>x = &amp;f.x</code>, we make <code>x</code> a reference to something that’s
+about to go out of scope.</p>
+<p>Named lifetimes are a way of giving these scopes a name. Giving something a
+name is the first step towards being able to talk about it.</p>
+<h2>'static</h2>
+<p>The lifetime named ‘static’ is a special lifetime. It signals that something
+has the lifetime of the entire program. Most Rust programmers first come across
+<code>'static</code> when dealing with strings:</p>
+<pre><code class="language-rust">let x: &amp;'static str = &quot;Hello, world.&quot;;
+</code></pre>
+<p>String literals have the type <code>&amp;'static str</code> because the reference is always
+alive: they are baked into the data segment of the final binary. Another
+example are globals:</p>
+<pre><code class="language-rust">static FOO: i32 = 5;
+let x: &amp;'static i32 = &amp;FOO;
+</code></pre>
+<p>This adds an <code>i32</code> to the data segment of the binary, and <code>x</code> is a reference
+to it.</p>
+<h2>Lifetime Elision</h2>
+<p>Rust supports powerful local type inference in function bodies, but it’s
+forbidden in item signatures to allow reasoning about the types based on
+the item signature alone. However, for ergonomic reasons a very restricted
+secondary inference algorithm called “lifetime elision” applies in function
+signatures. It infers only based on the signature components themselves and not
+based on the body of the function, only infers lifetime parameters, and does
+this with only three easily memorizable and unambiguous rules. This makes
+lifetime elision a shorthand for writing an item signature, while not hiding
+away the actual types involved as full local inference would if applied to it.</p>
+<p>When talking about lifetime elision, we use the term <em>input lifetime</em> and
+<em>output lifetime</em>. An <em>input lifetime</em> is a lifetime associated with a parameter
+of a function, and an <em>output lifetime</em> is a lifetime associated with the return
+value of a function. For example, this function has an input lifetime:</p>
+<pre><code class="language-rust,ignore">fn foo&lt;'a&gt;(bar: &amp;'a str)
+</code></pre>
+<p>This one has an output lifetime:</p>
+<pre><code class="language-rust,ignore">fn foo&lt;'a&gt;() -&gt; &amp;'a str
+</code></pre>
+<p>This one has a lifetime in both positions:</p>
+<pre><code class="language-rust,ignore">fn foo&lt;'a&gt;(bar: &amp;'a str) -&gt; &amp;'a str
+</code></pre>
+<p>Here are the three rules:</p>
+<ul>
+<li>
+<p>Each elided lifetime in a function’s arguments becomes a distinct lifetime
+parameter.</p>
+</li>
+<li>
+<p>If there is exactly one input lifetime, elided or not, that lifetime is
+assigned to all elided lifetimes in the return values of that function.</p>
+</li>
+<li>
+<p>If there are multiple input lifetimes, but one of them is <code>&amp;self</code> or <code>&amp;mut self</code>, the lifetime of <code>self</code> is assigned to all elided output lifetimes.</p>
+</li>
+</ul>
+<p>Otherwise, it is an error to elide an output lifetime.</p>
+<h3>Examples</h3>
+<p>Here are some examples of functions with elided lifetimes.  We’ve paired each
+example of an elided lifetime with its expanded form.</p>
+<pre><code class="language-rust,ignore">fn print(s: &amp;str); // elided
+fn print&lt;'a&gt;(s: &amp;'a str); // expanded
+
+fn debug(lvl: u32, s: &amp;str); // elided
+fn debug&lt;'a&gt;(lvl: u32, s: &amp;'a str); // expanded
+
+// In the preceding example, `lvl` doesn’t need a lifetime because it’s not a
+// reference (`&amp;`). Only things relating to references (such as a `struct`
+// which contains a reference) need lifetimes.
+
+fn substr(s: &amp;str, until: u32) -&gt; &amp;str; // elided
+fn substr&lt;'a&gt;(s: &amp;'a str, until: u32) -&gt; &amp;'a str; // expanded
+
+fn get_str() -&gt; &amp;str; // ILLEGAL, no inputs
+
+fn frob(s: &amp;str, t: &amp;str) -&gt; &amp;str; // ILLEGAL, two inputs
+fn frob&lt;'a, 'b&gt;(s: &amp;'a str, t: &amp;'b str) -&gt; &amp;str; // Expanded: Output lifetime is ambiguous
+
+fn get_mut(&amp;mut self) -&gt; &amp;mut T; // elided
+fn get_mut&lt;'a&gt;(&amp;'a mut self) -&gt; &amp;'a mut T; // expanded
+
+fn args&lt;T: ToCStr&gt;(&amp;mut self, args: &amp;[T]) -&gt; &amp;mut Command; // elided
+fn args&lt;'a, 'b, T: ToCStr&gt;(&amp;'a mut self, args: &amp;'b [T]) -&gt; &amp;'a mut Command; // expanded
+
+fn new(buf: &amp;mut [u8]) -&gt; BufWriter; // elided
+fn new&lt;'a&gt;(buf: &amp;'a mut [u8]) -&gt; BufWriter&lt;'a&gt;; // expanded
+</code></pre>
+<blockquote>
+<p><em>commit f4fac9b</em></p>
+</blockquote>
+
+                </div>
+
+                <!-- Mobile navigation buttons -->
+                
+                    <a href="references-and-borrowing.html" class="mobile-nav-chapters previous">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a href="mutability.html" class="mobile-nav-chapters next">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+
+            </div>
+
+            
+                <a href="references-and-borrowing.html" class="nav-chapters previous" title="You can navigate through the chapters using the arrow keys">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+            
+
+            
+                <a href="mutability.html" class="nav-chapters next" title="You can navigate through the chapters using the arrow keys">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            
+
+        </div>
+
+
+        <!-- Local fallback for Font Awesome -->
+        <script>
+            if ($(".fa").css("font-family") !== "FontAwesome") {
+                $('<link rel="stylesheet" type="text/css" href="_FontAwesome/css/font-awesome.css">').prependTo('head');
+            }
+        </script>
+
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+    </body>
+</html>
