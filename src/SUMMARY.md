@@ -5,7 +5,7 @@
 * [教學: 猜謎遊戲](guessing-game.md)
 * [語法及語意](syntax-and-semantics.md)
     * [變數綁定](variable-bindings.md)
-    * [Functions](functions.md)
+    * [函式](functions.md)
     * [Primitive Types](primitive-types.md)
     * [Comments](comments.md)
     * [if](if.md)
