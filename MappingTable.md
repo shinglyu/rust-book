@@ -12,6 +12,7 @@ array                  | 陣列                          |
 assignment             | 賦值                          |
 best-practice          | 最佳做法                      |
 bit                    | 位元                          |
+block                  | 區塊                          |
 booleans               | 布林                          |
 bounds-check           | 邊界檢查                      |
 bug                    | 程式錯誤                      |

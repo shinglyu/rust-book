@@ -1,14 +1,12 @@
-% if
+# if
 
-Rust’s take on `if` is not particularly complex, but it’s much more like the
-`if` you’ll find in a dynamically typed language than in a more traditional
-systems language. So let’s talk about it, to make sure you grasp the nuances.
+Rust 的 `if` 沒有特別複雜，但你會發現它更像動態型別語言的 `if` 而非傳統的系統程式語言。
+所以讓我們聊聊它，確定你領會了這些細微差別。
 
-`if` is a specific form of a more general concept, the ‘branch’. The name comes
-from a branch in a tree: a decision point, where depending on a choice,
-multiple paths can be taken.
+`if` 是一個更通用的概念 "分支" (branch) 的特殊形式。
+這個名字來自樹的分支：一個根據選擇而有不同路徑的決策點。
 
-In the case of `if`, there is one choice that leads down two paths:
+在 `if` 的情況下，一個選擇會導向兩個路徑：
 
 ```rust
 let x = 5;
@@ -18,11 +16,11 @@ if x == 5 {
 }
 ```
 
-If we changed the value of `x` to something else, this line would not print.
-More specifically, if the expression after the `if` evaluates to `true`, then
-the block is executed. If it’s `false`, then it is not.
+如果我們改變 `x` 為其他值，就不會印出那一行。
+確切的說，如果 `if` 後面的表達式是 `true`，那麼區塊內的程式碼就會被執行。
+如果是 `false`，那就不執行。
 
-If you want something to happen in the `false` case, use an `else`:
+如果你想在 `false` 的情況下做點什麼，就使用 `else`：
 
 ```rust
 let x = 5;
@@ -34,7 +32,7 @@ if x == 5 {
 }
 ```
 
-If there is more than one case, use an `else if`:
+如果有超過一種情形，使用 `else if`：
 
 ```rust
 let x = 5;
@@ -48,7 +46,8 @@ if x == 5 {
 }
 ```
 
-This is all pretty standard. However, you can also do this:
+這些都是標準情況。
+然而你也可以這樣做：
 
 ```rust
 let x = 5;
@@ -60,7 +59,7 @@ let y = if x == 5 {
 }; // y: i32
 ```
 
-Which we can (and probably should) write like this:
+我們可以（且或許應該）寫成這樣：
 
 ```rust
 let x = 5;
@@ -68,9 +67,9 @@ let x = 5;
 let y = if x == 5 { 10 } else { 15 }; // y: i32
 ```
 
-This works because `if` is an expression. The value of the expression is the
-value of the last expression in whichever branch was chosen. An `if` without an
-`else` always results in `()` as the value.
+這是可行的，因為 `if` 是個表達式。
+表達式的值就是任何一個被選擇的分支的最後一個表達式的值。
+一個沒有 `else` 的 `if` 總是會回傳 `()` 值。
 
 
 > *commit 024aa9a*
