@@ -9,7 +9,7 @@
     * [基本型別](primitive-types.md)
     * [註解](comments.md)
     * [if](if.md)
-    * [Loops](loops.md)
+    * [迴圈](loops.md)
     * [Ownership](ownership.md)
     * [References and Borrowing](references-and-borrowing.md)
     * [Lifetimes](lifetimes.md)

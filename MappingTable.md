@@ -26,6 +26,7 @@ data race              | 資料競爭                      |
 declaration statements | 宣告陳述式                    |
 deque                  | 雙向佇列                      | Double-ended queue
 diverging functions    | 發散函式                      | 不回傳值的函式
+Enumerate              | 枚舉                          |
 executable             | 執行檔                        |
 expression             | 表達式                        |
 expression-oriented    | 表達式導向                    |
@@ -34,8 +35,11 @@ extensions             | 擴充功能                      |
 formalization          | 正規化                        |
 function               | 函式                          |
 generics               | 泛型                          |
+iterative              | 疊代                          |
+iterator               | 疊代器                        |
 immutable              | 不可變                        |
 libraries              | 函式庫                        |
+loop                   | 迴圈、循環                    |
 macro                  | 巨集                          |
 main function          | 主函式                        |
 module                 | 模組                          |
