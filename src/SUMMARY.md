@@ -7,7 +7,7 @@
     * [變數綁定](variable-bindings.md)
     * [函式](functions.md)
     * [基本型別](primitive-types.md)
-    * [Comments](comments.md)
+    * [註解](comments.md)
     * [if](if.md)
     * [Loops](loops.md)
     * [Ownership](ownership.md)

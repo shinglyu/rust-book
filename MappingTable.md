@@ -37,6 +37,7 @@ immutable              | 不可變                        |
 libraries              | 函式庫                        |
 macro                  | 巨集                          |
 main function          | 主函式                        |
+module                 | 模組                          |
 mutable                | 可變                          |
 mutability             | 可變性                        |
 mutation               | 可變數                        |
@@ -91,6 +92,7 @@ non-strict             |                               |
 patches                |                               |
 profiles               |                               |
 repository             |                               |
+root                   |                               |
 shell                  |                               |
 slices                 |                               | 其他資料結構的參考
 tabs                   |                               |
