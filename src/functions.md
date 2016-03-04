@@ -1,23 +1,23 @@
-% Functions
+# 函式
 
-Every Rust program has at least one function, the `main` function:
+所有的 Rust 程式都至少有一個函式，`main` 函式，又稱主函式：
 
 ```rust
 fn main() {
 }
 ```
 
-This is the simplest possible function declaration. As we mentioned before,
-`fn` says ‘this is a function’, followed by the name, some parentheses because
-this function takes no arguments, and then some curly braces to indicate the
-body. Here’s a function named `foo`:
+這也許是最簡單的函式宣告了。
+像我們之前說的，`fn` 表示 "這是一個函式"，後面是名稱，有個括號，沒有參數，而且有大括號去標示函式的內容。
+以下是一個名叫 `foo` 的函式：
 
 ```rust
 fn foo() {
 }
 ```
 
-So, what about taking arguments? Here’s a function that prints a number:
+那如果有參數呢？
+以下是一個印出數字的函式：
 
 ```rust
 fn print_number(x: i32) {
@@ -25,7 +25,7 @@ fn print_number(x: i32) {
 }
 ```
 
-Here’s a complete program that uses `print_number`:
+這是一個使用 `print_number` 函式的完整程式：
 
 ```rust
 fn main() {
@@ -37,10 +37,10 @@ fn print_number(x: i32) {
 }
 ```
 
-As you can see, function arguments work very similar to `let` declarations:
-you add a type to the argument name, after a colon.
+如你所見，函式的參數作用的方式跟 `let` 宣告非常類似：
+在參數名後面加上冒號，後面再加上型別。
 
-Here’s a complete program that adds two numbers together and prints them:
+以下是一個把兩個數字相加之後印出來的完整程式：
 
 ```rust
 fn main() {
@@ -52,11 +52,10 @@ fn print_sum(x: i32, y: i32) {
 }
 ```
 
-You separate arguments with a comma, both when you call the function, as well
-as when you declare it.
+當你呼叫函式或宣告函式時，需要用逗號分隔多個參數。
 
-Unlike `let`, you _must_ declare the types of function arguments. This does
-not work:
+與 `let` 不同的是，你 _必須_ 宣告函式參數的型別。
+以下是無法作用的程式碼：
 
 ```rust,ignore
 fn print_sum(x, y) {
@@ -64,20 +63,19 @@ fn print_sum(x, y) {
 }
 ```
 
-You get this error:
+你會得到這些錯誤訊息：
 
 ```text
 expected one of `!`, `:`, or `@`, found `)`
 fn print_sum(x, y) {
 ```
 
-This is a deliberate design decision. While full-program inference is possible,
-languages which have it, like Haskell, often suggest that documenting your
-types explicitly is a best-practice. We agree that forcing functions to declare
-types while allowing for inference inside of function bodies is a wonderful
-sweet spot between full inference and no inference.
+這是個深思熟慮後的設計決定。
+即使像 Haskell 這樣可以對整個程式推斷 (full-program inference) 的語言，在最佳做法中仍經常建議要明確地標註你的型別。
+我們認為在宣告函式時強制宣告型別，且允許在函式內容中允許推斷，是個在全推斷 (full-inference) 與無推斷間的最佳平衡。
 
-What about returning a value? Here’s a function that adds one to an integer:
+那要如何回傳值呢？
+以下是一個把整數加一的函式：
 
 ```rust
 fn add_one(x: i32) -> i32 {
@@ -85,10 +83,10 @@ fn add_one(x: i32) -> i32 {
 }
 ```
 
-Rust functions return exactly one value, and you declare the type after an
-‘arrow’, which is a dash (`-`) followed by a greater-than sign (`>`). The last
-line of a function determines what it returns. You’ll note the lack of a
-semicolon here. If we added it in:
+Rust 函式就只能回傳一個值，你可以在 "箭頭" 後面宣告型別，箭頭是一個破折號（`-`）加上一個大於符號（`>`）。
+函式的最後一行決定了回傳什麼。
+你會注意到這邊並沒有分號。
+如果我們加上分號：
 
 ```rust,ignore
 fn add_one(x: i32) -> i32 {
@@ -96,7 +94,7 @@ fn add_one(x: i32) -> i32 {
 }
 ```
 
-We would get an error:
+我們將看到錯誤訊息：
 
 ```text
 error: not all control paths return a value
@@ -109,44 +107,39 @@ help: consider removing this semicolon:
           ^
 ```
 
-This reveals two interesting things about Rust: it is an expression-based
-language, and semicolons are different from semicolons in other ‘curly brace
-and semicolon’-based languages. These two things are related.
+這展現出了 Rust 兩個有趣的點：它是以表達式為基礎的語言，而且分號的使用跟其他 "大括號及分號" 的語言不同。
+這兩件事是息息相關的。
 
-## Expressions vs. Statements
+## 表達式 vs. 陳述式
 
-Rust is primarily an expression-based language. There are only two kinds of
-statements, and everything else is an expression.
+Rust 主要是個以表達式為基礎的語言。
+它只有兩種陳述式，而其他的都是表達式。
 
-So what's the difference? Expressions return a value, and statements do not.
-That’s why we end up with ‘not all control paths return a value’ here: the
-statement `x + 1;` doesn’t return a value. There are two kinds of statements in
-Rust: ‘declaration statements’ and ‘expression statements’. Everything else is
-an expression. Let’s talk about declaration statements first.
+那這有什麼分別？
+表達式回傳值，而陳述式則否。
+這也是為什麼我們在這說 "不是所有的控制路徑都回傳值"：陳述式 `x + 1;` 不傳回值。
+Rust 中有兩種陳述式："宣告陳述式" (declaration statements) 和 "表達陳述式" (expression statements)。
+其他的都是表達式。
+讓我們先討論宣告陳述式。
 
-In some languages, variable bindings can be written as expressions, not
-statements. Like Ruby:
+在一些語言中，變數綁定可以被寫成表達式，而非陳述式。
+像 Ruby：
 
 ```ruby
 x = y = 5
 ```
 
-In Rust, however, using `let` to introduce a binding is _not_ an expression. The
-following will produce a compile-time error:
+然而在 Rust 中，使用 `let` 提出綁定 _不是_ 一個表達式。
+以下程式碼會產生一個編譯期錯誤：
 
 ```ignore
 let x = (let y = 5); // expected identifier, found keyword `let`
 ```
 
-The compiler is telling us here that it was expecting to see the beginning of
-an expression, and a `let` can only begin a statement, not an expression.
+編譯器或告訴我們這裡預期會看到表達式的開頭，而 `let` 只能用於開始一個陳述式，不是表達式。
 
-Note that assigning to an already-bound variable (e.g. `y = 5`) is still an
-expression, although its value is not particularly useful. Unlike other
-languages where an assignment evaluates to the assigned value (e.g. `5` in the
-previous example), in Rust the value of an assignment is an empty tuple `()`
-because the assigned value can have [only one owner](ownership.html), and any
-other returned value would be too surprising:
+請注意，賦值到一個已經綁定的變數（例如 `y = 5`）仍然是個表達式，雖然它的值沒有什麼用。
+不像其他語言的賦值會被算為賦予的數值（在前面的例子中會是 `5`），在 Rust 中賦值的執會是一個空的多元組 (tuple) `()`，因為賦予的值[只能有一個擁有者](ownership.html)，而其他任何回傳值都會讓人意外：
 
 ```rust
 let mut y = 5;
@@ -154,16 +147,14 @@ let mut y = 5;
 let x = (y = 6);  // x has the value `()`, not `6`
 ```
 
-The second kind of statement in Rust is the *expression statement*. Its
-purpose is to turn any expression into a statement. In practical terms, Rust's
-grammar expects statements to follow other statements. This means that you use
-semicolons to separate expressions from each other. This means that Rust
-looks a lot like most other languages that require you to use semicolons
-at the end of every line, and you will see semicolons at the end of almost
-every line of Rust code you see.
+Rust 中的第二種陳述式是 *表達陳述式* (expression statement)。
+它的作用是把表達式轉為陳述式。
+實際上，Rust 的文法預期陳述式後面也是其他陳述式。
+這意味著你要使用分號去分隔表達式們。
+這代表 Rust 看起來跟要求在每行結果使用分號的大多數語言一樣，你幾乎將會在每行結尾看到分號。
 
-What is this exception that makes us say "almost"? You saw it already, in this
-code:
+是什麼例外讓我們說 "幾乎"？
+你早就看到了，就在以下程式碼中：
 
 ```rust
 fn add_one(x: i32) -> i32 {
@@ -171,13 +162,13 @@ fn add_one(x: i32) -> i32 {
 }
 ```
 
-Our function claims to return an `i32`, but with a semicolon, it would return
-`()` instead. Rust realizes this probably isn’t what we want, and suggests
-removing the semicolon in the error we saw before.
+我們的函式聲明會回傳一個 `i32`，但是有分號時，它卻會回傳 `()`。
+Rust 覺得這應該不是我們想要的，所以在上面看到的錯誤訊息中建議我們移除分號。
 
-## Early returns
+## 提早回傳 (Early returns)
 
-But what about early returns? Rust does have a keyword for that, `return`:
+那麼提早回傳又該怎樣做？
+Rust 的確有一個關鍵字 `return` 可以提早回傳：
 
 ```rust
 fn foo(x: i32) -> i32 {
@@ -188,8 +179,7 @@ fn foo(x: i32) -> i32 {
 }
 ```
 
-Using a `return` as the last line of a function works, but is considered poor
-style:
+使用 `return` 在函式的最後一行是可行的，但是這被認為是個不好的程式風格：
 
 ```rust
 fn foo(x: i32) -> i32 {
@@ -197,14 +187,12 @@ fn foo(x: i32) -> i32 {
 }
 ```
 
-The previous definition without `return` may look a bit strange if you haven’t
-worked in an expression-based language before, but it becomes intuitive over
-time.
+如果你過去沒有寫過以表達式為基礎的語言，那麼在之前沒有 `return` 的定義可能讓你覺得看起來有些奇怪。
+不過隨著時間過去，它會變得很直觀。
 
-## Diverging functions
+## 發散函式 (Diverging functions)
 
-Rust has some special syntax for ‘diverging functions’, which are functions that
-do not return:
+Rust 也有一些特別的語法叫做 "發散函式"，這種函式不回傳值：
 
 ```rust
 fn diverges() -> ! {
@@ -212,20 +200,17 @@ fn diverges() -> ! {
 }
 ```
 
-`panic!` is a macro, similar to `println!()` that we’ve already seen. Unlike
-`println!()`, `panic!()` causes the current thread of execution to crash with
-the given message. Because this function will cause a crash, it will never
-return, and so it has the type ‘`!`’, which is read ‘diverges’.
+`panic!` 是一個巨集，跟我們看過的 `println!()` 類似。
+不像 `println!()`，`panic!()` 會讓當前的執行緒帶著指定的訊息當機 (crash)。
+因為這個函式將會導致當機，所以它不會回傳值，也因此它的型別是 "`!`"，它叫做 "發散" (diverges)。
 
-If you add a main function that calls `diverges()` and run it, you’ll get
-some output that looks like this:
+如果你加入一個主函式去呼叫 `diverges()` 並執行它，你將會得到像以下的輸出：
 
 ```text
 thread ‘<main>’ panicked at ‘This function never returns!’, hello.rs:2
 ```
 
-If you want more information, you can get a backtrace by setting the
-`RUST_BACKTRACE` environment variable:
+如果你想看到更多資訊，你可以透過設定 `RUST_BACKTRACE` 環境變數去取得 backtrace：
 
 ```text
 $ RUST_BACKTRACE=1 ./diverges
@@ -246,7 +231,7 @@ stack backtrace:
   13:                0x0 - <unknown>
 ```
 
-`RUST_BACKTRACE` also works with Cargo’s `run` command:
+`RUST_BACKTRACE` 也能用在 Cargo 的 `run` 指令上：
 
 ```text
 $ RUST_BACKTRACE=1 cargo run
@@ -268,7 +253,7 @@ stack backtrace:
   13:                0x0 - <unknown>
 ```
 
-A diverging function can be used as any type:
+一個發散函式可以被用在任何型別上：
 
 ```should_panic
 # fn diverges() -> ! {
@@ -278,16 +263,16 @@ let x: i32 = diverges();
 let x: String = diverges();
 ```
 
-## Function pointers
+## 函式指標 (Function pointers)
 
-We can also create variable bindings which point to functions:
+我們也可以建立指向函式的變數綁定：
 
 ```rust
 let f: fn(i32) -> i32;
 ```
 
-`f` is a variable binding which points to a function that takes an `i32` as
-an argument and returns an `i32`. For example:
+`f` 是一個指向以 `i32` 作為參數且回傳 `i32` 的函式的變數綁定。
+例如：
 
 ```rust
 fn plus_one(i: i32) -> i32 {
@@ -301,7 +286,7 @@ let f: fn(i32) -> i32 = plus_one;
 let f = plus_one;
 ```
 
-We can then use `f` to call the function:
+接著，我們可以使用 `f` 去呼叫函式：
 
 ```rust
 # fn plus_one(i: i32) -> i32 { i + 1 }

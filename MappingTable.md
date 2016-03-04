@@ -45,6 +45,17 @@ string interpolation   | 字串差值                      |
 scope                  | 有效範圍                      |
 shadowing              | 遮蔽                          |
 best-practice          | 最佳做法                      |
+main function          | 主函式                        |
+declaration statements | 宣告陳述式                    |
+expression statements  | 表達陳述式                    |
+assignment             | 賦值                          |
+tuple                  | 多元組                        |
+Diverging functions    | 發散函式                      | 不回傳值的函式
+thread                 | 執行緒                        |
+crash                  | 當機                          |
+pointer                | 指標                          |
+
+
 
 ## 不確定
 
@@ -68,6 +79,7 @@ best-practice          | 最佳做法                      |
 * fully-strict
 * non-strict
 * alignment
+* backtrace
 
 
 > TODO：整理完畢後，應該依照英文字母排序。
