@@ -1,13 +1,13 @@
-% Primitive Types
+# 基本型別
 
-The Rust language has a number of types that are considered ‘primitive’. This
-means that they’re built-in to the language. Rust is structured in such a way
-that the standard library also provides a number of useful types built on top
-of these ones, as well, but these are the most primitive.
+Rust 語言有許多被認為是 "基本" (primitive) 的型別。
+這代表他們是內建在語言內的。
+Rust 的標準函式庫也提供了許多基於這些基本型別的有用型別，它們也是基本型別。
 
-# Booleans
+## 布林 (Booleans)
 
-Rust has a built in boolean type, named `bool`. It has two values, `true` and `false`:
+Rust 內建布林型別，叫做 `bool`。
+他有兩種值，`true` 和 `false`：
 
 ```rust
 let x = true;
@@ -15,43 +15,39 @@ let x = true;
 let y: bool = false;
 ```
 
-A common use of booleans is in [`if` conditionals][if].
+布林通常用在 [if 條件運算式][if]。
 
 [if]: if.html
 
-You can find more documentation for `bool`s [in the standard library
-documentation][bool].
+你可以在[標準函式庫文件][bool]中找到更多關於 `bool` 的文件。
 
-[bool]: ../std/primitive.bool.html
+[bool]: https://doc.rust-lang.org/std/primitive.bool.html
 
-# `char`
+## `char`
 
-The `char` type represents a single Unicode scalar value. You can create `char`s
-with a single tick: (`'`)
+`char` 型別代表一個 Unicode 值。
+你可以以單引號（`'`）建立 `char`：
 
 ```rust
 let x = 'x';
 let two_hearts = '💕';
 ```
 
-Unlike some other languages, this means that Rust’s `char` is not a single byte,
-but four.
+不像其他語言，這代表 Rust 的 `char` 並非一個位元組，而是四個。
 
-You can find more documentation for `char`s [in the standard library
-documentation][char].
+你可以在[標準函式庫文件][char]中找到更多關於 `char` 的文件。
 
-[char]: ../std/primitive.char.html
+[char]: https://doc.rust-lang.org/std/primitive.char.html
 
-# Numeric types
+## 數字型別
 
-Rust has a variety of numeric types in a few categories: signed and unsigned,
-fixed and variable, floating-point and integer.
+Rust 有許多數字型別，分為一些不同類型：帶號 (signed) 和非帶號 (unsigned)，固定長度和可變長度，浮點數和整數。
 
-These types consist of two parts: the category, and the size. For example,
-`u16` is an unsigned type with sixteen bits of size. More bits lets you have
-bigger numbers.
+這些型別包含兩部分：類型和大小。
+例如，`u16` 是一個 16 位元大小的非帶號型別。
+更多位元能讓你有更大的數字。
 
-If a number literal has nothing to cause its type to be inferred, it defaults:
+如果數字在字面上沒有其他東西可以推測他的型別，它會使用預設型別：
 
 ```rust
 let x = 42; // x has type i32
@@ -59,76 +55,75 @@ let x = 42; // x has type i32
 let y = 1.0; // y has type f64
 ```
 
-Here’s a list of the different numeric types, with links to their documentation
-in the standard library:
+這裡有一份不同數字型別的清單，以及它們在標準函式庫中的文件連結：
 
-* [i8](../std/primitive.i8.html)
-* [i16](../std/primitive.i16.html)
-* [i32](../std/primitive.i32.html)
-* [i64](../std/primitive.i64.html)
-* [u8](../std/primitive.u8.html)
-* [u16](../std/primitive.u16.html)
-* [u32](../std/primitive.u32.html)
-* [u64](../std/primitive.u64.html)
-* [isize](../std/primitive.isize.html)
-* [usize](../std/primitive.usize.html)
-* [f32](../std/primitive.f32.html)
-* [f64](../std/primitive.f64.html)
+* [i8](https://doc.rust-lang.org/std/primitive.i8.html)
+* [i16](https://doc.rust-lang.org/std/primitive.i16.html)
+* [i32](https://doc.rust-lang.org/std/primitive.i32.html)
+* [i64](https://doc.rust-lang.org/std/primitive.i64.html)
+* [u8](https://doc.rust-lang.org/std/primitive.u8.html)
+* [u16](https://doc.rust-lang.org/std/primitive.u16.html)
+* [u32](https://doc.rust-lang.org/std/primitive.u32.html)
+* [u64](https://doc.rust-lang.org/std/primitive.u64.html)
+* [isize](https://doc.rust-lang.org/std/primitive.isize.html)
+* [usize](https://doc.rust-lang.org/std/primitive.usize.html)
+* [f32](https://doc.rust-lang.org/std/primitive.f32.html)
+* [f64](https://doc.rust-lang.org/std/primitive.f64.html)
 
-Let’s go over them by category:
+讓我們依照分類走一輪吧：
 
-## Signed and Unsigned
+### 帶號 (Signed) 及非帶號 (Unsigned)
 
-Integer types come in two varieties: signed and unsigned. To understand the
-difference, let’s consider a number with four bits of size. A signed, four-bit
-number would let you store numbers from `-8` to `+7`. Signed numbers use
-“two’s complement representation”. An unsigned four bit number, since it does
-not need to store negatives, can store values from `0` to `+15`.
+整數型別有兩種變形：帶號跟非帶號。
+要了解差異之處，讓我們試想有一個 4 位元大小的數字。
+如果是帶號整數，4 位元可以讓你儲存 `-8` 到 `+7` 的數字。
+代號數字使用 "二補數表示法" (two's complement)。
+一個非帶號的 4 位元數字因為不需要儲存負號，所以可以儲存 `0` 到 `+15` 的數字。
 
-Unsigned types use a `u` for their category, and signed types use `i`. The `i`
-is for ‘integer’. So `u8` is an eight-bit unsigned number, and `i8` is an
-eight-bit signed number.
+非帶號型別使用 `u` 作為分類，而帶號型別使用 `i`。
+`i` 代表 "integer"。
+所以 `u8` 代表一個 8 位元的非代號數字，而 `i8` 代表 8 位元的帶號數字。
 
-## Fixed size types
+### 固定大小型別
 
-Fixed size types have a specific number of bits in their representation. Valid
-bit sizes are `8`, `16`, `32`, and `64`. So, `u32` is an unsigned, 32-bit integer,
-and `i64` is a signed, 64-bit integer.
+固定大小型別的表現方式有一些特定數量的位元。
+有效的位元大小有 `8`、`16`、`32`、`64`。
+所以 `u32` 是一個非帶號的 32 位元整數，而 `i64` 是一個帶號的 64 位元整數。
 
-## Variable sized types
+### 可變大小型別
 
-Rust also provides types whose size depends on the size of a pointer of the
-underlying machine. These types have ‘size’ as the category, and come in signed
-and unsigned varieties. This makes for two types: `isize` and `usize`.
+Rust 也有提供一些大小依賴於底層機器的指標大小的型別。
+這些型別的分類是 "size"，且分為帶號跟非帶號。
+他分為兩類：`isize` 和 `usize`。
 
-## Floating-point types
+### 浮點數型別
 
-Rust also has two floating point types: `f32` and `f64`. These correspond to
-IEEE-754 single and double precision numbers.
+Rust 也有兩種浮點數：`f32` 與 `f64`。
+他們對應到 IEEE-754 的單精準度和雙精準度浮點數。
 
-# Arrays
+## 陣列 (Arrays)
 
-Like many programming languages, Rust has list types to represent a sequence of
-things. The most basic is the *array*, a fixed-size list of elements of the
-same type. By default, arrays are immutable.
+跟很多程式語言一樣，Rust 有用來表現一組事物的清單型別。
+最基本的就是 *陣列* (array)，一個固定大小、有相同型別的元素清單。
+陣列預設是不可變的 (immutable)。
 
 ```rust
 let a = [1, 2, 3]; // a: [i32; 3]
 let mut m = [1, 2, 3]; // m: [i32; 3]
 ```
 
-Arrays have type `[T; N]`. We’ll talk about this `T` notation [in the generics
-section][generics]. The `N` is a compile-time constant, for the length of the
-array.
+陣列的型別是 `[T; N]`。
+我們將在[泛型的章節][generics]提到 `T` 標記。
+`N` 是一個編譯期的常數，代表陣列的長度。
 
-There’s a shorthand for initializing each element of an array to the same
-value. In this example, each element of `a` will be initialized to `0`:
+有一個可以初始化陣列中所有元素為同一個值的簡寫。
+在以下範例，所有 `a` 中的元素將被初始化為 `0`：
 
 ```rust
 let a = [0; 20]; // a: [i32; 20]
 ```
 
-You can get the number of elements in an array `a` with `a.len()`:
+你可以透過 `a.len()` 取得 `a` 陣列中元素的個數：
 
 ```rust
 let a = [1, 2, 3];
@@ -136,7 +131,9 @@ let a = [1, 2, 3];
 println!("a has {} elements", a.len());
 ```
 
-You can access a particular element of an array with *subscript notation*:
+你也可以使用 *下標* (subscript) 的標記方式存取陣列中特定元素：
+
+> 譯註：此處的 *下標* 應指 `[n]` 這個標記方式。
 
 ```rust
 let names = ["Graydon", "Brian", "Niko"]; // names: [&str; 3]
@@ -144,35 +141,30 @@ let names = ["Graydon", "Brian", "Niko"]; // names: [&str; 3]
 println!("The second name is: {}", names[1]);
 ```
 
-Subscripts start at zero, like in most programming languages, so the first name
-is `names[0]` and the second name is `names[1]`. The above example prints
-`The second name is: Brian`. If you try to use a subscript that is not in the
-array, you will get an error: array access is bounds-checked at run-time. Such
-errant access is the source of many bugs in other systems programming
-languages.
+與其他大多數程式語言一樣，下標從零開始，所以第一個元素名稱是 `names[0]`，第二個名稱是 `names[1]`。
+上述範例會印出 `The second name is: Brian`。
+如果你嘗試使用超出陣列的下標，你會得到錯誤訊息：陣列存取會在執行期做邊界檢查。
+在其他系統程式語言中，這種不當存取是許多程式錯誤 (bug) 的根源。
 
-You can find more documentation for `array`s [in the standard library
-documentation][array].
+你可以在[標準函式庫文件][array]中找到更多關於 `array` 的文件。
 
-[array]: ../std/primitive.array.html
+[array]: https://doc.rust-lang.org/std/primitive.array.html
 
-# Slices
+## Slices
 
-A ‘slice’ is a reference to (or “view” into) another data structure. They are
-useful for allowing safe, efficient access to a portion of an array without
-copying. For example, you might want to reference only one line of a file read
-into memory. By nature, a slice is not created directly, but from an existing
-variable binding. Slices have a defined length, can be mutable or immutable.
+一個 "slice" 是一個其他資料結構的參考（或 "視圖"）。
+它允許安全、有效的存取陣列的一部份而不用複製陣列。
+例如，你可能只想要參考讀到記憶體中的檔案中的某一行。
+本質上，一個 "slice" 不是直接建立的，而要從一個已經存在的變數綁定中建立。
+Slices 會定義長度，它可以是可變 (mutable) 或不可變 (immutable)。
 
-Internally, slices are represented as a pointer to the beginning of the data 
-and a length.
+從內部來看，slices 像是一個指向資料開頭的指標，和它的長度。
 
-## Slicing syntax
+### Slicing 語法
 
-You can use a combo of `&` and `[]` to create a slice from various things. The
-`&` indicates that slices are similar to [references], which we will cover in
-detail later in this section. The `[]`s, with a range, let you define the
-length of the slice:
+你可以使用 `&` 和 `[]` 的組合去從許多資料結構建立 slice。
+`&` 說明了 slices 跟[參考][references]很類似，我們會在本節的後面說到細節。
+`[]` 帶有範圍的資訊，讓你定義 slice 的長度。
 
 [references]: references-and-borrowing.html
 
@@ -182,58 +174,54 @@ let complete = &a[..]; // A slice containing all of the elements in a
 let middle = &a[1..4]; // A slice of a: only the elements 1, 2, and 3
 ```
 
-Slices have type `&[T]`. We’ll talk about that `T` when we cover
-[generics][generics].
+Slices 的型別是 `&[T]`。
+我們將會在[泛型][generics]談到 `T`。
 
 [generics]: generics.html
 
-You can find more documentation for slices [in the standard library
-documentation][slice].
+你可以在[標準函式庫文件][slice]中找到更多關於 slices 的文件。
 
-[slice]: ../std/primitive.slice.html
+[slice]: https://doc.rust-lang.org/std/primitive.slice.html
 
-# `str`
+## `str`
 
-Rust’s `str` type is the most primitive string type. As an [unsized type][dst],
-it’s not very useful by itself, but becomes useful when placed behind a
-reference, like `&str`. We'll elaborate further when we cover
-[Strings][strings] and [references].
+Rust 的 `str` 型別是最基本的字串型別。
+跟[動態大小型別][dst]，它本身不是很有用，但當它放在參考之後就很有用了，像是 `$str`。
+當我們談到[字串][strings]和[參考][references]的時候再來細說。
 
 [dst]: unsized-types.html
 [strings]: strings.html
 [references]: references-and-borrowing.html
 
-You can find more documentation for `str` [in the standard library
-documentation][str].
+你可以在[標準函式庫文件][str]中找到更多關於 `str` 的文件。
 
-[str]: ../std/primitive.str.html
+[str]: https://doc.rust-lang.org/std/primitive.str.html
 
-# Tuples
+## 多元組 (Tuples)
 
-A tuple is an ordered list of fixed size. Like this:
+一個多元組 (tuple) 是一組固定大小的有序 (ordered) 清單。
+就像：
 
 ```rust
 let x = (1, "hello");
 ```
 
-The parentheses and commas form this two-length tuple. Here’s the same code, but
-with the type annotated:
+這是長度為 2 的多元組，由括弧和逗號組成。
+以下是同樣的程式碼，但是多了型別註釋：
 
 ```rust
 let x: (i32, &str) = (1, "hello");
 ```
 
-As you can see, the type of a tuple looks like the tuple, but with each
-position having a type name rather than the value. Careful readers will also
-note that tuples are heterogeneous: we have an `i32` and a `&str` in this tuple.
-In systems programming languages, strings are a bit more complex than in other
-languages. For now, read `&str` as a *string slice*, and we’ll learn more
-soon.
+如你所見，多元組的型別與多元組很像，只是各個位置是型別名稱而不是數值。
+心細的讀者會注意到多元組是異質的 (heterogeneous)：我們在一個多元組中同時有 `i32` 與 `&str`。
+在系統程式語言中，字串會比其他語言複雜一點。
+現在，把 `&str` 當作 *字串 slice*，我們很快就會說到。
 
-You can assign one tuple into another, if they have the same contained types
-and [arity]. Tuples have the same arity when they have the same length.
+當兩個多元組有相同的型別和[元數][arity] (arity) 時，你可以把一個多元組賦值給另一個。
+相同長度的多元組有著相同的元數。
 
-[arity]: glossary.html#arity
+[arity]: glossary.html#元數%20(Arity)
 
 ```rust
 let mut x = (1, 2); // x: (i32, i32)
@@ -242,8 +230,8 @@ let y = (2, 3); // y: (i32, i32)
 x = y;
 ```
 
-You can access the fields in a tuple through a *destructuring let*. Here’s
-an example:
+你可以透過 *destructuring let* 存取多元組的欄位。
+以下是範例：
 
 ```rust
 let (x, y, z) = (1, 2, 3);
@@ -251,27 +239,25 @@ let (x, y, z) = (1, 2, 3);
 println!("x is {}", x);
 ```
 
-Remember [before][let] when I said the left-hand side of a `let` statement was more
-powerful than assigning a binding? Here we are. We can put a pattern on
-the left-hand side of the `let`, and if it matches up to the right-hand side,
-we can assign multiple bindings at once. In this case, `let` “destructures”
-or “breaks up” the tuple, and assigns the bits to three bindings.
+還記得[之前][let]當我提到 `let` 陳述式的左邊遠比賦值綁定還強大嗎？
+這就是了。
+我們可以放一個模式 (pattern) 在 `let` 的左邊，然後如果它跟右邊相符，我們就可以一次賦值多個綁定。
+在這情形下，`let` "解構" 或 "拆開" 了多元組，然後賦值到三個綁定上。
 
 [let]: variable-bindings.html
 
-This pattern is very powerful, and we’ll see it repeated more later.
+這樣的模式非常強大，我們將會在後面一直看到。
 
-You can disambiguate a single-element tuple from a value in parentheses with a
-comma:
+在括號中只有一個值時，在值後面加上逗號，可以消歧義確定它是一個單元素的多元組：
 
 ```rust
 (0,); // single-element tuple
 (0); // zero in parentheses
 ```
 
-## Tuple Indexing
+### 多元組索引 (Tuple Indexing)
 
-You can also access fields of a tuple with indexing syntax:
+你也可以用索引語法去存取多元組的欄位：
 
 
 ```rust
@@ -284,17 +270,16 @@ let z = tuple.2;
 println!("x is {}", x);
 ```
 
-Like array indexing, it starts at zero, but unlike array indexing, it uses a
-`.`, rather than `[]`s.
+就像陣列的索引，它從零開始，但是不像陣列所以，它使用 `.` 而不是 `[]`。
 
-You can find more documentation for tuples [in the standard library
-documentation][tuple].
+你可以在[標準函式庫文件][tuple]中找到更多關於多元組的文件。
 
-[tuple]: ../std/primitive.tuple.html
+[tuple]: https://doc.rust-lang.org/std/primitive.tuple.html
 
-# Functions
+## 函式
 
-Functions also have a type! They look like this:
+函式也有型別！
+它們像這樣：
 
 ```rust
 fn foo(x: i32) -> i32 { x }
@@ -302,8 +287,7 @@ fn foo(x: i32) -> i32 { x }
 let x: fn(i32) -> i32 = foo;
 ```
 
-In this case, `x` is a ‘function pointer’ to a function that takes an `i32` and
-returns an `i32`.
+在這個例子中，`x` 是 "函式指標" 指向一個有 `i32` 參數並回傳 `i32` 的函式。
 
 
 > *commit 228afd7*
