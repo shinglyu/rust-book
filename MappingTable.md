@@ -15,6 +15,7 @@ bit                    | 位元                          |
 block                  | 區塊                          |
 booleans               | 布林                          |
 bounds-check           | 邊界檢查                      |
+borrowing              | 借用                          |
 bug                    | 程式錯誤                      |
 byte                   | 位元組                        |
 concurrency            | 並行                          |
@@ -32,6 +33,8 @@ expression             | 表達式                        |
 expression-oriented    | 表達式導向                    |
 expression statements  | 表達陳述式                    |
 extensions             | 擴充功能                      |
+heap                   | 堆積                          |
+fault                  | 錯誤                          |
 formalization          | 正規化                        |
 function               | 函式                          |
 generics               | 泛型                          |
@@ -39,6 +42,7 @@ iterative              | 疊代                          |
 iterator               | 疊代器                        |
 immutable              | 不可變                        |
 libraries              | 函式庫                        |
+lifetimes              | 生命週期                      |
 loop                   | 迴圈、循環                    |
 macro                  | 巨集                          |
 main function          | 主函式                        |
@@ -47,6 +51,7 @@ mutable                | 可變                          |
 mutability             | 可變性                        |
 mutation               | 可變數                        |
 operators              | 運算子                        |
+ownership              | 所有權                        |
 package                | 套件                          |
 pattern                | 模式                          |
 plugins                | 外掛                          |
@@ -55,8 +60,10 @@ primitive type         | 基本型別                      |
 reference              | 參考                          |
 scope                  | 有效範圍                      |
 semantics              | 語意                          |
+segmentation           | 分割                          |
 shadowing              | 遮蔽                          |
 signed integer         | 帶號整數                      |
+stack                  | 堆疊                          |
 statements             | 陳述式                        |
 string                 | 字串                          |
 string interpolation   | 字串差值                      |
@@ -71,6 +78,7 @@ type inference         | 型別推斷                      |
 unsigned integer       | 非帶號整數                    |
 values                 | 值、數值                      |
 variables              | 變數                          |
+vector                 | 向量                          |
 view                   | 視圖                          |
 zero-cost abstractions | 無成本抽象化                  |
 
@@ -92,6 +100,7 @@ hash                   |                               |
 linker                 |                               |
 linking                |                               |
 master                 |                               | git branch
+mata                   |                               |
 metaprogramming        |                               |
 non-strict             |                               |
 patches                |                               |
@@ -102,6 +111,7 @@ shell                  |                               |
 slices                 |                               | 其他資料結構的參考
 tabs                   |                               |
 target triple          |                               |
+trait                  |                               |
 work stealing          |                               |
 
 

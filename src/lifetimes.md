@@ -1,44 +1,39 @@
-% Lifetimes
+# 生命週期
 
-This guide is three of three presenting Rust’s ownership system. This is one of
-Rust’s most unique and compelling features, with which Rust developers should
-become quite acquainted. Ownership is how Rust achieves its largest goal,
-memory safety. There are a few distinct concepts, each with its own chapter:
+本指南是當前 Rust 的三個所有權系統之一。
+這是 Rust 最獨特且引人注目的功能之一，作為 Rust 的開發者應該對此要有相當的了解。
+所有權是 Rust 用來達成其最大的目標，記憶體安全，的方法。
+它有一些不同的概念，各自有各自的章節：
 
-* [ownership][ownership], the key concept
-* [borrowing][borrowing], and their associated feature ‘references’
-* lifetimes, which you’re reading now
+* [所有權][ownership] (ownership)，關鍵的概念
+* [借用][borrowing] (borrowing)，及其相關功能 "參考" (references)
+* 生命週期 (lifetimes)，你正在閱讀的章節
 
-These three chapters are related, and in order. You’ll need all three to fully
-understand the ownership system.
+這三章依序相關。
+你需要了解全部三章來完整了解所有權系統。
 
 [ownership]: ownership.html
 [borrowing]: references-and-borrowing.html
 
-# Meta
+## Meta
 
-Before we get to the details, two important notes about the ownership system.
+在我們開始細述前，有兩個所有權系統的重點。
 
-Rust has a focus on safety and speed. It accomplishes these goals through many
-‘zero-cost abstractions’, which means that in Rust, abstractions cost as little
-as possible in order to make them work. The ownership system is a prime example
-of a zero-cost abstraction. All of the analysis we’ll talk about in this guide
-is _done at compile time_. You do not pay any run-time cost for any of these
-features.
+Rust 注重安全和速度。
+它透過許多 "零成本抽象化" 的方式去實現目標，也就是 Rust 將盡可能縮小抽象化成本去達成目標。
+所有權系統是零成本抽象化的一個最佳範例。
+我們在本指南中談到的所有分析，都是在 _編譯期完成的_。
+這些功能不需要花費你任何執行期的成本。
 
-However, this system does have a certain cost: learning curve. Many new users
-to Rust experience something we like to call ‘fighting with the borrow
-checker’, where the Rust compiler refuses to compile a program that the author
-thinks is valid. This often happens because the programmer’s mental model of
-how ownership should work doesn’t match the actual rules that Rust implements.
-You probably will experience similar things at first. There is good news,
-however: more experienced Rust developers report that once they work with the
-rules of the ownership system for a period of time, they fight the borrow
-checker less and less.
+然而，這套系統仍有某些成本：學習曲線。
+許多 Rust 的新使用者會經歷我們所說的 "與借用檢查器 (borrow checker) 戰鬥" 的經驗，也就是 Rust 編譯器無法編譯一個作者認為合理的程式。
+在程式設計師內心的所有權運作模型與實際上 Rust 實作不相符的時候，這會常常發生。
+一開始你可能也會經歷類似的事情。
+然而有個好消息：許多有經驗的 Rust 開發者回報，當他們適應所有權系統的規則一陣子之後，他們跟借用檢查器的戰鬥就越來越少了。
 
-With that in mind, let’s learn about lifetimes.
+記住這些之後，讓我們開始學習生命週期。
 
-# Lifetimes
+## Lifetimes
 
 Lending out a reference to a resource that someone else owns can be
 complicated. For example, imagine this set of operations:
@@ -114,7 +109,7 @@ the lifetime `'a` has snuck in between the `&` and the `mut i32`. We read `&mut
 i32` as ‘a mutable reference to an `i32`’ and `&'a mut i32` as ‘a mutable
 reference to an `i32` with the lifetime `'a`’.
 
-# In `struct`s
+## In `struct`s
 
 You’ll also need explicit lifetimes when working with [`struct`][structs]s that
 contain references:
@@ -153,7 +148,7 @@ x: &'a i32,
 uses it. So why do we need a lifetime here? We need to ensure that any reference
 to a `Foo` cannot outlive the reference to an `i32` it contains.
 
-## `impl` blocks
+### `impl` blocks
 
 Let’s implement a method on `Foo`:
 
@@ -178,7 +173,7 @@ As you can see, we need to declare a lifetime for `Foo` in the `impl` line. We r
 `'a` twice, like on functions: `impl<'a>` defines a lifetime `'a`, and `Foo<'a>`
 uses it.
 
-## Multiple lifetimes
+### Multiple lifetimes
 
 If you have multiple references, you can use the same lifetime multiple times:
 
@@ -201,7 +196,7 @@ fn x_or_y<'a, 'b>(x: &'a str, y: &'b str) -> &'a str {
 In this example, `x` and `y` have different valid scopes, but the return value
 has the same lifetime as `x`.
 
-## Thinking in scopes
+### Thinking in scopes
 
 A way to think about lifetimes is to visualize the scope that a reference is
 valid for. For example:
@@ -258,7 +253,7 @@ about to go out of scope.
 Named lifetimes are a way of giving these scopes a name. Giving something a
 name is the first step towards being able to talk about it.
 
-## 'static
+### 'static
 
 The lifetime named ‘static’ is a special lifetime. It signals that something
 has the lifetime of the entire program. Most Rust programmers first come across
@@ -280,7 +275,7 @@ let x: &'static i32 = &FOO;
 This adds an `i32` to the data segment of the binary, and `x` is a reference
 to it.
 
-## Lifetime Elision
+### Lifetime Elision
 
 Rust supports powerful local type inference in function bodies, but it’s
 forbidden in item signatures to allow reasoning about the types based on
@@ -326,7 +321,7 @@ Here are the three rules:
 
 Otherwise, it is an error to elide an output lifetime.
 
-### Examples
+#### Examples
 
 Here are some examples of functions with elided lifetimes.  We’ve paired each
 example of an elided lifetime with its expanded form.

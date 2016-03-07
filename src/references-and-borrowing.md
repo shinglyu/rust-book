@@ -1,45 +1,39 @@
-% References and Borrowing
+# 參考與借用
 
-This guide is two of three presenting Rust’s ownership system. This is one of
-Rust’s most unique and compelling features, with which Rust developers should
-become quite acquainted. Ownership is how Rust achieves its largest goal,
-memory safety. There are a few distinct concepts, each with its own
-chapter:
+本指南是當前 Rust 的三個所有權系統之一。
+這是 Rust 最獨特且引人注目的功能之一，作為 Rust 的開發者應該對此要有相當的了解。
+所有權是 Rust 用來達成其最大的目標，記憶體安全，的方法。
+它有一些不同的概念，各自有各自的章節：
 
-* [ownership][ownership], the key concept
-* borrowing, which you’re reading now
-* [lifetimes][lifetimes], an advanced concept of borrowing
+* [所有權][ownership] (ownership)，關鍵的概念
+* 借用 (borrowing)，你正在閱讀的章節
+* [生命週期][lifetimes] (lifetime)，借用的進階概念
 
-These three chapters are related, and in order. You’ll need all three to fully
-understand the ownership system.
+這三章依序相關。
+你需要了解全部三章來完整了解所有權系統。
 
 [ownership]: ownership.html
 [lifetimes]: lifetimes.html
 
-# Meta
+## Meta
 
-Before we get to the details, two important notes about the ownership system.
+在我們開始細述前，有兩個所有權系統的重點。
 
-Rust has a focus on safety and speed. It accomplishes these goals through many
-‘zero-cost abstractions’, which means that in Rust, abstractions cost as little
-as possible in order to make them work. The ownership system is a prime example
-of a zero cost abstraction. All of the analysis we’ll talk about in this guide
-is _done at compile time_. You do not pay any run-time cost for any of these
-features.
+Rust 注重安全和速度。
+它透過許多 "零成本抽象化" 的方式去實現目標，也就是 Rust 將盡可能縮小抽象化成本去達成目標。
+所有權系統是零成本抽象化的一個最佳範例。
+我們在本指南中談到的所有分析，都是在 _編譯期完成的_。
+這些功能不需要花費你任何執行期的成本。
 
-However, this system does have a certain cost: learning curve. Many new users
-to Rust experience something we like to call ‘fighting with the borrow
-checker’, where the Rust compiler refuses to compile a program that the author
-thinks is valid. This often happens because the programmer’s mental model of
-how ownership should work doesn’t match the actual rules that Rust implements.
-You probably will experience similar things at first. There is good news,
-however: more experienced Rust developers report that once they work with the
-rules of the ownership system for a period of time, they fight the borrow
-checker less and less.
+然而，這套系統仍有某些成本：學習曲線。
+許多 Rust 的新使用者會經歷我們所說的 "與借用檢查器 (borrow checker) 戰鬥" 的經驗，也就是 Rust 編譯器無法編譯一個作者認為合理的程式。
+在程式設計師內心的所有權運作模型與實際上 Rust 實作不相符的時候，這會常常發生。
+一開始你可能也會經歷類似的事情。
+然而有個好消息：許多有經驗的 Rust 開發者回報，當他們適應所有權系統的規則一陣子之後，他們跟借用檢查器的戰鬥就越來越少了。
 
-With that in mind, let’s learn about borrowing.
+記住這些之後，讓我們開始學習借用。
 
-# Borrowing
+## Borrowing
 
 At the end of the [ownership][ownership] section, we had a nasty function that looked
 like this:
@@ -107,7 +101,7 @@ v.push(5);
 
 Pushing a value mutates the vector, and so we aren’t allowed to do it.
 
-# &mut references
+## &mut references
 
 There’s a second kind of reference: `&mut T`. A ‘mutable reference’ allows you
 to mutate the resource you’re borrowing. For example:
@@ -151,7 +145,7 @@ fn main() {
 
 As it turns out, there are rules.
 
-# The Rules
+## The Rules
 
 Here’s the rules about borrowing in Rust:
 
@@ -177,7 +171,7 @@ get errors if we break the rules.
 
 With this in mind, let’s consider our example again.
 
-## Thinking in scopes
+### Thinking in scopes
 
 Here’s the code:
 
@@ -244,12 +238,12 @@ println!("{}", x);  // <- try to borrow x here
 There’s no problem. Our mutable borrow goes out of scope before we create an
 immutable one. But scope is the key to seeing how long a borrow lasts for.
 
-## Issues borrowing prevents
+### Issues borrowing prevents
 
 Why have these restrictive rules? Well, as we noted, these rules prevent data
 races. What kinds of issues do data races cause? Here’s a few.
 
-### Iterator invalidation
+#### Iterator invalidation
 
 One example is ‘iterator invalidation’, which happens when you try to mutate a
 collection that you’re iterating over. Rust’s borrow checker prevents this from
@@ -296,7 +290,7 @@ for i in &v {
 
 We can’t modify `v` because it’s borrowed by the loop.
 
-### use after free
+#### use after free
 
 References must not live longer than the resource they refer to. Rust will
 check the scopes of your references to ensure that this is true.
