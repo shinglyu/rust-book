@@ -1,5 +1,7 @@
 # Rust 程式語言 正體中文版
 
+**持續翻譯中...**
+
 您可於 [http://askeing.github.io/rust-book/](http://askeing.github.io/rust-book/) 瀏覽本書。
 
 ## 原始檔
