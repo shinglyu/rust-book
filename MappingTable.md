@@ -18,6 +18,7 @@ bounds-check           | 邊界檢查                      |
 borrowing              | 借用                          |
 bug                    | 程式錯誤                      |
 byte                   | 位元組                        |
+collection             | 集合                          |
 concurrency            | 並行                          |
 conditional            | 條件運算                      |
 configuration          | 配置                          |

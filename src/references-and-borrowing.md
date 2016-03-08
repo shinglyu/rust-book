@@ -33,10 +33,9 @@ Rust 注重安全和速度。
 
 記住這些之後，讓我們開始學習借用。
 
-## Borrowing
+## 借用 (Borrowing)
 
-At the end of the [ownership][ownership] section, we had a nasty function that looked
-like this:
+在[所有權][ownership]一節的最後，我們提到一個看起來頗糟的函式：
 
 ```rust
 fn foo(v1: Vec<i32>, v2: Vec<i32>) -> (Vec<i32>, Vec<i32>, i32) {
@@ -52,8 +51,8 @@ let v2 = vec![1, 2, 3];
 let (v1, v2, answer) = foo(v1, v2);
 ```
 
-This is not idiomatic Rust, however, as it doesn’t take advantage of borrowing. Here’s
-the first step:
+這不符合 Rust 的語言習慣，因為它沒有利用到借用的優點。
+以下是第一步：
 
 ```rust
 fn foo(v1: &Vec<i32>, v2: &Vec<i32>) -> i32 {
@@ -71,15 +70,14 @@ let answer = foo(&v1, &v2);
 // we can use v1 and v2 here!
 ```
 
-Instead of taking `Vec<i32>`s as our arguments, we take a reference:
-`&Vec<i32>`. And instead of passing `v1` and `v2` directly, we pass `&v1` and
-`&v2`. We call the `&T` type a ‘reference’, and rather than owning the resource,
-it borrows ownership. A binding that borrows something does not deallocate the
-resource when it goes out of scope. This means that after the call to `foo()`,
-we can use our original bindings again.
+與其把 `Vec<i32>` 作為我們的參數，不如使用參考 (reference)：`&Vec<i32>`。
+而且不要直接傳遞 `v1` 與 `v2`，我們傳遞 `&v1` 與 `&v2`。
+我們把 `&T` 型別稱為 "參考" (reference)，它借用了所有權，而非掌握所有權。
+一個借用東西的綁定不會在離開有效範圍時釋放資源。
+這代表在呼叫 `foo()` 完之後，我們仍可以再度使用我們原始的綁定。
 
-References are immutable, like bindings. This means that inside of `foo()`,
-the vectors can’t be changed at all:
+跟綁定一樣，參考是不可變的 (immutable)。
+這意味著在 `foo()` 內，向量完全不能更改：
 
 ```rust,ignore
 fn foo(v: &Vec<i32>) {
@@ -91,7 +89,7 @@ let v = vec![];
 foo(&v);
 ```
 
-errors with:
+出現以下錯誤：
 
 ```text
 error: cannot borrow immutable borrowed content `*v` as mutable
@@ -99,12 +97,13 @@ v.push(5);
 ^
 ```
 
-Pushing a value mutates the vector, and so we aren’t allowed to do it.
+因為放入一個值會改變向量，所以我們不允許這樣做。
 
-## &mut references
+## &mut 參考
 
-There’s a second kind of reference: `&mut T`. A ‘mutable reference’ allows you
-to mutate the resource you’re borrowing. For example:
+還有第二類的參考：`&mut T`。
+一個 "可變的參考" 允許你改變你所借用的資源。
+例如：
 
 ```rust
 let mut x = 5;
@@ -115,18 +114,19 @@ let mut x = 5;
 println!("{}", x);
 ```
 
-This will print `6`. We make `y` a mutable reference to `x`, then add one to
-the thing `y` points at. You’ll notice that `x` had to be marked `mut` as well.
-If it wasn’t, we couldn’t take a mutable borrow to an immutable value.
+這將會印出 `6`。
+我們將 `y` 作為一個指到 `x` 的可變參考，然後對 `y` 指向的東西加一。
+你將注意到 `x` 也必須被標註為 `mut`。
+如果不是的話，我們將無法建立一個可變得借用到一個不可變的值。
 
-You'll also notice we added an asterisk (`*`) in front of `y`, making it `*y`,
-this is because `y` is a `&mut` reference. You'll also need to use them for
-accessing the contents of a reference as well.
+> 譯註：如果 `x` 不是 `mut`，會得到 `error: cannot borrow immutable local variable `x` as mutable` 錯誤訊息。
 
-Otherwise, `&mut` references are like references. There _is_ a large
-difference between the two, and how they interact, though. You can tell
-something is fishy in the above example, because we need that extra scope, with
-the `{` and `}`. If we remove them, we get an error:
+你同時也會發現我們在 `y` 前面加上星號（`*`）成為 `*y`，這是因為 `y` 是一個 `&mut` 參考，
+你需要使用它們去存取參考的內容。
+
+此外，`&mut` 參考如同一般的參考。它們兩者和它們的互動方式 _有著_ 巨大的區別。
+你可以說以上的範例有點不可靠，因為我們需要額外的 `{` 和 `}` 定義有效區域。
+如果移除它們，我們會得到錯誤訊息：
 
 ```text
 error: cannot borrow `x` as immutable because it is also borrowed as mutable
@@ -143,37 +143,31 @@ fn main() {
 ^
 ```
 
-As it turns out, there are rules.
+事實證明如此，所以以下是一些規則。
 
-## The Rules
+## 規則
 
-Here’s the rules about borrowing in Rust:
+以下是 Rust 中關於借用 (borrowing) 的規則：
 
-First, any borrow must last for a scope no greater than that of the owner.
-Second, you may have one or the other of these two kinds of borrows, but not
-both at the same time:
+首先，任何借用的有效範圍都必須比擁有者的有效範圍還要小。
+其次，你可以使用以下兩種借用，但是不能同時使用兩者：
 
-* one or more references (`&T`) to a resource,
-* exactly one mutable reference (`&mut T`).
+* 一到多個對資源的參考（`&T`）
+* 唯一一個可變參考（`&mut T`）
 
+你可能有注意到有點類似、但不完全相同於資料競爭的定義：
 
-You may notice that this is very similar, though not exactly the same as,
-to the definition of a data race:
+> 當兩個或多個指標同時存取相同的記憶體，其中至少有一個正在寫入，且操作沒有同步時，會出現 "資料競爭" (date race)。
 
-> There is a ‘data race’ when two or more pointers access the same memory
-> location at the same time, where at least one of them is writing, and the
-> operations are not synchronized.
+使用參考時，你可以想要多少參考就用多少參考，因為它們沒有人在寫入。
+然而，一次只能擁有一個 `&mut`，這才不會產生資料競爭。
+這就是 Rust 如何在編譯期預防資料競爭：當我們違反規則時，會得到錯誤訊息。
 
-With references, you may have as many as you’d like, since none of them are
-writing. However, as we can only have one `&mut` at a time, it is impossible to
-have a data race. This is how Rust prevents data races at compile time: we’ll
-get errors if we break the rules.
+記住這些之後，讓我們再次想想我們的範例。
 
-With this in mind, let’s consider our example again.
+### 對有效範圍的深思 (Thinking in scopes)
 
-### Thinking in scopes
-
-Here’s the code:
+以下是程式碼：
 
 ```rust,ignore
 let mut x = 5;
@@ -184,7 +178,7 @@ let y = &mut x;
 println!("{}", x);
 ```
 
-This code gives us this error:
+這段程式碼會有這些錯誤訊息：
 
 ```text
 error: cannot borrow `x` as immutable because it is also borrowed as mutable
@@ -192,9 +186,11 @@ error: cannot borrow `x` as immutable because it is also borrowed as mutable
                    ^
 ```
 
-This is because we’ve violated the rules: we have a `&mut T` pointing to `x`,
-and so we aren’t allowed to create any `&T`s. One or the other. The note
-hints at how to think about this problem:
+> 譯註：此處 `println!()` 試圖借用 `x`。
+
+這是因為我們違反了規則：我們有了一個指向 `x` 的 `&mut T`，所以我們不允許建立任何其他 `&T`。
+要在兩者間做出選擇。
+錯誤中的註解提示我們該如何思考這個問題：
 
 ```text
 note: previous borrow ends here
@@ -204,10 +200,10 @@ fn main() {
 ^
 ```
 
-In other words, the mutable borrow is held through the rest of our example. What
-we want is for the mutable borrow to end _before_ we try to call `println!` and
-make an immutable borrow. In Rust, borrowing is tied to the scope that the
-borrow is valid for. And our scopes look like this:
+換句話說，可變借用 (mutable borrow) 在我們的範例中一直存在。
+所以我們希望可變借用能在我們呼叫 `println!` 並建立不可變借用 _之前_ 能結束掉。
+在 Rust 中，借用綁定在借用有效的範圍中。
+我們的有效範圍看起來會像這樣：
 
 ```rust,ignore
 let mut x = 5;
@@ -220,9 +216,9 @@ println!("{}", x); // -+ - try to borrow x here
                    // -+ &mut borrow of x ends here
 ```
 
-The scopes conflict: we can’t make an `&x` while `y` is in scope.
+這些有效範圍有衝突：我們不能在 `y` 仍在有效範圍時建立 `&x`。
 
-So when we add the curly braces:
+而當我們增加大括號之後：
 
 ```rust
 let mut x = 5;
@@ -235,19 +231,21 @@ let mut x = 5;
 println!("{}", x);  // <- try to borrow x here
 ```
 
-There’s no problem. Our mutable borrow goes out of scope before we create an
-immutable one. But scope is the key to seeing how long a borrow lasts for.
+這樣就沒有問題了。
+我們的可變借用會在我們建立不可變借用前離開有效範圍。
+有效範圍是個看清借用持續多久的關鍵。
 
-### Issues borrowing prevents
+### 借用所預防的問題 (Issues borrowing prevents)
 
-Why have these restrictive rules? Well, as we noted, these rules prevent data
-races. What kinds of issues do data races cause? Here’s a few.
+為何我們需要這些限制規則？
+好吧，如同我們所說的，這些規則避免資料競爭。
+資料競爭會引發哪些問題？
+以下是一些例子。
 
-#### Iterator invalidation
+#### 疊代器失效
 
-One example is ‘iterator invalidation’, which happens when you try to mutate a
-collection that you’re iterating over. Rust’s borrow checker prevents this from
-happening:
+一個例子是 "疊代器失效" (Iterator invalidation)，當你試圖改變一個正在疊代的集合 (collection) 時會發生。
+Rust 的借用檢查器會預防這件事發生：
 
 ```rust
 let mut v = vec![1, 2, 3];
@@ -257,9 +255,9 @@ for i in &v {
 }
 ```
 
-This prints out one through three. As we iterate through the vector, we’re
-only given references to the elements. And `v` is itself borrowed as immutable,
-which means we can’t change it while we’re iterating:
+這會印出一到三。
+當我們疊代這個向量時，我們只會用到元素的參考。
+而且 `v` 是一個不可變的借用，所以我們在疊代時不能更改它：
 
 ```rust,ignore
 let mut v = vec![1, 2, 3];
@@ -270,7 +268,7 @@ for i in &v {
 }
 ```
 
-Here’s the error:
+以下是錯誤訊息：
 
 ```text
 error: cannot borrow `v` as mutable because it is also borrowed as immutable
@@ -288,15 +286,15 @@ for i in &v {
 ^
 ```
 
-We can’t modify `v` because it’s borrowed by the loop.
+我們不能修改 `v`，因為它已經借用給迴圈了。
 
-#### use after free
+#### 在釋放之後使用 (use after free)
 
-References must not live longer than the resource they refer to. Rust will
-check the scopes of your references to ensure that this is true.
+參考不能存活得比所參考的資源還久。
+Rust 會檢查你的參考的有效範圍來確保符合這個條件。
 
-If Rust didn’t check this property, we could accidentally use a reference
-which was invalid. For example:
+如果 Rust 沒有檢查這個屬性，我們可能會意外地用到一個無效的參考。
+例如：
 
 ```rust,ignore
 let y: &i32;
@@ -308,7 +306,7 @@ let y: &i32;
 println!("{}", y);
 ```
 
-We get this error:
+會得到以下錯誤：
 
 ```text
 error: `x` does not live long enough
@@ -329,14 +327,14 @@ statement 0 at 4:18
 }
 ```
 
-In other words, `y` is only valid for the scope where `x` exists. As soon as
-`x` goes away, it becomes invalid to refer to it. As such, the error says that
-the borrow ‘doesn’t live long enough’ because it’s not valid for the right
-amount of time.
+換句話說，`y` 只在 `x` 存在的有效範圍內有效。
+當 `x` 消失，它就成為無效的參考。
+這個錯誤訊息說，這個借用 "存在得不夠久" 就是因為它在應該存在的時候已經失效了。
 
-The same problem occurs when the reference is declared _before_ the variable it
-refers to. This is because resources within the same scope are freed in the
-opposite order they were declared:
+當一個參考在它所參考的變數 _之前_ 宣告，也會發生一樣的問題。
+這是因為資源在同樣的有效範圍內，它們被釋放的順序是跟它們宣告順序相反：
+
+> 譯註：也就是 `宣告 y; 宣告 x;` 的話，離開有效範圍時會 `釋放 x; 釋放 y`。所以 `y` 比 `x` 存活的久。
 
 ```rust,ignore
 let y: &i32;
@@ -346,7 +344,7 @@ y = &x;
 println!("{}", y);
 ```
 
-We get this error:
+得到以下錯誤訊息：
 
 ```text
 error: `x` does not live long enough
@@ -370,8 +368,7 @@ statement 1 at 3:14
 }
 ```
 
-In the above example, `y` is declared before `x`, meaning that `y` lives longer
-than `x`, which is not allowed.
+在以上範例，`y` 在 `x` 之前宣告，代表 `y` 存活的比 `x` 還長，這不被允許。
 
 
 > *commit 6ba9520*
