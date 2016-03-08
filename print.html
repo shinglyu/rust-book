@@ -2143,7 +2143,7 @@ let mut v2 = v;
 <p>第一行就如同上述的 <code>x</code> 一樣，它替向量物件 <code>v</code> 配置記憶體到堆疊上。
 但它還配置一些<a href="the-stack-and-the-heap.html">堆積</a>上的記憶體放實際的資料（<code>[1, 2, 3]</code>）。
 Rust 複製堆積配置的記憶體位址給內部指標，這個內部指標是向量物件存在堆疊上的部份（讓我們稱它資料指標 data pointer）。</p>
-<p>說明向量物件和其資料存在分開的記憶體區塊，而非在單一連續記憶體配置中（因為一些理由我們不會細說）是很有價值的（即使冒著說明的風險）。
+<p>值得說明的是，向量物件和它的資料分別放在不同的記憶體區塊，而不在單一連續的記憶體配置中（因為一些理由我們不會細說）。
 向量的這兩部分（一部份在堆疊、一部份在堆積）必須在任何時候都與對方一致，像長度、容量等。</p>
 <p>當我們移動 <code>v</code> 到 <code>v2</code> 時，Rust 實際上把向量物件 <code>v</code> 照著位元複製一份到堆疊配置中的 <code>v2</code>。
 這份複本並沒有建立堆積配置中實際資料的複本。
@@ -2268,9 +2268,8 @@ let (v1, v2, answer) = foo(v1, v2);
 一開始你可能也會經歷類似的事情。
 然而有個好消息：許多有經驗的 Rust 開發者回報，當他們適應所有權系統的規則一陣子之後，他們跟借用檢查器的戰鬥就越來越少了。</p>
 <p>記住這些之後，讓我們開始學習借用。</p>
-<h2>Borrowing</h2>
-<p>At the end of the <a href="ownership.html">ownership</a> section, we had a nasty function that looked
-like this:</p>
+<h2>借用 (Borrowing)</h2>
+<p>在<a href="ownership.html">所有權</a>一節的最後，我們提到一個看起來頗糟的函式：</p>
 <pre><code class="language-rust">fn foo(v1: Vec&lt;i32&gt;, v2: Vec&lt;i32&gt;) -&gt; (Vec&lt;i32&gt;, Vec&lt;i32&gt;, i32) {
     // do stuff with v1 and v2
 
@@ -2283,8 +2282,8 @@ let v2 = vec![1, 2, 3];
 
 let (v1, v2, answer) = foo(v1, v2);
 </code></pre>
-<p>This is not idiomatic Rust, however, as it doesn’t take advantage of borrowing. Here’s
-the first step:</p>
+<p>這不符合 Rust 的語言習慣，因為它沒有利用到借用的優點。
+以下是第一步：</p>
 <pre><code class="language-rust">fn foo(v1: &amp;Vec&lt;i32&gt;, v2: &amp;Vec&lt;i32&gt;) -&gt; i32 {
     // do stuff with v1 and v2
 
@@ -2299,14 +2298,13 @@ let answer = foo(&amp;v1, &amp;v2);
 
 // we can use v1 and v2 here!
 </code></pre>
-<p>Instead of taking <code>Vec&lt;i32&gt;</code>s as our arguments, we take a reference:
-<code>&amp;Vec&lt;i32&gt;</code>. And instead of passing <code>v1</code> and <code>v2</code> directly, we pass <code>&amp;v1</code> and
-<code>&amp;v2</code>. We call the <code>&amp;T</code> type a ‘reference’, and rather than owning the resource,
-it borrows ownership. A binding that borrows something does not deallocate the
-resource when it goes out of scope. This means that after the call to <code>foo()</code>,
-we can use our original bindings again.</p>
-<p>References are immutable, like bindings. This means that inside of <code>foo()</code>,
-the vectors can’t be changed at all:</p>
+<p>與其把 <code>Vec&lt;i32&gt;</code> 作為我們的參數，不如使用參考 (reference)：<code>&amp;Vec&lt;i32&gt;</code>。
+而且不要直接傳遞 <code>v1</code> 與 <code>v2</code>，我們傳遞 <code>&amp;v1</code> 與 <code>&amp;v2</code>。
+我們把 <code>&amp;T</code> 型別稱為 &quot;參考&quot; (reference)，它借用了所有權，而非掌握所有權。
+一個借用東西的綁定不會在離開有效範圍時釋放資源。
+這代表在呼叫 <code>foo()</code> 完之後，我們仍可以再度使用我們原始的綁定。</p>
+<p>跟綁定一樣，參考是不可變的 (immutable)。
+這意味著在 <code>foo()</code> 內，向量完全不能更改：</p>
 <pre><code class="language-rust,ignore">fn foo(v: &amp;Vec&lt;i32&gt;) {
      v.push(5);
 }
@@ -2315,15 +2313,16 @@ let v = vec![];
 
 foo(&amp;v);
 </code></pre>
-<p>errors with:</p>
+<p>出現以下錯誤：</p>
 <pre><code class="language-text">error: cannot borrow immutable borrowed content `*v` as mutable
 v.push(5);
 ^
 </code></pre>
-<p>Pushing a value mutates the vector, and so we aren’t allowed to do it.</p>
-<h2>&amp;mut references</h2>
-<p>There’s a second kind of reference: <code>&amp;mut T</code>. A ‘mutable reference’ allows you
-to mutate the resource you’re borrowing. For example:</p>
+<p>因為放入一個值會改變向量，所以我們不允許這樣做。</p>
+<h2>&amp;mut 參考</h2>
+<p>還有第二類的參考：<code>&amp;mut T</code>。
+一個 &quot;可變的參考&quot; 允許你改變你所借用的資源。
+例如：</p>
 <pre><code class="language-rust">let mut x = 5;
 {
     let y = &amp;mut x;
@@ -2331,16 +2330,18 @@ to mutate the resource you’re borrowing. For example:</p>
 }
 println!(&quot;{}&quot;, x);
 </code></pre>
-<p>This will print <code>6</code>. We make <code>y</code> a mutable reference to <code>x</code>, then add one to
-the thing <code>y</code> points at. You’ll notice that <code>x</code> had to be marked <code>mut</code> as well.
-If it wasn’t, we couldn’t take a mutable borrow to an immutable value.</p>
-<p>You'll also notice we added an asterisk (<code>*</code>) in front of <code>y</code>, making it <code>*y</code>,
-this is because <code>y</code> is a <code>&amp;mut</code> reference. You'll also need to use them for
-accessing the contents of a reference as well.</p>
-<p>Otherwise, <code>&amp;mut</code> references are like references. There <em>is</em> a large
-difference between the two, and how they interact, though. You can tell
-something is fishy in the above example, because we need that extra scope, with
-the <code>{</code> and <code>}</code>. If we remove them, we get an error:</p>
+<p>這將會印出 <code>6</code>。
+我們將 <code>y</code> 作為一個指到 <code>x</code> 的可變參考，然後對 <code>y</code> 指向的東西加一。
+你將注意到 <code>x</code> 也必須被標註為 <code>mut</code>。
+如果不是的話，我們將無法建立一個可變得借用到一個不可變的值。</p>
+<blockquote>
+<p>譯註：如果 <code>x</code> 不是 <code>mut</code>，會得到 <code>error: cannot borrow immutable local variable</code>x<code>as mutable</code> 錯誤訊息。</p>
+</blockquote>
+<p>你同時也會發現我們在 <code>y</code> 前面加上星號（<code>*</code>）成為 <code>*y</code>，這是因為 <code>y</code> 是一個 <code>&amp;mut</code> 參考，
+你需要使用它們去存取參考的內容。</p>
+<p>此外，<code>&amp;mut</code> 參考如同一般的參考。它們兩者和它們的互動方式 <em>有著</em> 巨大的區別。
+你可以說以上的範例有點不可靠，因為我們需要額外的 <code>{</code> 和 <code>}</code> 定義有效區域。
+如果移除它們，我們會得到錯誤訊息：</p>
 <pre><code class="language-text">error: cannot borrow `x` as immutable because it is also borrowed as mutable
     println!(&quot;{}&quot;, x);
                    ^
@@ -2354,30 +2355,25 @@ fn main() {
 }
 ^
 </code></pre>
-<p>As it turns out, there are rules.</p>
-<h2>The Rules</h2>
-<p>Here’s the rules about borrowing in Rust:</p>
-<p>First, any borrow must last for a scope no greater than that of the owner.
-Second, you may have one or the other of these two kinds of borrows, but not
-both at the same time:</p>
+<p>事實證明如此，所以以下是一些規則。</p>
+<h2>規則</h2>
+<p>以下是 Rust 中關於借用 (borrowing) 的規則：</p>
+<p>首先，任何借用的有效範圍都必須比擁有者的有效範圍還要小。
+其次，你可以使用以下兩種借用，但是不能同時使用兩者：</p>
 <ul>
-<li>one or more references (<code>&amp;T</code>) to a resource,</li>
-<li>exactly one mutable reference (<code>&amp;mut T</code>).</li>
+<li>一到多個對資源的參考（<code>&amp;T</code>）</li>
+<li>唯一一個可變參考（<code>&amp;mut T</code>）</li>
 </ul>
-<p>You may notice that this is very similar, though not exactly the same as,
-to the definition of a data race:</p>
+<p>你可能有注意到有點類似、但不完全相同於資料競爭的定義：</p>
 <blockquote>
-<p>There is a ‘data race’ when two or more pointers access the same memory
-location at the same time, where at least one of them is writing, and the
-operations are not synchronized.</p>
+<p>當兩個或多個指標同時存取相同的記憶體，其中至少有一個正在寫入，且操作沒有同步時，會出現 &quot;資料競爭&quot; (date race)。</p>
 </blockquote>
-<p>With references, you may have as many as you’d like, since none of them are
-writing. However, as we can only have one <code>&amp;mut</code> at a time, it is impossible to
-have a data race. This is how Rust prevents data races at compile time: we’ll
-get errors if we break the rules.</p>
-<p>With this in mind, let’s consider our example again.</p>
-<h3>Thinking in scopes</h3>
-<p>Here’s the code:</p>
+<p>使用參考時，你可以想要多少參考就用多少參考，因為它們沒有人在寫入。
+然而，一次只能擁有一個 <code>&amp;mut</code>，這才不會產生資料競爭。
+這就是 Rust 如何在編譯期預防資料競爭：當我們違反規則時，會得到錯誤訊息。</p>
+<p>記住這些之後，讓我們再次想想我們的範例。</p>
+<h3>對有效範圍的深思 (Thinking in scopes)</h3>
+<p>以下是程式碼：</p>
 <pre><code class="language-rust,ignore">let mut x = 5;
 let y = &amp;mut x;
 
@@ -2385,24 +2381,27 @@ let y = &amp;mut x;
 
 println!(&quot;{}&quot;, x);
 </code></pre>
-<p>This code gives us this error:</p>
+<p>這段程式碼會有這些錯誤訊息：</p>
 <pre><code class="language-text">error: cannot borrow `x` as immutable because it is also borrowed as mutable
     println!(&quot;{}&quot;, x);
                    ^
 </code></pre>
-<p>This is because we’ve violated the rules: we have a <code>&amp;mut T</code> pointing to <code>x</code>,
-and so we aren’t allowed to create any <code>&amp;T</code>s. One or the other. The note
-hints at how to think about this problem:</p>
+<blockquote>
+<p>譯註：此處 <code>println!()</code> 試圖借用 <code>x</code>。</p>
+</blockquote>
+<p>這是因為我們違反了規則：我們有了一個指向 <code>x</code> 的 <code>&amp;mut T</code>，所以我們不允許建立任何其他 <code>&amp;T</code>。
+要在兩者間做出選擇。
+錯誤中的註解提示我們該如何思考這個問題：</p>
 <pre><code class="language-text">note: previous borrow ends here
 fn main() {
 
 }
 ^
 </code></pre>
-<p>In other words, the mutable borrow is held through the rest of our example. What
-we want is for the mutable borrow to end <em>before</em> we try to call <code>println!</code> and
-make an immutable borrow. In Rust, borrowing is tied to the scope that the
-borrow is valid for. And our scopes look like this:</p>
+<p>換句話說，可變借用 (mutable borrow) 在我們的範例中一直存在。
+所以我們希望可變借用能在我們呼叫 <code>println!</code> 並建立不可變借用 <em>之前</em> 能結束掉。
+在 Rust 中，借用綁定在借用有效的範圍中。
+我們的有效範圍看起來會像這樣：</p>
 <pre><code class="language-rust,ignore">let mut x = 5;
 
 let y = &amp;mut x;    // -+ &amp;mut borrow of x starts here
@@ -2412,8 +2411,8 @@ let y = &amp;mut x;    // -+ &amp;mut borrow of x starts here
 println!(&quot;{}&quot;, x); // -+ - try to borrow x here
                    // -+ &amp;mut borrow of x ends here
 </code></pre>
-<p>The scopes conflict: we can’t make an <code>&amp;x</code> while <code>y</code> is in scope.</p>
-<p>So when we add the curly braces:</p>
+<p>這些有效範圍有衝突：我們不能在 <code>y</code> 仍在有效範圍時建立 <code>&amp;x</code>。</p>
+<p>而當我們增加大括號之後：</p>
 <pre><code class="language-rust">let mut x = 5;
 
 {
@@ -2423,24 +2422,26 @@ println!(&quot;{}&quot;, x); // -+ - try to borrow x here
 
 println!(&quot;{}&quot;, x);  // &lt;- try to borrow x here
 </code></pre>
-<p>There’s no problem. Our mutable borrow goes out of scope before we create an
-immutable one. But scope is the key to seeing how long a borrow lasts for.</p>
-<h3>Issues borrowing prevents</h3>
-<p>Why have these restrictive rules? Well, as we noted, these rules prevent data
-races. What kinds of issues do data races cause? Here’s a few.</p>
-<h4>Iterator invalidation</h4>
-<p>One example is ‘iterator invalidation’, which happens when you try to mutate a
-collection that you’re iterating over. Rust’s borrow checker prevents this from
-happening:</p>
+<p>這樣就沒有問題了。
+我們的可變借用會在我們建立不可變借用前離開有效範圍。
+有效範圍是個看清借用持續多久的關鍵。</p>
+<h3>借用所預防的問題 (Issues borrowing prevents)</h3>
+<p>為何我們需要這些限制規則？
+好吧，如同我們所說的，這些規則避免資料競爭。
+資料競爭會引發哪些問題？
+以下是一些例子。</p>
+<h4>疊代器失效</h4>
+<p>一個例子是 &quot;疊代器失效&quot; (Iterator invalidation)，當你試圖改變一個正在疊代的集合 (collection) 時會發生。
+Rust 的借用檢查器會預防這件事發生：</p>
 <pre><code class="language-rust">let mut v = vec![1, 2, 3];
 
 for i in &amp;v {
     println!(&quot;{}&quot;, i);
 }
 </code></pre>
-<p>This prints out one through three. As we iterate through the vector, we’re
-only given references to the elements. And <code>v</code> is itself borrowed as immutable,
-which means we can’t change it while we’re iterating:</p>
+<p>這會印出一到三。
+當我們疊代這個向量時，我們只會用到元素的參考。
+而且 <code>v</code> 是一個不可變的借用，所以我們在疊代時不能更改它：</p>
 <pre><code class="language-rust,ignore">let mut v = vec![1, 2, 3];
 
 for i in &amp;v {
@@ -2448,7 +2449,7 @@ for i in &amp;v {
     v.push(34);
 }
 </code></pre>
-<p>Here’s the error:</p>
+<p>以下是錯誤訊息：</p>
 <pre><code class="language-text">error: cannot borrow `v` as mutable because it is also borrowed as immutable
     v.push(34);
     ^
@@ -2463,12 +2464,12 @@ for i in &amp;v {
 }
 ^
 </code></pre>
-<p>We can’t modify <code>v</code> because it’s borrowed by the loop.</p>
-<h4>use after free</h4>
-<p>References must not live longer than the resource they refer to. Rust will
-check the scopes of your references to ensure that this is true.</p>
-<p>If Rust didn’t check this property, we could accidentally use a reference
-which was invalid. For example:</p>
+<p>我們不能修改 <code>v</code>，因為它已經借用給迴圈了。</p>
+<h4>在釋放之後使用 (use after free)</h4>
+<p>參考不能存活得比所參考的資源還久。
+Rust 會檢查你的參考的有效範圍來確保符合這個條件。</p>
+<p>如果 Rust 沒有檢查這個屬性，我們可能會意外地用到一個無效的參考。
+例如：</p>
 <pre><code class="language-rust,ignore">let y: &amp;i32;
 {
     let x = 5;
@@ -2477,7 +2478,7 @@ which was invalid. For example:</p>
 
 println!(&quot;{}&quot;, y);
 </code></pre>
-<p>We get this error:</p>
+<p>會得到以下錯誤：</p>
 <pre><code class="language-text">error: `x` does not live long enough
     y = &amp;x;
          ^
@@ -2495,20 +2496,21 @@ statement 0 at 4:18
     y = &amp;x;
 }
 </code></pre>
-<p>In other words, <code>y</code> is only valid for the scope where <code>x</code> exists. As soon as
-<code>x</code> goes away, it becomes invalid to refer to it. As such, the error says that
-the borrow ‘doesn’t live long enough’ because it’s not valid for the right
-amount of time.</p>
-<p>The same problem occurs when the reference is declared <em>before</em> the variable it
-refers to. This is because resources within the same scope are freed in the
-opposite order they were declared:</p>
+<p>換句話說，<code>y</code> 只在 <code>x</code> 存在的有效範圍內有效。
+當 <code>x</code> 消失，它就成為無效的參考。
+這個錯誤訊息說，這個借用 &quot;存在得不夠久&quot; 就是因為它在應該存在的時候已經失效了。</p>
+<p>當一個參考在它所參考的變數 <em>之前</em> 宣告，也會發生一樣的問題。
+這是因為資源在同樣的有效範圍內，它們被釋放的順序是跟它們宣告順序相反：</p>
+<blockquote>
+<p>譯註：也就是 <code>宣告 y; 宣告 x;</code> 的話，離開有效範圍時會 <code>釋放 x; 釋放 y</code>。所以 <code>y</code> 比 <code>x</code> 存活的久。</p>
+</blockquote>
 <pre><code class="language-rust,ignore">let y: &amp;i32;
 let x = 5;
 y = &amp;x;
 
 println!(&quot;{}&quot;, y);
 </code></pre>
-<p>We get this error:</p>
+<p>得到以下錯誤訊息：</p>
 <pre><code class="language-text">error: `x` does not live long enough
 y = &amp;x;
      ^
@@ -2529,8 +2531,7 @@ statement 1 at 3:14
     println!(&quot;{}&quot;, y);
 }
 </code></pre>
-<p>In the above example, <code>y</code> is declared before <code>x</code>, meaning that <code>y</code> lives longer
-than <code>x</code>, which is not allowed.</p>
+<p>在以上範例，<code>y</code> 在 <code>x</code> 之前宣告，代表 <code>y</code> 存活的比 <code>x</code> 還長，這不被允許。</p>
 <blockquote>
 <p><em>commit 6ba9520</em></p>
 </blockquote>
