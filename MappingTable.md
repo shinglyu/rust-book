@@ -24,6 +24,7 @@ conditional            | 條件運算                      | 參考：[維基百
 configuration          | 配置                          |
 constant               | 常數                          | 參考：[維基百科][constant]
 crash                  | 當機                          |
+dangling pointer       | 迷途指標                      | 參考：[維基百科][dangling pointer]
 data race              | 資料競爭                      |
 declaration statements | 宣告陳述式                    |
 deque                  | 雙向佇列                      | Double-ended queue
@@ -48,6 +49,7 @@ lifetimes              | 生命週期                      |
 loop                   | 迴圈、循環                    | 參考：[維基百科][loop]
 macro                  | 巨集                          | 參考：[維基百科][macro]
 main function          | 主函式                        | 參考：[維基百科][main function]
+method                 | 方法                          | 參考：[維基百科][method]
 module                 | 模組                          | 參考：[維基百科][module]
 mutable                | 可變                          | 參考：[維基百科][immutable]
 mutability             | 可變性                        |
@@ -62,6 +64,7 @@ primitive type         | 基本型別                      | 參考：[維基百
 reference              | 參照、參考                    | 參考：[維基百科][reference]
 scope                  | 有效範圍                      |
 semantics              | 語意                          |
+segment                | 區段                          | 參考：[維基百科][segment]
 segmentation fault     | 記憶體區段錯誤                | 參考：[維基百科][segmentation fault]
 shadowing              | 遮蔽                          |
 signed integer         | 帶號整數                      | 參考：[維基百科][integer]
@@ -69,6 +72,7 @@ stack                  | 堆疊                          | 參考：[維基百�
 statements             | 陳述式                        |
 string                 | 字串                          | 參考：[維基百科][string]
 string interpolation   | 字串插值                      | 參考：[MSDN][string interpolation]
+struct                 | 結構體                        | 參考：[維基百科][struct]、[維基百科][struct_2]
 subscript              | 下標                          | 指的是 `a[1]` 中的 `[1]`
 symbols                | 符號                          |
 syntax                 | 語法                          |
@@ -96,6 +100,7 @@ zero-cost abstractions | 無成本抽象化                  |
 [concurrency]: https://zh.wikipedia.org/zh-tw/%E5%B9%B6%E5%8F%91%E8%AE%A1%E7%AE%97
 [conditional]: https://zh.wikipedia.org/zh-tw/%E6%A2%9D%E4%BB%B6%E9%81%8B%E7%AE%97%E5%BC%8F
 [constant]: https://zh.wikipedia.org/zh-tw/%E5%B8%B8%E6%95%B0
+[dangling pointer]: https://zh.wikipedia.org/zh-tw/%E8%BF%B7%E9%80%94%E6%8C%87%E9%92%88
 [enumerate]: https://zh.wikipedia.org/zh-tw/%E6%9E%9A%E4%B8%BE
 [handle]: https://zh.wikipedia.org/zh-tw/%E5%8F%A5%E6%9F%84
 [handle_2]: https://msdn.microsoft.com/zh-tw/library/yk97tc08.aspx
@@ -110,6 +115,7 @@ zero-cost abstractions | 無成本抽象化                  |
 [loop]: https://zh.wikipedia.org/zh-tw/%E6%8E%A7%E5%88%B6%E6%B5%81%E7%A8%8B#.E8.BF.B4.E5.9C.88
 [macro]: https://zh.wikipedia.org/zh-tw/%E5%B7%A8%E9%9B%86
 [main function]: https://zh.wikipedia.org/zh-tw/%E4%B8%BB%E5%87%BD%E5%BC%8F
+[method]: https://zh.wikipedia.org/zh-tw/%E6%96%B9%E6%B3%95_(%E9%9B%BB%E8%85%A6%E7%A7%91%E5%AD%B8)
 [module]: https://zh.wikipedia.org/zh-tw/%E6%A8%A1%E7%B5%84_(%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88)
 [operators]: https://zh.wikipedia.org/zh-tw/C%E5%92%8CC%2B%2B%E9%81%8B%E7%AE%97%E5%AD%90
 [package]: https://zh.wikipedia.org/zh-tw/%E8%BD%AF%E4%BB%B6%E5%8C%85
@@ -117,10 +123,13 @@ zero-cost abstractions | 無成本抽象化                  |
 [pointer]: https://zh.wikipedia.org/zh-tw/%E6%8C%87%E6%A8%99_(%E9%9B%BB%E8%85%A6%E7%A7%91%E5%AD%B8)
 [primitive type]: https://zh.wikipedia.org/zh-tw/%E5%8E%9F%E5%A7%8B%E5%9E%8B%E5%88%A5
 [reference]: https://zh.wikipedia.org/zh-tw/%E5%8F%83%E7%85%A7
+[segment]: https://zh.wikipedia.org/zh-tw/%E8%A8%98%E6%86%B6%E9%AB%94%E5%88%86%E6%AE%B5
 [segmentation fault]: https://zh.wikipedia.org/zh-tw/%E8%A8%98%E6%86%B6%E9%AB%94%E5%8D%80%E6%AE%B5%E9%8C%AF%E8%AA%A4
 [stack]: https://zh.wikipedia.org/zh-tw/%E5%A0%86%E6%A0%88
 [string]: https://zh.wikipedia.org/zh-tw/%E5%AD%97%E7%AC%A6%E4%B8%B2
 [string interpolation]: https://msdn.microsoft.com/zh-tw/library/dn961160.aspx
+[struct]: https://zh.wikipedia.org/zh-tw/C%2B%2B%E7%B1%BB
+[struct_2]: https://zh.wikipedia.org/zh-tw/%E7%BB%93%E6%9E%84%E4%BD%93_(C%E8%AF%AD%E8%A8%80)
 [thread]: https://zh.wikipedia.org/zh-tw/%E7%BA%BF%E7%A8%8B
 [tuple]: https://zh.wikipedia.org/zh-tw/%E5%A4%9A%E5%85%83%E7%BB%84
 [two’s complement]: https://zh.wikipedia.org/zh-tw/%E4%BA%8C%E8%A3%9C%E6%95%B8
