@@ -152,7 +152,7 @@ println!("The second name is: {}", names[1]);
 
 ## Slices
 
-一個 "slice" 是一個其他資料結構的參考（或 "視圖"）。
+一個 "slice" 是一個其他資料結構的參照（或 "視圖"）。
 它允許安全、有效的存取陣列的一部份而不用複製陣列。
 例如，你可能只想要參考讀到記憶體中的檔案中的某一行。
 本質上，一個 "slice" 不是直接建立的，而要從一個已經存在的變數綁定中建立。
@@ -163,7 +163,7 @@ Slices 會定義長度，它可以是可變 (mutable) 或不可變 (immutable)�
 ### Slicing 語法
 
 你可以使用 `&` 和 `[]` 的組合去從許多資料結構建立 slice。
-`&` 說明了 slices 跟[參考][references]很類似，我們會在本節的後面說到細節。
+`&` 說明了 slices 跟[參照][references]很類似，我們會在本節的後面說到細節。
 `[]` 帶有範圍的資訊，讓你定義 slice 的長度。
 
 [references]: references-and-borrowing.html
@@ -186,8 +186,8 @@ Slices 的型別是 `&[T]`。
 ## `str`
 
 Rust 的 `str` 型別是最基本的字串型別。
-跟[動態大小型別][dst]，它本身不是很有用，但當它放在參考之後就很有用了，像是 `$str`。
-當我們談到[字串][strings]和[參考][references]的時候再來細說。
+跟[動態大小型別][dst]，它本身不是很有用，但當它放在參照之後就很有用了，像是 `$str`。
+當我們談到[字串][strings]和[參照][references]的時候再來細說。
 
 [dst]: unsized-types.html
 [strings]: strings.html

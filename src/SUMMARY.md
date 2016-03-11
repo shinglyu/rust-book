@@ -11,7 +11,7 @@
     * [if](if.md)
     * [迴圈](loops.md)
     * [所有權](ownership.md)
-    * [參考與借用](references-and-borrowing.md)
+    * [參照與借用](references-and-borrowing.md)
     * [生命週期](lifetimes.md)
     * [Mutability](mutability.md)
     * [Structs](structs.md)

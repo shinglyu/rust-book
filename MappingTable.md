@@ -4,84 +4,129 @@
 
 English 英文           | Traditional Chinese 正體中文  | Note 備註
 ------------           |-----------------------------  |----------
-Abstract Syntax Tree   | 抽象語法樹                    |
+Abstract Syntax Tree   | 抽象語法樹                    | 參考：[維基百科][AST]
 ahead-of-time compiled | 事先編譯                      |
 annotations            | 註釋                          |
-arity                  | 元數                          | 所需運算元的數量
-array                  | 陣列                          |
+arity                  | 元數                          | 所需運算元的數量。參考：[維基百科][arity]
+array                  | 陣列                          | 參考：[維基百科][array]
 assignment             | 賦值                          |
 best-practice          | 最佳做法                      |
-bit                    | 位元                          |
+bit                    | 位元                          | 參考：[維基百科][bit]
 block                  | 區塊                          |
-booleans               | 布林                          |
-bounds-check           | 邊界檢查                      |
+boolean                | 布林                          | 參考：[維基百科][boolean]
+bounds-check           | 邊界檢查                      | 參考：[維基百科][bounds-check]
 borrowing              | 借用                          |
 bug                    | 程式錯誤                      |
-byte                   | 位元組                        |
-collection             | 集合                          |
-concurrency            | 並行                          |
-conditional            | 條件運算                      |
+byte                   | 位元組                        | 參考：[維基百科][byte]
+collection             | 集合                          | 參考：[維基百科][collection]
+concurrency            | 並行                          | 參考：[維基百科][concurrency]
+conditional            | 條件運算                      | 參考：[維基百科][conditional]
 configuration          | 配置                          |
-constants              | 常數                          |
+constant               | 常數                          | 參考：[維基百科][constant]
 crash                  | 當機                          |
 data race              | 資料競爭                      |
 declaration statements | 宣告陳述式                    |
 deque                  | 雙向佇列                      | Double-ended queue
 diverging functions    | 發散函式                      | 不回傳值的函式
-Enumerate              | 枚舉                          |
+enumerate              | 枚舉                          | 參考：[維基百科][enumerate]
 executable             | 執行檔                        |
 expression             | 表達式                        |
 expression-oriented    | 表達式導向                    |
 expression statements  | 表達陳述式                    |
 extensions             | 擴充功能                      |
-heap                   | 堆積                          |
+handle                 | 控制代碼                      | 參考：[維基百科][handle]、[MSDN][handle_2]
+heap                   | 堆積                          | 參考：[維基百科][heap]
 fault                  | 錯誤                          |
 formalization          | 正規化                        |
-function               | 函式                          |
-generics               | 泛型                          |
-iterative              | 疊代                          |
-iterator               | 疊代器                        |
-immutable              | 不可變                        |
-libraries              | 函式庫                        |
+function               | 函式                          | 參考：[維基百科][function]
+generics               | 泛型                          | 參考：[維基百科][generics]
+iterative              | 疊代                          | 參考：[維基百科][iterative]
+iterator               | 疊代器                        | 參考：[維基百科][iterator]
+immutable              | 不可變                        | 參考：[維基百科][immutable]
+library                | 函式庫                        | 參考：[維基百科][library]
 lifetimes              | 生命週期                      |
-loop                   | 迴圈、循環                    |
-macro                  | 巨集                          |
-main function          | 主函式                        |
-module                 | 模組                          |
-mutable                | 可變                          |
+loop                   | 迴圈、循環                    | 參考：[維基百科][loop]
+macro                  | 巨集                          | 參考：[維基百科][macro]
+main function          | 主函式                        | 參考：[維基百科][main function]
+module                 | 模組                          | 參考：[維基百科][module]
+mutable                | 可變                          | 參考：[維基百科][immutable]
 mutability             | 可變性                        |
 mutation               | 可變數                        |
-operators              | 運算子                        |
+operators              | 運算子                        | 參考：[維基百科][operators]
 ownership              | 所有權                        |
-package                | 套件                          |
-pattern                | 模式                          |
+package                | 套件                          | 參考：[維基百科][package]
+pattern                | 模式                          | 參考：[維基百科][pattern]
 plugins                | 外掛                          |
-pointer                | 指標                          |
-primitive type         | 基本型別                      |
-reference              | 參考                          |
+pointer                | 指標                          | 參考：[維基百科][pointer]
+primitive type         | 基本型別                      | 參考：[維基百科][primitive type]
+reference              | 參照、參考                    | 參考：[維基百科][reference]
 scope                  | 有效範圍                      |
 semantics              | 語意                          |
-segmentation           | 分割                          |
+segmentation fault     | 記憶體區段錯誤                | 參考：[維基百科][segmentation fault]
 shadowing              | 遮蔽                          |
-signed integer         | 帶號整數                      |
-stack                  | 堆疊                          |
+signed integer         | 帶號整數                      | 參考：[維基百科][integer]
+stack                  | 堆疊                          | 參考：[維基百科][stack]
 statements             | 陳述式                        |
-string                 | 字串                          |
-string interpolation   | 字串差值                      |
-subscript              | 下標                          | 指的是 a[1] 中的 [1]
+string                 | 字串                          | 參考：[維基百科][string]
+string interpolation   | 字串插值                      | 參考：[MSDN][string interpolation]
+subscript              | 下標                          | 指的是 `a[1]` 中的 `[1]`
 symbols                | 符號                          |
 syntax                 | 語法                          |
-thread                 | 執行緒                        |
-tuple                  | 多元組                        |
-two’s complement       | 二補數                        |
-type                   | 型別                          |
-type inference         | 型別推斷                      |
-unsigned integer       | 非帶號整數                    |
+thread                 | 執行緒                        | 參考：[維基百科][thread]
+tuple                  | 多元組                        | 參考：[維基百科][tuple]
+two’s complement       | 二補數                        | 參考：[維基百科][two’s complement]
+type                   | 型別                          | 參考：[維基百科][type]
+type inference         | 型別推斷                      | 參考：[維基百科][type inference]
+unsigned integer       | 非帶號整數                    | 參考：[維基百科][integer]
 values                 | 值、數值                      |
 variables              | 變數                          |
 vector                 | 向量                          |
-view                   | 視圖                          |
+view                   | 視圖                          | 參考：[維基百科][view]
 zero-cost abstractions | 無成本抽象化                  |
+
+
+[AST]: https://zh.wikipedia.org/zh-tw/%E6%8A%BD%E8%B1%A1%E8%AA%9E%E6%B3%95%E6%A8%B9
+[arity]: https://zh.wikipedia.org/zh-tw/%E5%85%83%E6%95%B0
+[array]: https://zh.wikipedia.org/zh-tw/%E6%95%B0%E7%BB%84
+[bit]: https://zh.wikipedia.org/zh-tw/%E4%BD%8D%E5%85%83
+[boolean]: https://zh.wikipedia.org/wiki/%E5%B8%83%E7%88%BE_(%E6%95%B8%E6%93%9A%E9%A1%9E%E5%9E%8B)
+[bounds-check]: https://zh.wikipedia.org/zh-tw/%E8%BE%B9%E7%95%8C%E6%A3%80%E6%9F%A5
+[byte]: https://zh.wikipedia.org/zh-tw/%E5%AD%97%E8%8A%82
+[collection]: https://zh.wikipedia.org/zh-tw/%E9%9B%86%E5%90%88_(%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6)
+[concurrency]: https://zh.wikipedia.org/zh-tw/%E5%B9%B6%E5%8F%91%E8%AE%A1%E7%AE%97
+[conditional]: https://zh.wikipedia.org/zh-tw/%E6%A2%9D%E4%BB%B6%E9%81%8B%E7%AE%97%E5%BC%8F
+[constant]: https://zh.wikipedia.org/zh-tw/%E5%B8%B8%E6%95%B0
+[enumerate]: https://zh.wikipedia.org/zh-tw/%E6%9E%9A%E4%B8%BE
+[handle]: https://zh.wikipedia.org/zh-tw/%E5%8F%A5%E6%9F%84
+[handle_2]: https://msdn.microsoft.com/zh-tw/library/yk97tc08.aspx
+[heap]: https://zh.wikipedia.org/zh-tw/%E5%A0%86_(%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84)
+[function]: https://zh.wikipedia.org/zh-tw/%E5%AD%90%E7%A8%8B%E5%BA%8F
+[generics]: https://zh.wikipedia.org/zh-tw/%E6%B3%9B%E5%9E%8B
+[integer]: https://zh.wikipedia.org/zh-tw/%E6%95%B4%E6%95%B0_(%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6)
+[iterative]: https://zh.wikipedia.org/zh-tw/%E8%BF%AD%E4%BB%A3
+[iterator]: https://zh.wikipedia.org/zh-tw/%E8%BF%AD%E4%BB%A3%E5%99%A8
+[immutable]: https://zh.wikipedia.org/zh-tw/%E4%B8%8D%E5%8F%AF%E8%AE%8A%E7%89%A9%E4%BB%B6
+[library]: https://zh.wikipedia.org/zh-tw/%E5%87%BD%E5%BC%8F%E5%BA%AB
+[loop]: https://zh.wikipedia.org/zh-tw/%E6%8E%A7%E5%88%B6%E6%B5%81%E7%A8%8B#.E8.BF.B4.E5.9C.88
+[macro]: https://zh.wikipedia.org/zh-tw/%E5%B7%A8%E9%9B%86
+[main function]: https://zh.wikipedia.org/zh-tw/%E4%B8%BB%E5%87%BD%E5%BC%8F
+[module]: https://zh.wikipedia.org/zh-tw/%E6%A8%A1%E7%B5%84_(%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88)
+[operators]: https://zh.wikipedia.org/zh-tw/C%E5%92%8CC%2B%2B%E9%81%8B%E7%AE%97%E5%AD%90
+[package]: https://zh.wikipedia.org/zh-tw/%E8%BD%AF%E4%BB%B6%E5%8C%85
+[pattern]: https://zh.wikipedia.org/zh-tw/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F_(%E8%AE%A1%E7%AE%97%E6%9C%BA)
+[pointer]: https://zh.wikipedia.org/zh-tw/%E6%8C%87%E6%A8%99_(%E9%9B%BB%E8%85%A6%E7%A7%91%E5%AD%B8)
+[primitive type]: https://zh.wikipedia.org/zh-tw/%E5%8E%9F%E5%A7%8B%E5%9E%8B%E5%88%A5
+[reference]: https://zh.wikipedia.org/zh-tw/%E5%8F%83%E7%85%A7
+[segmentation fault]: https://zh.wikipedia.org/zh-tw/%E8%A8%98%E6%86%B6%E9%AB%94%E5%8D%80%E6%AE%B5%E9%8C%AF%E8%AA%A4
+[stack]: https://zh.wikipedia.org/zh-tw/%E5%A0%86%E6%A0%88
+[string]: https://zh.wikipedia.org/zh-tw/%E5%AD%97%E7%AC%A6%E4%B8%B2
+[string interpolation]: https://msdn.microsoft.com/zh-tw/library/dn961160.aspx
+[thread]: https://zh.wikipedia.org/zh-tw/%E7%BA%BF%E7%A8%8B
+[tuple]: https://zh.wikipedia.org/zh-tw/%E5%A4%9A%E5%85%83%E7%BB%84
+[two’s complement]: https://zh.wikipedia.org/zh-tw/%E4%BA%8C%E8%A3%9C%E6%95%B8
+[type]: https://zh.wikipedia.org/zh-tw/%E8%B3%87%E6%96%99%E9%A1%9E%E5%9E%8B
+[type inference]: https://zh.wikipedia.org/zh-tw/%E7%B1%BB%E5%9E%8B%E6%8E%A8%E8%AE%BA
+[view]: https://zh.wikipedia.org/zh-tw/%E8%A7%86%E5%9B%BE
 
 
 ## 不確定
