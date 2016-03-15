@@ -68,4 +68,5 @@
 * [詞彙表](glossary.md)
 * [語法索引](syntax-index.md)
 * [參考文獻](bibliography.md)
+* [中英文字彙對照表](MappingTable.md)
 * [翻譯貢獻名單](CONTRIBUTORS.md)

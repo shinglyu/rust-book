@@ -34,7 +34,7 @@ $ firefox book/index.html
 
 ## 中英對照
 
-[中英文對照表](MappingTable.md)
+[中英文字彙對照表](src/MappingTable.md)
 
 ## 貢獻
 
