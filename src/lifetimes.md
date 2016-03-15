@@ -6,7 +6,7 @@
 它有一些不同的概念，各自有各自的章節：
 
 * [所有權][ownership] (ownership)，關鍵的概念
-* [借用][borrowing] (borrowing)，及其相關功能 "參考" (references)
+* [借用][borrowing] (borrowing)，及其相關功能 "參照" (references)
 * 生命週期 (lifetimes)，你正在閱讀的章節
 
 這三章依序相關。
@@ -33,26 +33,23 @@ Rust 注重安全和速度。
 
 記住這些之後，讓我們開始學習生命週期。
 
-## Lifetimes
+## 生命週期 (Lifetimes)
 
-Lending out a reference to a resource that someone else owns can be
-complicated. For example, imagine this set of operations:
+出借一個指向他人擁有的資源的參照是很複雜的。
+舉例來說，想像一下以下的操作行為：
 
-1. I acquire a handle to some kind of resource.
-2. I lend you a reference to the resource.
-3. I decide I’m done with the resource, and deallocate it, while you still have
-  your reference.
-4. You decide to use the resource.
+1. 我獲得一個某種資源的控制代碼 (handle)。
+2. 我把指向這個資源的參照借給你。
+3. 我決定不再使用這個資源，釋放它，但你仍還有你那邊的參照。
+4. 你決定要使用此資源。
 
-Uh oh! Your reference is pointing to an invalid resource. This is called a
-dangling pointer or ‘use after free’, when the resource is memory.
+噢！你的參照指向了一個無效的資源。
+如果資源是記憶體時，我們叫它迷途指標 (dangling pointer) 或 "釋放後的使用"。
 
-To fix this, we have to make sure that step four never happens after step
-three. The ownership system in Rust does this through a concept called
-lifetimes, which describe the scope that a reference is valid for.
+要修正這個問題，我們必須確保上述第四步不會在第三步之後發生。
+Rust 的所有權系統透過一個叫做生命週期 (lifetimes) 的概念達成這點，它會描述參照的有效範圍。
 
-When we have a function that takes a reference by argument, we can be implicit
-or explicit about the lifetime of the reference:
+當我們有一個函式透過參數取用了一個參照，我們可以不言明 (implicit) 或言明 (explicit) 參照的生命週期：
 
 ```rust
 // implicit
@@ -64,55 +61,50 @@ fn bar<'a>(x: &'a i32) {
 }
 ```
 
-The `'a` reads ‘the lifetime a’. Technically, every reference has some lifetime
-associated with it, but the compiler lets you elide (i.e. omit, see
-["Lifetime Elision"][lifetime-elision] below) them in common cases.
-Before we get to that, though, let’s break the explicit example down:
+`'a` 唸作 "生命週期 a"。
+技術上，所有參照都有關聯的生命週期，但是編譯器通常讓你可以省略它（參考後述的 ["生命週期省略"][lifetime-elision]）。
+在我們講到省略之前，先讓我們拆解言明生命週期的範例：
 
-[lifetime-elision]: #lifetime-elision
+[lifetime-elision]: #生命週期省略%20(Lifetime%20Elision)
 
 ```rust,ignore
 fn bar<'a>(...)
 ```
 
-We previously talked a little about [function syntax][functions], but we didn’t
-discuss the `<>`s after a function’s name. A function can have ‘generic
-parameters’ between the `<>`s, of which lifetimes are one kind. We’ll discuss
-other kinds of generics [later in the book][generics], but for now, let’s
-focus on the lifetimes aspect.
+我們之前談到了一些[函式語法][functions]，但我們沒有討論到函式後面的 `<>`。
+一個函式可以在 `<>` 間放入 "泛型參數" (generic parameters)，生命週期也是其中一種。
+我們[在之後][generics]會討論到其他的泛型，但現在讓我們專注在生命週期方面。
 
 [functions]: functions.html
 [generics]: generics.html
 
-We use `<>` to declare our lifetimes. This says that `bar` has one lifetime,
-`'a`. If we had two reference parameters, it would look like this:
+我們使用 `<>` 去宣告我們的生命週期。
+這代表 `bar` 有一個生命週期 `'a`。
+如果我們有兩個參照參數，那麼將會看起來像：
 
 
 ```rust,ignore
 fn bar<'a, 'b>(...)
 ```
 
-Then in our parameter list, we use the lifetimes we’ve named:
+然後在我們的參數列表中，我們使用我們所命名的生命週期：
 
 ```rust,ignore
 ...(x: &'a i32)
 ```
 
-If we wanted a `&mut` reference, we’d do this:
-
+如果我們想要一個 `&mut` 參照，這樣做：
+I
 ```rust,ignore
 ...(x: &'a mut i32)
 ```
 
-If you compare `&mut i32` to `&'a mut i32`, they’re the same, it’s that
-the lifetime `'a` has snuck in between the `&` and the `mut i32`. We read `&mut
-i32` as ‘a mutable reference to an `i32`’ and `&'a mut i32` as ‘a mutable
-reference to an `i32` with the lifetime `'a`’.
+如果你比較 `&mut i32` 和 `&'a mut i32` 兩者，除了在 `&` 和 `mut i32` 間多出生命週期 `'a`，你會發現他們是一樣的。
+我們把 `&mut i32` 叫做 "一個 `i32` 可變參照"，而 `&'a mut i32` 叫做 "一個生命週期為 `'a` 的 `i32` 可變參照"
 
-## In `struct`s
+## 在 `struct` 中
 
-You’ll also need explicit lifetimes when working with [`struct`][structs]s that
-contain references:
+當處理含有參照的[結構體][structs] (struct) 食，你也同樣需要言明生命週期：
 
 ```rust
 struct Foo<'a> {
@@ -129,7 +121,8 @@ fn main() {
 
 [structs]: structs.html
 
-As you can see, `struct`s can also have lifetimes. In a similar way to functions,
+如你所見，`struct` 也有生命週期。
+它的表示方式跟函式很像：
 
 ```rust
 struct Foo<'a> {
@@ -137,7 +130,7 @@ struct Foo<'a> {
 # }
 ```
 
-declares a lifetime, and
+宣告生命週期，接著：
 
 ```rust
 # struct Foo<'a> {
@@ -145,12 +138,15 @@ x: &'a i32,
 # }
 ```
 
-uses it. So why do we need a lifetime here? We need to ensure that any reference
-to a `Foo` cannot outlive the reference to an `i32` it contains.
+使用生命週期。
+那為何我們在此處需要生命週期呢？
+因為我們必須確保任何參考到 `Foo` 的參照不能存活的比 `Foo` 所內含的 `i32` 參照還久。
 
-### `impl` blocks
+> 譯註：簡單說，如果 `Foo` 內的 `i32` 參照失效後，如果仍有指向 `Foo` 的參照，取用此參照內的 `i32` 參照就會出問題。
 
-Let’s implement a method on `Foo`:
+### `impl` 區塊
+
+讓我們替 `Foo` 實作一個方法：
 
 ```rust
 struct Foo<'a> {
@@ -169,13 +165,12 @@ fn main() {
 }
 ```
 
-As you can see, we need to declare a lifetime for `Foo` in the `impl` line. We repeat
-`'a` twice, like on functions: `impl<'a>` defines a lifetime `'a`, and `Foo<'a>`
-uses it.
+如你所見，我們需要在 `impl` 那行宣告 `Foo` 的生命週期。
+我們重複了 `'a` 兩次，跟函式一樣：`impl<'a>` 定義了生命週期 `'a`，而 `Foo<'a>` 則使用它。
 
-### Multiple lifetimes
+### 多重生命週期
 
-If you have multiple references, you can use the same lifetime multiple times:
+如果你有多個參照，你可以重複使用相同的生命週期：
 
 ```rust
 fn x_or_y<'a>(x: &'a str, y: &'a str) -> &'a str {
@@ -183,9 +178,8 @@ fn x_or_y<'a>(x: &'a str, y: &'a str) -> &'a str {
 # }
 ```
 
-This says that `x` and `y` both are alive for the same scope, and that the
-return value is also alive for that scope. If you wanted `x` and `y` to have
-different lifetimes, you can use multiple lifetime parameters:
+這代表 `x` 和 `y` 都存活在同樣的有效範圍內，且回傳值也存活在同樣的有效範圍。
+如果你想要讓 `x` 和 `y` 有不同的生命週期，你可以使用多個生命週期參數：
 
 ```rust
 fn x_or_y<'a, 'b>(x: &'a str, y: &'b str) -> &'a str {
@@ -193,13 +187,12 @@ fn x_or_y<'a, 'b>(x: &'a str, y: &'b str) -> &'a str {
 # }
 ```
 
-In this example, `x` and `y` have different valid scopes, but the return value
-has the same lifetime as `x`.
+在此範例中，`x` 與 `y` 有不同的有效範圍，但回傳值的生命週期與 `x` 相同。
 
-### Thinking in scopes
+### 對有效範圍的深思 (Thinking in scopes)
 
-A way to think about lifetimes is to visualize the scope that a reference is
-valid for. For example:
+瞭解生命週期的一個方式是將參照的有效範圍視覺化。
+例如：
 
 ```rust
 fn main() {
@@ -210,7 +203,7 @@ fn main() {
 }                   // -+ y goes out of scope
 ```
 
-Adding in our `Foo`:
+加入 `Foo`：
 
 ```rust
 struct Foo<'a> {
@@ -225,8 +218,9 @@ fn main() {
 }                         // -+ f and y go out of scope
 ```
 
-Our `f` lives within the scope of `y`, so everything works. What if it didn’t?
-This code won’t work:
+`f` 存活在 `y` 的有效範圍內，所以一切運作正常。
+但如果不是（在有效範圍內）呢？
+以下程式碼無法運作：
 
 ```rust,ignore
 struct Foo<'a> {
@@ -246,85 +240,73 @@ fn main() {
 }                             // -+ x goes out of scope
 ```
 
-Whew! As you can see here, the scopes of `f` and `y` are smaller than the scope
-of `x`. But when we do `x = &f.x`, we make `x` a reference to something that’s
-about to go out of scope.
+唷！如你所見，`f` 和 `y` 的有效範圍比 `x` 的有效範圍小。
+但是當我們執行 `x = &f.x` 時，我們會使 `x` 參考到已經離開有效範圍的東西。
 
-Named lifetimes are a way of giving these scopes a name. Giving something a
-name is the first step towards being able to talk about it.
+命名生命週期是給予有效範圍名稱的方式。
+賦予東西一個名稱，是開始討論它的第一步。
 
 ### 'static
 
-The lifetime named ‘static’ is a special lifetime. It signals that something
-has the lifetime of the entire program. Most Rust programmers first come across
-`'static` when dealing with strings:
+名稱叫做 `static` 的生命週期是特殊的生命週期。
+它代表了某樣東西具有整個程式的生命週期。
+大多數 Rust 程式設計師會在處理字串時第一次遇到 `'static`：
 
 ```rust
 let x: &'static str = "Hello, world.";
 ```
 
-String literals have the type `&'static str` because the reference is always
-alive: they are baked into the data segment of the final binary. Another
-example are globals:
+字串是 `&'static str` 型別，因為參照一直存活著：他們被放在最後的執行檔內的資料區段。
+另一個例子是全域變數：
 
 ```rust
 static FOO: i32 = 5;
 let x: &'static i32 = &FOO;
 ```
 
-This adds an `i32` to the data segment of the binary, and `x` is a reference
-to it.
+這會加入一個 `i32` 到執行檔的資料區段，`x` 則是指向它的參照。
 
-### Lifetime Elision
+### 生命週期省略 (Lifetime Elision)
 
-Rust supports powerful local type inference in function bodies, but it’s
-forbidden in item signatures to allow reasoning about the types based on
-the item signature alone. However, for ergonomic reasons a very restricted
-secondary inference algorithm called “lifetime elision” applies in function
-signatures. It infers only based on the signature components themselves and not
-based on the body of the function, only infers lifetime parameters, and does
-this with only three easily memorizable and unambiguous rules. This makes
-lifetime elision a shorthand for writing an item signature, while not hiding
-away the actual types involved as full local inference would if applied to it.
+Rust 在函式中支援強大的局部型別推斷 (local type inference)，但在 item signatures 中則被禁止，才能讓它根據簽署去推論其型別。
+然而，為了人機工程的理由，第二種受限的推斷方式 "生命週期省略" 被允許用在函式的簽署。
+它只根據簽署元件本身推斷，而不基於函式內容，而且只根據三個簡單易記、不易混淆的規則推斷生命週期參數。
+這使得撰寫 item signatures 時可以速寫生命週期省略，但不能隱藏它的實際型別，因為局部型別推斷時可能會需要它。
 
-When talking about lifetime elision, we use the term *input lifetime* and
-*output lifetime*. An *input lifetime* is a lifetime associated with a parameter
-of a function, and an *output lifetime* is a lifetime associated with the return
-value of a function. For example, this function has an input lifetime:
+> 譯註：`item signatures` 應是指宣告函式時的輸入參數們，以及回傳值的宣告。
+
+當我們談到生命週期省略，我們使用 *輸入生命週期* (input lifetime) 與 *輸出生命週期* (output lifetime) 的字眼。
+*輸入生命週期* 是指函式的參數的生命週期，而 *輸出生命週期* 是指函式回傳值的生命週期。
+例如，以下函式有一個輸入生命週期：
 
 ```rust,ignore
 fn foo<'a>(bar: &'a str)
 ```
 
-This one has an output lifetime:
+此函式則有一個輸出生命週期：
 
 ```rust,ignore
 fn foo<'a>() -> &'a str
 ```
 
-This one has a lifetime in both positions:
+此一函式兩者皆有：
 
 ```rust,ignore
 fn foo<'a>(bar: &'a str) -> &'a str
 ```
 
-Here are the three rules:
+以下是三條規則：
 
-* Each elided lifetime in a function’s arguments becomes a distinct lifetime
-  parameter.
+* 每個函式的參數所省略的生命週期都成為個別不同的生命週期參數。
+* 如果恰好只有一個輸入生命週期，無論省略與否，其生命週期會被賦予所有回傳值中所省略的生命週期。
+* 如果有多個輸入生命週期，但其中有 `&self` 或 `&mut self`，那 `self` 的生命週期會被賦予所有省略的生命週期。
 
-* If there is exactly one input lifetime, elided or not, that lifetime is
-  assigned to all elided lifetimes in the return values of that function.
+否則，省略輸入生命週期會出現錯誤訊息。
 
-* If there are multiple input lifetimes, but one of them is `&self` or `&mut
-  self`, the lifetime of `self` is assigned to all elided output lifetimes.
+#### 範例
 
-Otherwise, it is an error to elide an output lifetime.
-
-#### Examples
-
-Here are some examples of functions with elided lifetimes.  We’ve paired each
-example of an elided lifetime with its expanded form.
+以下有一些省略生命週期的函式範例。
+我們把省略的範例與其展開生命週期的樣子，各別放在一起比對。
 
 ```rust,ignore
 fn print(s: &str); // elided
