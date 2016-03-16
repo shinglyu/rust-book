@@ -2,7 +2,7 @@
 
 * [簡介](README.md)
 * [準備](getting-started.md)
-* [教學: 猜謎遊戲](guessing-game.md)
+* [教學: 猜數字遊戲](guessing-game.md)
 * [語法及語意](syntax-and-semantics.md)
     * [變數綁定](variable-bindings.md)
     * [函式](functions.md)

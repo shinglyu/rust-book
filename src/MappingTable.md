@@ -152,6 +152,7 @@ dependencies           |                               |
 destructuring let      |                               | 用於存取 tuple
 fully-strict           |                               |
 hash                   |                               |
+import                 |                               |
 linker                 |                               |
 linking                |                               |
 master                 |                               | git branch
@@ -159,6 +160,7 @@ mata                   |                               |
 metaprogramming        |                               |
 non-strict             |                               |
 patches                |                               |
+prelude                |                               | 預先載入的函式庫
 profiles               |                               |
 repository             |                               |
 root                   |                               |

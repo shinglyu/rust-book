@@ -1,20 +1,25 @@
-% Guessing Game
+# 猜數字遊戲
 
-Let’s learn some Rust! For our first project, we’ll implement a classic
-beginner programming problem: the guessing game. Here’s how it works: Our
-program will generate a random integer between one and a hundred. It will then
-prompt us to enter a guess. Upon entering our guess, it will tell us if we’re
-too low or too high. Once we guess correctly, it will congratulate us. Sounds
-good?
+讓我們開始學習 Rust 吧！
+作為我們的第一個專案，我們會實作一個經典的新手程式問題：猜數字 (guessing game)。
+它的規則是這樣：我們的程式會產生一個 1 到 100 間的亂數。
+然後提示我們輸入數字猜猜看。
+當我們輸入之後，它會告訴我們太大還是太小。
+當我們猜對了，它會恭喜我們。
+聽起來不錯吧？
 
+接下來，我們將會學到一些 Rust 的東西。
+下一章 "語法及語意" 將會更深入探究每一部份。
 Along the way, we’ll learn a little bit about Rust. The next chapter, ‘Syntax
 and Semantics’, will dive deeper into each part.
 
-# Set up
+## 準備
 
-Let’s set up a new project. Go to your projects directory. Remember how we had
-to create our directory structure and a `Cargo.toml` for `hello_world`? Cargo
-has a command that does that for us. Let’s give it a shot:
+讓我們準備一個新專案。
+進到你的專案目錄。
+還記得我們如何替 `hello_world` 建立目錄結構和 `Cargo.toml` 嗎？
+Cargo 有個能幫我們做好這些事情的指令。
+讓我們試試看：
 
 ```bash
 $ cd ~/projects
@@ -22,10 +27,9 @@ $ cargo new guessing_game --bin
 $ cd guessing_game
 ```
 
-We pass the name of our project to `cargo new`, and then the `--bin` flag,
-since we’re making a binary, rather than a library.
+我們傳遞專案的名字給 `cargo new`，接著是 `--bin` 的參數，因為我們要建立執行檔而不是函式庫。
 
-Check out the generated `Cargo.toml`:
+看看產生的 `Cargo.toml`：
 
 ```toml
 [package]
@@ -35,10 +39,11 @@ version = "0.1.0"
 authors = ["Your Name <you@example.com>"]
 ```
 
-Cargo gets this information from your environment. If it’s not correct, go ahead
-and fix that.
+Cargo 會從你的環境設定中取得這些資訊。
+如果它不正確，就直接修改吧。
 
-Finally, Cargo generated a ‘Hello, world!’ for us. Check out `src/main.rs`:
+最後，Cargo 幫我們產生了一個 "Hello, world!"。
+看看 `src/main.rs` 檔案：
 
 ```rust
 fn main() {
@@ -46,19 +51,20 @@ fn main() {
 }
 ```
 
-Let’s try compiling what Cargo gave us:
+讓我們試著編譯：
 
 ```{bash}
 $ cargo build
    Compiling guessing_game v0.1.0 (file:///home/you/projects/guessing_game)
 ```
 
-Excellent! Open up your `src/main.rs` again. We’ll be writing all of
-our code in this file.
+太棒了！
+再次打開你的 `src/main.rs`。
+我們將開始在這個檔案寫入我們所有的程式碼。
 
-Before we move on, let me show you one more Cargo command: `run`. `cargo run`
-is kind of like `cargo build`, but it also then runs the produced executable.
-Try it out:
+在繼續之前，讓我們告訴你另一個 Cargo 的指令 `run`。
+`cargo run` 有點類似 `cargo build`，但是他同時會執行產生的執行檔。
+試試看：
 
 ```bash
 $ cargo run
@@ -67,14 +73,15 @@ $ cargo run
 Hello, world!
 ```
 
-Great! The `run` command comes in handy when you need to rapidly iterate on a
-project. Our game is such a project, we need to quickly test each
-iteration before moving on to the next one.
+很好！
+當我們需要快速地重複執行專案時 `run` 指令很方便。
+我們的遊戲就是一個專案，我們需要在進入下個循環之前，在每個循環 (iteration) 做快速的測試。
 
-# Processing a Guess
+## 處理猜測
 
-Let’s get to it! The first thing we need to do for our guessing game is
-allow our player to input a guess. Put this in your `src/main.rs`:
+讓我們開始吧！
+我們所要做的第一件事情是讓我們的玩家可以輸入他的猜測。
+把以下內容放入你的 `src/main.rs`：
 
 ```rust,no_run
 use std::io;
@@ -93,33 +100,31 @@ fn main() {
 }
 ```
 
-There’s a lot here! Let’s go over it, bit by bit.
+東西有點多！
+讓我們一個一個來。
 
 ```rust,ignore
 use std::io;
 ```
 
-We’ll need to take user input, and then print the result as output. As such, we
-need the `io` library from the standard library. Rust only imports a few things
-by default into every program, [the ‘prelude’][prelude]. If it’s not in the
-prelude, you’ll have to `use` it directly. There is also a second ‘prelude’, the
-[`io` prelude][ioprelude], which serves a similar function: you import it, and it
-imports a number of useful, `io`-related things.
+我們需要取得使用者的輸入，然後印出結果作為輸出。
+因此，我們需要標準函式庫中的 `io` 函式庫。
+Rust 預設只會替所有程式 import 很少的東西，[prelude][prelude]。
+如果它不再其中，你必須直接 `use` 它。
+這邊還有第二種 "prelude"，叫做 [io prelude][ioprelude]，它提供類似的功能：import 它，然後它幫你 import 一些有用且跟 `io` 有關的東西。
 
-[prelude]: ../std/prelude/index.html
-[ioprelude]: ../std/io/prelude/index.html
+[prelude]: https://doc.rust-lang.org/std/prelude/index.html
+[ioprelude]: https://doc.rust-lang.org/std/io/prelude/index.html
 
 ```rust,ignore
 fn main() {
 ```
 
-As you’ve seen before, the `main()` function is the entry point into your
-program. The `fn` syntax declares a new function, the `()`s indicate that
-there are no arguments, and `{` starts the body of the function. Because
-we didn’t include a return type, it’s assumed to be `()`, an empty
-[tuple][tuples].
+像你之前看過的，`main()` 函式是你程式的進入點。
+`fn` 語法宣告一個新函式，`()` 指出沒有傳入的參數，而 `{` 開始函式的內容。
+因為沒有提到回傳型別，所以這裡會是 `()`，一個空的[多元組][tuples] (tuple)。
 
-[tuples]: primitive-types.html#tuples
+[tuples]: primitive-types.html#多元組%20(Tuples)
 
 ```rust,ignore
     println!("Guess the number!");
@@ -127,8 +132,7 @@ we didn’t include a return type, it’s assumed to be `()`, an empty
     println!("Please input your guess.");
 ```
 
-We previously learned that `println!()` is a [macro][macros] that
-prints a [string][strings] to the screen.
+我們之前學到 `println!()` 是個將[字串][strings]印到螢幕的[巨集][macros]。
 
 [macros]: macros.html
 [strings]: strings.html
@@ -137,9 +141,10 @@ prints a [string][strings] to the screen.
     let mut guess = String::new();
 ```
 
-Now we’re getting interesting! There’s a lot going on in this little line.
-The first thing to notice is that this is a [let statement][let], which is
-used to create ‘variable bindings’. They take this form:
+現在遇到有趣的東西了！
+這一行有不少東西。
+第一個，請注意有一個 [let 陳述式][let]，它被用來建立 "變數綁定"。
+它的形式是：
 
 ```rust,ignore
 let foo = bar;
@@ -147,9 +152,12 @@ let foo = bar;
 
 [let]: variable-bindings.html
 
-This will create a new binding named `foo`, and bind it to the value `bar`. In
-many languages, this is called a ‘variable’, but Rust’s variable bindings have
-a few tricks up their sleeves.
+這將會建立一個叫做 `foo` 的新綁定，然後把它綁定在 `bar` 的值上。
+在許多語言中，這叫做 "變數" (variable)，但是 Rust 的變數綁定暗藏玄機。
+
+舉例來說，它預設是[不可變的][immutable] (immutable)。
+這也是為何我們的範例使用 `mut`：它使綁定變成可變的 (mutable)，而非不可變的。
+`let` 不會從左邊取得賦值 (assignment) 的名字，實際上他使用 "[模式][patterns]" (pattern)。
 
 For example, they’re [immutable][immutable] by default. That’s why our example
 uses `mut`: it makes a binding mutable, rather than immutable. `let` doesn’t
@@ -177,7 +185,7 @@ bound to: `String::new()`.
 `String` is a string type, provided by the standard library. A
 [`String`][string] is a growable, UTF-8 encoded bit of text.
 
-[string]: ../std/string/struct.String.html
+[string]: https://doc.rust-lang.org/std/string/struct.String.html
 
 The `::new()` syntax uses `::` because this is an ‘associated function’ of
 a particular type. That is to say, it’s associated with `String` itself,
@@ -209,7 +217,7 @@ have written this line as `std::io::stdin()`.
 This particular function returns a handle to the standard input for your
 terminal. More specifically, a [std::io::Stdin][iostdin].
 
-[iostdin]: ../std/io/struct.Stdin.html
+[iostdin]: https://doc.rust-lang.org/std/io/struct.Stdin.html
 
 The next part will use this handle to get input from the user:
 
@@ -222,7 +230,7 @@ Here, we call the [`read_line()`][read_line] method on our handle.
 particular instance of a type, rather than the type itself. We’re also passing
 one argument to `read_line()`: `&mut guess`.
 
-[read_line]: ../std/io/struct.Stdin.html#method.read_line
+[read_line]: https://doc.rust-lang.org/std/io/struct.Stdin.html#method.read_line
 [method]: method-syntax.html
 
 Remember how we bound `guess` above? We said it was mutable. However,
@@ -266,8 +274,8 @@ String` we pass it. But it also returns a value: in this case, an
 standard library: a generic [`Result`][result], and then specific versions for
 sub-libraries, like `io::Result`.
 
-[ioresult]: ../std/io/type.Result.html
-[result]: ../std/result/enum.Result.html
+[ioresult]: https://doc.rust-lang.org/std/io/type.Result.html
+[result]: https://doc.rust-lang.org/std/result/enum.Result.html
 
 The purpose of these `Result` types is to encode error handling information.
 Values of the `Result` type, like any type, have methods defined on them. In
@@ -276,7 +284,7 @@ it’s called on, and if it isn’t a successful one, [`panic!`][panic]s with a
 message you passed it. A `panic!` like this will cause our program to crash,
 displaying the message.
 
-[expect]: ../std/result/enum.Result.html#method.expect
+[expect]: https://doc.rust-lang.org/std/result/enum.Result.html#method.expect
 [panic]: error-handling.html
 
 If we leave off calling this method, our program will compile, but
@@ -334,7 +342,7 @@ You guessed: 6
 All right! Our first part is done: we can get input from the keyboard,
 and then print it back out.
 
-# Generating a secret number
+## Generating a secret number
 
 Next, we need to generate a secret number. Rust does not yet include random
 number functionality in its standard library. The Rust team does, however,
@@ -531,7 +539,7 @@ You guessed: 5
 
 Great! Next up: comparing our guess to the secret number.
 
-# Comparing guesses
+## Comparing guesses
 
 Now that we’ve got user input, let’s compare our guess to the secret number.
 Here’s our next step, though it doesn’t quite compile yet:
@@ -612,7 +620,7 @@ match guess.cmp(&secret_number) {
 }
 ```
 
-[ordering]: ../std/cmp/enum.Ordering.html
+[ordering]: https://doc.rust-lang.org/std/cmp/enum.Ordering.html
 
 If it’s `Less`, we print `Too small!`, if it’s `Greater`, `Too big!`, and if
 `Equal`, `You win!`. `match` is really useful, and is used often in Rust.
@@ -713,7 +721,7 @@ exact type of number we want. Hence, `let guess: u32`. The colon (`:`) after
 thirty-two bit integer. Rust has [a number of built-in number types][number],
 but we’ve chosen `u32`. It’s a good default choice for a small positive number.
 
-[parse]: ../std/primitive.str.html#method.parse
+[parse]: https://doc.rust-lang.org/std/primitive.str.html#method.parse
 [number]: primitive-types.html#numeric-types
 
 Just like `read_line()`, our call to `parse()` could cause an error. What if
@@ -742,7 +750,7 @@ the number works, as well as guessing a number too small.
 Now we’ve got most of the game working, but we can only make one guess. Let’s
 change that by adding loops!
 
-# Looping
+## Looping
 
 The `loop` keyword gives us an infinite loop. Let’s add that in:
 
@@ -986,7 +994,7 @@ fn main() {
 }
 ```
 
-# Complete!
+## Complete!
 
 At this point, you have successfully built the Guessing Game! Congratulations!
 
