@@ -1,19 +1,19 @@
-% Syntax Index
+# 語法索引
 
-## Keywords
+## 關鍵字
 
 * `as`: primitive casting, or disambiguating the specific trait containing an item.  See [Casting Between Types (`as`)], [Universal Function Call Syntax (Angle-bracket Form)], [Associated Types].
 * `break`: break out of loop.  See [Loops (Ending Iteration Early)].
-* `const`: constant items and constant raw pointers.  See [`const` and `static`], [Raw Pointers].
+* `const`: constant items and constant raw pointers.  See [const and static], [Raw Pointers].
 * `continue`: continue to next loop iteration.  See [Loops (Ending Iteration Early)].
 * `crate`: external crate linkage.  See [Crates and Modules (Importing External Crates)].
-* `else`: fallback for `if` and `if let` constructs.  See [`if`], [`if let`].
+* `else`: fallback for `if` and `if let` constructs.  See [if], [if let].
 * `enum`: defining enumeration.  See [Enums].
 * `extern`: external crate, function, and variable linkage.  See [Crates and Modules (Importing External Crates)], [Foreign Function Interface].
 * `false`: boolean false literal.  See [Primitive Types (Booleans)].
 * `fn`: function definition and function pointer types.  See [Functions].
 * `for`: iterator loop, part of trait `impl` syntax, and higher-ranked lifetime syntax.  See [Loops (`for`)], [Method Syntax].
-* `if`: conditional branching.  See [`if`], [`if let`].
+* `if`: conditional branching.  See [if], [if let].
 * `impl`: inherent and trait implementation blocks.  See [Method Syntax].
 * `in`: part of `for` loop syntax.  See [Loops (`for`)].
 * `let`: variable binding.  See [Variable Bindings].
@@ -37,7 +37,7 @@
 * `where`: type constraint clauses.  See [Traits (`where` clause)].
 * `while`: conditional loop.  See [Loops (`while`)].
 
-## Operators and Symbols
+## 運算子與符號
 
 * `!` (`ident!(…)`, `ident!{…}`, `ident![…]`): denotes macro expansion.  See [Macros].
 * `!` (`!expr`): bitwise or logical complement.  Overloadable (`Not`).
@@ -95,7 +95,7 @@
 * `||` (`expr || expr`): logical or.
 * `_`: "ignored" pattern binding.  See [Patterns (Ignoring bindings)].
 
-## Other Syntax
+## 其他語法
 
 <!-- Various bits of standalone stuff. -->
 
@@ -184,9 +184,9 @@
 * `expr[..]`, `expr[a..]`, `expr[..b]`, `expr[a..b]`: collection indexing pretending to be collection slicing, using `Range`, `RangeFrom`, `RangeTo`, `RangeFull` as the "index".
 
 [`const` and `static` (`static`)]: const-and-static.html#static
-[`const` and `static`]: const-and-static.html
-[`if let`]: if-let.html
-[`if`]: if.html
+[const and static]: const-and-static.html
+[if let]: if-let.html
+[if]: if.html
 [`type` Aliases]: type-aliases.html
 [Associated Types]: associated-types.html
 [Attributes]: attributes.html
