@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="en">
+<html lang="zh-Hant">
     <head>
         <meta charset="UTF-8">
         <title>Rust 程式語言 正體中文版</title>
@@ -9,6 +9,9 @@
 
         <base href="">
 
+		<style>
+            @import url(http://fonts.googleapis.com/earlyaccess/cwtexhei.css);
+        </style>
         <link rel="stylesheet" href="book.css">
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
 
@@ -47,7 +50,7 @@
         </script>
 
         <div id="sidebar" class="sidebar">
-            <ul class="chapter"><li><a href="README.html"><strong>1.</strong> 簡介</a></li><li><a href="getting-started.html"><strong>2.</strong> 準備</a></li><li><a href="guessing-game.html"><strong>3.</strong> 教學: 猜謎遊戲</a></li><li><a href="syntax-and-semantics.html"><strong>4.</strong> 語法及語意</a></li><li><ul class="section"><li><a href="variable-bindings.html"><strong>4.1.</strong> 變數綁定</a></li><li><a href="functions.html"><strong>4.2.</strong> 函式</a></li><li><a href="primitive-types.html"><strong>4.3.</strong> 基本型別</a></li><li><a href="comments.html"><strong>4.4.</strong> 註解</a></li><li><a href="if.html"><strong>4.5.</strong> if</a></li><li><a href="loops.html"><strong>4.6.</strong> 迴圈</a></li><li><a href="ownership.html"><strong>4.7.</strong> 所有權</a></li><li><a href="references-and-borrowing.html"><strong>4.8.</strong> 參照與借用</a></li><li><a href="lifetimes.html"><strong>4.9.</strong> 生命週期</a></li><li><a href="mutability.html"><strong>4.10.</strong> Mutability</a></li><li><a href="structs.html"><strong>4.11.</strong> Structs</a></li><li><a href="enums.html"><strong>4.12.</strong> Enums</a></li><li><a href="match.html"><strong>4.13.</strong> Match</a></li><li><a href="patterns.html"><strong>4.14.</strong> Patterns</a></li><li><a href="method-syntax.html"><strong>4.15.</strong> Method Syntax</a></li><li><a href="vectors.html"><strong>4.16.</strong> Vectors</a></li><li><a href="strings.html"><strong>4.17.</strong> Strings</a></li><li><a href="generics.html"><strong>4.18.</strong> Generics</a></li><li><a href="traits.html"><strong>4.19.</strong> Traits</a></li><li><a href="drop.html"><strong>4.20.</strong> Drop</a></li><li><a href="if-let.html"><strong>4.21.</strong> if let</a></li><li><a href="trait-objects.html"><strong>4.22.</strong> Trait Objects</a></li><li><a href="closures.html"><strong>4.23.</strong> Closures</a></li><li><a href="ufcs.html"><strong>4.24.</strong> Universal Function Call Syntax</a></li><li><a href="crates-and-modules.html"><strong>4.25.</strong> Crates and Modules</a></li><li><a href="const-and-static.html"><strong>4.26.</strong> <code>const</code> and <code>static</code></a></li><li><a href="attributes.html"><strong>4.27.</strong> Attributes</a></li><li><a href="type-aliases.html"><strong>4.28.</strong> <code>type</code> aliases</a></li><li><a href="casting-between-types.html"><strong>4.29.</strong> Casting between types</a></li><li><a href="associated-types.html"><strong>4.30.</strong> Associated Types</a></li><li><a href="unsized-types.html"><strong>4.31.</strong> Unsized Types</a></li><li><a href="operators-and-overloading.html"><strong>4.32.</strong> Operators and Overloading</a></li><li><a href="deref-coercions.html"><strong>4.33.</strong> Deref coercions</a></li><li><a href="macros.html"><strong>4.34.</strong> Macros</a></li><li><a href="raw-pointers.html"><strong>4.35.</strong> Raw Pointers</a></li><li><a href="unsafe.html"><strong>4.36.</strong> <code>unsafe</code></a></li></ul></li><li><a href="effective-rust.html"><strong>5.</strong> Effective Rust</a></li><li><ul class="section"><li><a href="the-stack-and-the-heap.html"><strong>5.1.</strong> The Stack and the Heap</a></li><li><a href="testing.html"><strong>5.2.</strong> Testing</a></li><li><a href="conditional-compilation.html"><strong>5.3.</strong> Conditional Compilation</a></li><li><a href="documentation.html"><strong>5.4.</strong> Documentation</a></li><li><a href="iterators.html"><strong>5.5.</strong> Iterators</a></li><li><a href="concurrency.html"><strong>5.6.</strong> Concurrency</a></li><li><a href="error-handling.html"><strong>5.7.</strong> Error Handling</a></li><li><a href="choosing-your-guarantees.html"><strong>5.8.</strong> Choosing your Guarantees</a></li><li><a href="ffi.html"><strong>5.9.</strong> FFI</a></li><li><a href="borrow-and-asref.html"><strong>5.10.</strong> Borrow and AsRef</a></li><li><a href="release-channels.html"><strong>5.11.</strong> Release Channels</a></li><li><a href="using-rust-without-the-standard-library.html"><strong>5.12.</strong> Using Rust without the standard library</a></li></ul></li><li><a href="nightly-rust.html"><strong>6.</strong> Nightly Rust</a></li><li><ul class="section"><li><a href="compiler-plugins.html"><strong>6.1.</strong> Compiler Plugins</a></li><li><a href="inline-assembly.html"><strong>6.2.</strong> Inline Assembly</a></li><li><a href="no-stdlib.html"><strong>6.3.</strong> No stdlib</a></li><li><a href="intrinsics.html"><strong>6.4.</strong> Intrinsics</a></li><li><a href="lang-items.html"><strong>6.5.</strong> Lang items</a></li><li><a href="advanced-linking.html"><strong>6.6.</strong> Advanced linking</a></li><li><a href="benchmark-tests.html"><strong>6.7.</strong> Benchmark Tests</a></li><li><a href="box-syntax-and-patterns.html"><strong>6.8.</strong> Box Syntax and Patterns</a></li><li><a href="slice-patterns.html"><strong>6.9.</strong> Slice Patterns</a></li><li><a href="associated-constants.html"><strong>6.10.</strong> Associated Constants</a></li><li><a href="custom-allocators.html"><strong>6.11.</strong> Custom Allocators</a></li></ul></li><li><a href="glossary.html"><strong>7.</strong> 詞彙表</a></li><li><a href="syntax-index.html"><strong>8.</strong> 語法索引</a></li><li><a href="bibliography.html"><strong>9.</strong> 參考文獻</a></li><li><a href="MappingTable.html"><strong>10.</strong> 中英文字彙對照表</a></li><li><a href="CONTRIBUTORS.html"><strong>11.</strong> 翻譯貢獻名單</a></li></ul>
+            <ul class="chapter"><li><a href="README.html"><strong>1.</strong> 簡介</a></li><li><a href="getting-started.html"><strong>2.</strong> 準備</a></li><li><a href="guessing-game.html"><strong>3.</strong> 教學: 猜數字遊戲</a></li><li><a href="syntax-and-semantics.html"><strong>4.</strong> 語法及語意</a></li><li><ul class="section"><li><a href="variable-bindings.html"><strong>4.1.</strong> 變數綁定</a></li><li><a href="functions.html"><strong>4.2.</strong> 函式</a></li><li><a href="primitive-types.html"><strong>4.3.</strong> 基本型別</a></li><li><a href="comments.html"><strong>4.4.</strong> 註解</a></li><li><a href="if.html"><strong>4.5.</strong> if</a></li><li><a href="loops.html"><strong>4.6.</strong> 迴圈</a></li><li><a href="ownership.html"><strong>4.7.</strong> 所有權</a></li><li><a href="references-and-borrowing.html"><strong>4.8.</strong> 參照與借用</a></li><li><a href="lifetimes.html"><strong>4.9.</strong> 生命週期</a></li><li><a href="mutability.html"><strong>4.10.</strong> Mutability</a></li><li><a href="structs.html"><strong>4.11.</strong> Structs</a></li><li><a href="enums.html"><strong>4.12.</strong> Enums</a></li><li><a href="match.html"><strong>4.13.</strong> Match</a></li><li><a href="patterns.html"><strong>4.14.</strong> Patterns</a></li><li><a href="method-syntax.html"><strong>4.15.</strong> Method Syntax</a></li><li><a href="vectors.html"><strong>4.16.</strong> Vectors</a></li><li><a href="strings.html"><strong>4.17.</strong> Strings</a></li><li><a href="generics.html"><strong>4.18.</strong> Generics</a></li><li><a href="traits.html"><strong>4.19.</strong> Traits</a></li><li><a href="drop.html"><strong>4.20.</strong> Drop</a></li><li><a href="if-let.html"><strong>4.21.</strong> if let</a></li><li><a href="trait-objects.html"><strong>4.22.</strong> Trait Objects</a></li><li><a href="closures.html"><strong>4.23.</strong> Closures</a></li><li><a href="ufcs.html"><strong>4.24.</strong> Universal Function Call Syntax</a></li><li><a href="crates-and-modules.html"><strong>4.25.</strong> Crates and Modules</a></li><li><a href="const-and-static.html"><strong>4.26.</strong> <code>const</code> and <code>static</code></a></li><li><a href="attributes.html"><strong>4.27.</strong> Attributes</a></li><li><a href="type-aliases.html"><strong>4.28.</strong> <code>type</code> aliases</a></li><li><a href="casting-between-types.html"><strong>4.29.</strong> Casting between types</a></li><li><a href="associated-types.html"><strong>4.30.</strong> Associated Types</a></li><li><a href="unsized-types.html"><strong>4.31.</strong> Unsized Types</a></li><li><a href="operators-and-overloading.html"><strong>4.32.</strong> Operators and Overloading</a></li><li><a href="deref-coercions.html"><strong>4.33.</strong> Deref coercions</a></li><li><a href="macros.html"><strong>4.34.</strong> Macros</a></li><li><a href="raw-pointers.html"><strong>4.35.</strong> Raw Pointers</a></li><li><a href="unsafe.html"><strong>4.36.</strong> <code>unsafe</code></a></li></ul></li><li><a href="effective-rust.html"><strong>5.</strong> Effective Rust</a></li><li><ul class="section"><li><a href="the-stack-and-the-heap.html"><strong>5.1.</strong> The Stack and the Heap</a></li><li><a href="testing.html"><strong>5.2.</strong> Testing</a></li><li><a href="conditional-compilation.html"><strong>5.3.</strong> Conditional Compilation</a></li><li><a href="documentation.html"><strong>5.4.</strong> Documentation</a></li><li><a href="iterators.html"><strong>5.5.</strong> Iterators</a></li><li><a href="concurrency.html"><strong>5.6.</strong> Concurrency</a></li><li><a href="error-handling.html"><strong>5.7.</strong> Error Handling</a></li><li><a href="choosing-your-guarantees.html"><strong>5.8.</strong> Choosing your Guarantees</a></li><li><a href="ffi.html"><strong>5.9.</strong> FFI</a></li><li><a href="borrow-and-asref.html"><strong>5.10.</strong> Borrow and AsRef</a></li><li><a href="release-channels.html"><strong>5.11.</strong> Release Channels</a></li><li><a href="using-rust-without-the-standard-library.html"><strong>5.12.</strong> Using Rust without the standard library</a></li></ul></li><li><a href="nightly-rust.html"><strong>6.</strong> Nightly Rust</a></li><li><ul class="section"><li><a href="compiler-plugins.html"><strong>6.1.</strong> Compiler Plugins</a></li><li><a href="inline-assembly.html"><strong>6.2.</strong> Inline Assembly</a></li><li><a href="no-stdlib.html"><strong>6.3.</strong> No stdlib</a></li><li><a href="intrinsics.html"><strong>6.4.</strong> Intrinsics</a></li><li><a href="lang-items.html"><strong>6.5.</strong> Lang items</a></li><li><a href="advanced-linking.html"><strong>6.6.</strong> Advanced linking</a></li><li><a href="benchmark-tests.html"><strong>6.7.</strong> Benchmark Tests</a></li><li><a href="box-syntax-and-patterns.html"><strong>6.8.</strong> Box Syntax and Patterns</a></li><li><a href="slice-patterns.html"><strong>6.9.</strong> Slice Patterns</a></li><li><a href="associated-constants.html"><strong>6.10.</strong> Associated Constants</a></li><li><a href="custom-allocators.html"><strong>6.11.</strong> Custom Allocators</a></li></ul></li><li><a href="glossary.html"><strong>7.</strong> 詞彙表</a></li><li><a href="syntax-index.html"><strong>8.</strong> 語法索引</a></li><li><a href="bibliography.html"><strong>9.</strong> 參考文獻</a></li><li><a href="MappingTable.html"><strong>10.</strong> 中英文字彙對照表</a></li><li><a href="CONTRIBUTORS.html"><strong>11.</strong> 翻譯貢獻名單</a></li></ul>
         </div>
 
         <div id="page-wrapper" class="page-wrapper">
@@ -465,59 +468,64 @@ authors = [&quot;Your Name &lt;you@example.com&gt;&quot;]
 <blockquote>
 <p><em>commit c3f6122</em></p>
 </blockquote>
-<p>% Guessing Game</p>
-<p>Let’s learn some Rust! For our first project, we’ll implement a classic
-beginner programming problem: the guessing game. Here’s how it works: Our
-program will generate a random integer between one and a hundred. It will then
-prompt us to enter a guess. Upon entering our guess, it will tell us if we’re
-too low or too high. Once we guess correctly, it will congratulate us. Sounds
-good?</p>
-<p>Along the way, we’ll learn a little bit about Rust. The next chapter, ‘Syntax
-and Semantics’, will dive deeper into each part.</p>
-<h1>Set up</h1>
-<p>Let’s set up a new project. Go to your projects directory. Remember how we had
-to create our directory structure and a <code>Cargo.toml</code> for <code>hello_world</code>? Cargo
-has a command that does that for us. Let’s give it a shot:</p>
+<h1>猜數字遊戲</h1>
+<p>讓我們開始學習 Rust 吧！
+作為我們的第一個專案，我們會實作一個經典的新手程式問題：猜數字 (guessing game)。
+它的規則是這樣：我們的程式會產生一個 1 到 100 間的亂數。
+然後提示我們輸入數字猜猜看。
+當我們輸入之後，它會告訴我們太大還是太小。
+當我們猜對了，它會恭喜我們。
+聽起來不錯吧？</p>
+<p>接下來，我們將會學到一些 Rust 的東西。
+下一章 &quot;語法及語意&quot; 將會更深入探究每一部份。</p>
+<h2>準備</h2>
+<p>讓我們準備一個新專案。
+進到你的專案目錄。
+還記得我們如何替 <code>hello_world</code> 建立目錄結構和 <code>Cargo.toml</code> 嗎？
+Cargo 有個能幫我們做好這些事情的指令。
+讓我們試試看：</p>
 <pre><code class="language-bash">$ cd ~/projects
 $ cargo new guessing_game --bin
 $ cd guessing_game
 </code></pre>
-<p>We pass the name of our project to <code>cargo new</code>, and then the <code>--bin</code> flag,
-since we’re making a binary, rather than a library.</p>
-<p>Check out the generated <code>Cargo.toml</code>:</p>
+<p>我們傳遞專案的名字給 <code>cargo new</code>，接著是 <code>--bin</code> 的參數，因為我們要建立執行檔而不是函式庫。</p>
+<p>看看產生的 <code>Cargo.toml</code>：</p>
 <pre><code class="language-toml">[package]
 
 name = &quot;guessing_game&quot;
 version = &quot;0.1.0&quot;
 authors = [&quot;Your Name &lt;you@example.com&gt;&quot;]
 </code></pre>
-<p>Cargo gets this information from your environment. If it’s not correct, go ahead
-and fix that.</p>
-<p>Finally, Cargo generated a ‘Hello, world!’ for us. Check out <code>src/main.rs</code>:</p>
+<p>Cargo 會從你的環境設定中取得這些資訊。
+如果它不正確，就直接修改吧。</p>
+<p>最後，Cargo 幫我們產生了一個 &quot;Hello, world!&quot;。
+看看 <code>src/main.rs</code> 檔案：</p>
 <pre><code class="language-rust">fn main() {
     println!(&quot;Hello, world!&quot;);
 }
 </code></pre>
-<p>Let’s try compiling what Cargo gave us:</p>
+<p>讓我們試著編譯：</p>
 <pre><code class="language-{bash}">$ cargo build
    Compiling guessing_game v0.1.0 (file:///home/you/projects/guessing_game)
 </code></pre>
-<p>Excellent! Open up your <code>src/main.rs</code> again. We’ll be writing all of
-our code in this file.</p>
-<p>Before we move on, let me show you one more Cargo command: <code>run</code>. <code>cargo run</code>
-is kind of like <code>cargo build</code>, but it also then runs the produced executable.
-Try it out:</p>
+<p>太棒了！
+再次打開你的 <code>src/main.rs</code>。
+我們將開始在這個檔案寫入我們所有的程式碼。</p>
+<p>在繼續之前，讓我們告訴你另一個 Cargo 的指令 <code>run</code>。
+<code>cargo run</code> 有點類似 <code>cargo build</code>，但是他同時會執行產生的執行檔。
+試試看：</p>
 <pre><code class="language-bash">$ cargo run
    Compiling guessing_game v0.1.0 (file:///home/you/projects/guessing_game)
      Running `target/debug/guessing_game`
 Hello, world!
 </code></pre>
-<p>Great! The <code>run</code> command comes in handy when you need to rapidly iterate on a
-project. Our game is such a project, we need to quickly test each
-iteration before moving on to the next one.</p>
-<h1>Processing a Guess</h1>
-<p>Let’s get to it! The first thing we need to do for our guessing game is
-allow our player to input a guess. Put this in your <code>src/main.rs</code>:</p>
+<p>很好！
+當我們需要快速地重複執行專案時 <code>run</code> 指令很方便。
+我們的遊戲就是一個專案，我們需要在每個開發循環 (iteration) 做快速的測試之後，才進入下一個開發循環。</p>
+<h2>處理猜測</h2>
+<p>讓我們開始吧！
+我們所要做的第一件事情是讓我們的玩家可以輸入他的猜測。
+把以下內容放入你的 <code>src/main.rs</code>：</p>
 <pre><code class="language-rust,no_run">use std::io;
 
 fn main() {
@@ -533,117 +541,105 @@ fn main() {
     println!(&quot;You guessed: {}&quot;, guess);
 }
 </code></pre>
-<p>There’s a lot here! Let’s go over it, bit by bit.</p>
+<p>東西有點多！
+讓我們一個一個來。</p>
 <pre><code class="language-rust,ignore">use std::io;
 </code></pre>
-<p>We’ll need to take user input, and then print the result as output. As such, we
-need the <code>io</code> library from the standard library. Rust only imports a few things
-by default into every program, <a href="../std/prelude/index.html">the ‘prelude’</a>. If it’s not in the
-prelude, you’ll have to <code>use</code> it directly. There is also a second ‘prelude’, the
-<a href="../std/io/prelude/index.html"><code>io</code> prelude</a>, which serves a similar function: you import it, and it
-imports a number of useful, <code>io</code>-related things.</p>
+<p>我們需要取得使用者的輸入，然後印出結果作為輸出。
+因此，我們需要標準函式庫中的 <code>io</code> 函式庫。
+Rust 預設只會替所有程式 import 很少的東西，<a href="https://doc.rust-lang.org/std/prelude/index.html">prelude</a>。
+如果有東西不在其中，你就必須直接 <code>use</code> 它。
+這邊還有第二種 &quot;prelude&quot;，叫做 <a href="https://doc.rust-lang.org/std/io/prelude/index.html">io prelude</a>，它提供類似的功能：import 它，然後它幫你 import 一些有用且跟 <code>io</code> 有關的東西。</p>
 <pre><code class="language-rust,ignore">fn main() {
 </code></pre>
-<p>As you’ve seen before, the <code>main()</code> function is the entry point into your
-program. The <code>fn</code> syntax declares a new function, the <code>()</code>s indicate that
-there are no arguments, and <code>{</code> starts the body of the function. Because
-we didn’t include a return type, it’s assumed to be <code>()</code>, an empty
-<a href="primitive-types.html#tuples">tuple</a>.</p>
+<p>如你之前所看過的，<code>main()</code> 函式是你程式的進入點。
+<code>fn</code> 語法宣告一個新函式，<code>()</code> 說明這裡沒有要傳入的參數，而 <code>{</code> 後面開始函式的內容。
+因為沒有提到回傳型別，所以這裡會是 <code>()</code>，一個空的<a href="primitive-types.html#%E5%A4%9A%E5%85%83%E7%B5%84%20(Tuples)">多元組</a> (tuple)。</p>
 <pre><code class="language-rust,ignore">    println!(&quot;Guess the number!&quot;);
 
     println!(&quot;Please input your guess.&quot;);
 </code></pre>
-<p>We previously learned that <code>println!()</code> is a <a href="macros.html">macro</a> that
-prints a <a href="strings.html">string</a> to the screen.</p>
+<p>我們之前學到 <code>println!()</code> 是個將<a href="strings.html">字串</a>印到螢幕的<a href="macros.html">巨集</a>。</p>
 <pre><code class="language-rust,ignore">    let mut guess = String::new();
 </code></pre>
-<p>Now we’re getting interesting! There’s a lot going on in this little line.
-The first thing to notice is that this is a <a href="variable-bindings.html">let statement</a>, which is
-used to create ‘variable bindings’. They take this form:</p>
+<p>現在遇到有趣的東西了！
+這一行有不少東西。
+第一個，請注意有一個 <a href="variable-bindings.html">let 陳述式</a>，它被用來建立 &quot;變數綁定&quot;。
+它的形式是：</p>
 <pre><code class="language-rust,ignore">let foo = bar;
 </code></pre>
-<p>This will create a new binding named <code>foo</code>, and bind it to the value <code>bar</code>. In
-many languages, this is called a ‘variable’, but Rust’s variable bindings have
-a few tricks up their sleeves.</p>
-<p>For example, they’re <a href="mutability.html">immutable</a> by default. That’s why our example
-uses <code>mut</code>: it makes a binding mutable, rather than immutable. <code>let</code> doesn’t
-take a name on the left hand side of the assignment, it actually accepts a
-‘<a href="patterns.html">pattern</a>’. We’ll use patterns later. It’s easy enough
-to use for now:</p>
+<p>這將會建立一個叫做 <code>foo</code> 的新綁定，然後把它綁定在 <code>bar</code> 的值上。
+在許多語言中，這叫做 &quot;變數&quot; (variable)，但是 Rust 的變數綁定暗藏玄機。</p>
+<p>舉例來說，它預設是<a href="mutability.html">不可變的</a> (immutable)。
+這也是為何我們的範例使用 <code>mut</code>：它使綁定變成可變的 (mutable)，而不再是不可變的。
+<code>let</code> 不會從左邊取得賦值 (assignment) 的名字，實際上他使用 &quot;<a href="patterns.html">模式</a>&quot; (pattern)。
+我們在後面會使用模式。
+現在它已經夠讓我們簡單使用了：</p>
 <pre><code class="language-rust">let foo = 5; // immutable.
 let mut bar = 5; // mutable
 </code></pre>
-<p>Oh, and <code>//</code> will start a comment, until the end of the line. Rust ignores
-everything in <a href="comments.html">comments</a>.</p>
-<p>So now we know that <code>let mut guess</code> will introduce a mutable binding named
-<code>guess</code>, but we have to look at the other side of the <code>=</code> for what it’s
-bound to: <code>String::new()</code>.</p>
-<p><code>String</code> is a string type, provided by the standard library. A
-[<code>String</code>]<a href="../std/string/struct.String.html">string</a> is a growable, UTF-8 encoded bit of text.</p>
-<p>The <code>::new()</code> syntax uses <code>::</code> because this is an ‘associated function’ of
-a particular type. That is to say, it’s associated with <code>String</code> itself,
-rather than a particular instance of a <code>String</code>. Some languages call this a
-‘static method’.</p>
-<p>This function is named <code>new()</code>, because it creates a new, empty <code>String</code>.
-You’ll find a <code>new()</code> function on many types, as it’s a common name for making
-a new value of some kind.</p>
-<p>Let’s move forward:</p>
+<p>噢，還有 <code>//</code> 會開始一段註解，直到行末。
+Rust 會忽略所有<a href="comments.html">註解</a> (comment) 內的東西。</p>
+<p>所以現在我們知道 <code>let mut guess</code> 會宣告一個名為 <code>guess</code> 的可變變數綁定，但我們仍必須看看 <code>=</code> 另一邊綁定的東西：<code>String::new()</code>。</p>
+<p><code>String</code> 是一個字串型別，由標準函式庫提供。
+一個<a href="https://doc.rust-lang.org/std/string/struct.String.html">字串</a>是一個以 UTF-8 編碼的可變長度的文字。</p>
+<p>而 <code>::new()</code> 語法使用 <code>::</code> 是因為它是一個特定型別的 &quot;關聯函式&quot; (associated function)。
+也就是說，它被關聯到 <code>String</code> 本身，而非特定的某個 <code>String</code> 的實體 (instance)。
+一些語言稱之為 &quot;靜態方法&quot; (static method)。</p>
+<p>此函式被稱為 <code>new()</code>，因為它建立一個新的、空的 <code>String</code>。
+你可以在其他許多型別找到 <code>new()</code> 函式，因為它是建立某一些型別新值的通用名稱。</p>
+<p>讓我們繼續下去：</p>
 <pre><code class="language-rust,ignore">    io::stdin().read_line(&amp;mut guess)
         .expect(&quot;Failed to read line&quot;);
 </code></pre>
-<p>That’s a lot more! Let’s go bit-by-bit. The first line has two parts. Here’s
-the first:</p>
+<p>稍微有點多了！
+一步一步來。
+第一行有兩個部分。
+第一部分是：</p>
 <pre><code class="language-rust,ignore">io::stdin()
 </code></pre>
-<p>Remember how we <code>use</code>d <code>std::io</code> on the first line of the program? We’re now
-calling an associated function on it. If we didn’t <code>use std::io</code>, we could
-have written this line as <code>std::io::stdin()</code>.</p>
-<p>This particular function returns a handle to the standard input for your
-terminal. More specifically, a <a href="../std/io/struct.Stdin.html">std::io::Stdin</a>.</p>
-<p>The next part will use this handle to get input from the user:</p>
+<p>還記得在程式第一行我們怎麼 <code>use</code> 那個 <code>std::io</code> 的嗎？
+我們現在正在呼叫它的關聯函式。
+如果我們沒有 <code>use std::io</code>，我們必須把這行改成 <code>std::io::stdin()</code>。</p>
+<p>這個特殊的函式會回傳一個你的終端機標準輸入的控制代碼 (handle)。
+更具體的內容，可以參考 <a href="https://doc.rust-lang.org/std/io/struct.Stdin.html">std::io::Stdin</a>。</p>
+<p>下一部份將會使用這個控制代碼 (handle) 來取得使用者的輸入：</p>
 <pre><code class="language-rust,ignore">.read_line(&amp;mut guess)
 </code></pre>
-<p>Here, we call the [<code>read_line()</code>]<a href="../std/io/struct.Stdin.html#method.read_line">read_line</a> method on our handle.
-<a href="method-syntax.html">Methods</a> are like associated functions, but are only available on a
-particular instance of a type, rather than the type itself. We’re also passing
-one argument to <code>read_line()</code>: <code>&amp;mut guess</code>.</p>
-<p>Remember how we bound <code>guess</code> above? We said it was mutable. However,
-<code>read_line</code> doesn’t take a <code>String</code> as an argument: it takes a <code>&amp;mut String</code>.
-Rust has a feature called ‘<a href="references-and-borrowing.html">references</a>’, which allows you to have
-multiple references to one piece of data, which can reduce copying. References
-are a complex feature, as one of Rust’s major selling points is how safe and
-easy it is to use references. We don’t need to know a lot of those details to
-finish our program right now, though. For now, all we need to know is that
-like <code>let</code> bindings, references are immutable by default. Hence, we need to
-write <code>&amp;mut guess</code>, rather than <code>&amp;guess</code>.</p>
-<p>Why does <code>read_line()</code> take a mutable reference to a string? Its job is
-to take what the user types into standard input, and place that into a
-string. So it takes that string as an argument, and in order to add
-the input, it needs to be mutable.</p>
-<p>But we’re not quite done with this line of code, though. While it’s
-a single line of text, it’s only the first part of the single logical line of
-code:</p>
+<p>此處，我們呼叫控制代碼 (handle) 的 <a href="https://doc.rust-lang.org/std/io/struct.Stdin.html#method.read_line">read_line()</a> 方法。
+<a href="method-syntax.html">方法</a> (method) 跟關聯函式很類似，但是只能在特定型別的實體 (instance) 中取用，而不是從型別本身取用。
+我們也會傳遞一個參數給 <code>read_line()</code>：<code>&amp;mut guess</code>。</p>
+<p>還記得前面我們如何綁定 <code>guess</code> 嗎？
+我們提到它是可變的。
+然而，<code>read_line</code> 不接受把 <code>String</code> 當作參數：它只接受 <code>&amp;mut String</code>。
+Rust 有一個叫做<a href="references-and-borrowing.html">參照</a> (references) 的功能，它允許你有多個參照指向同一塊資料，這樣可以降低複製的動作。
+參照是個複雜的功能，Rust 的主要賣點就是能安全、簡單的使用參照。
+現在我們不需要知道太多細節。
+我們只需知道參照與 <code>let</code> 綁定類似，它預設是不可變的。
+因此，我們必須寫成 <code>&amp;mut guess</code> 而不是 <code>&amp;guess</code>。</p>
+<p>為何 <code>read_line()</code> 需要字串的可變參照？
+因為它的工作是從標準輸入取得使用者的輸入，然後放進字串中。
+所以它將字串當作參數，用來放入輸入值，所以它也必須是可變的。</p>
+<p>但這行程式碼還沒結束。
+雖然它只有一行，但它只是程式碼的單一邏輯的第一部份。</p>
 <pre><code class="language-rust,ignore">        .expect(&quot;Failed to read line&quot;);
 </code></pre>
-<p>When you call a method with the <code>.foo()</code> syntax, you may introduce a newline
-and other whitespace. This helps you split up long lines. We <em>could</em> have
-done:</p>
+<p>當我們使用 <code>.foo()</code> 語法呼叫方法時，你能以空白或是開新的一行當開頭。
+這可以幫助你把太長的一行程式碼切斷。
+我們當然 <em>可以</em> 這樣做：</p>
 <pre><code class="language-rust,ignore">    io::stdin().read_line(&amp;mut guess).expect(&quot;failed to read line&quot;);
 </code></pre>
-<p>But that gets hard to read. So we’ve split it up, two lines for two method
-calls. We already talked about <code>read_line()</code>, but what about <code>expect()</code>? Well,
-we already mentioned that <code>read_line()</code> puts what the user types into the <code>&amp;mut String</code> we pass it. But it also returns a value: in this case, an
-[<code>io::Result</code>]<a href="../std/io/type.Result.html">ioresult</a>. Rust has a number of types named <code>Result</code> in its
-standard library: a generic [<code>Result</code>]<a href="../std/result/enum.Result.html">result</a>, and then specific versions for
-sub-libraries, like <code>io::Result</code>.</p>
-<p>The purpose of these <code>Result</code> types is to encode error handling information.
-Values of the <code>Result</code> type, like any type, have methods defined on them. In
-this case, <code>io::Result</code> has an <a href="../std/result/enum.Result.html#method.expect"><code>expect()</code> method</a> that takes a value
-it’s called on, and if it isn’t a successful one, [<code>panic!</code>]<a href="error-handling.html">panic</a>s with a
-message you passed it. A <code>panic!</code> like this will cause our program to crash,
-displaying the message.</p>
-<p>If we leave off calling this method, our program will compile, but
-we’ll get a warning:</p>
+<p>但是這樣很難閱讀。
+所以我們把它根據兩個方法的呼叫來切成兩行。
+我們已經說過 <code>read_line()</code> 了，但 <code>expect()</code> 呢？
+恩，我們已經提過 <code>read_line()</code> 會把使用者的輸入放入 <code>&amp;mut String</code> 參數中。
+但它也會回傳一個值：在這裡是一個 <a href="https://doc.rust-lang.org/std/io/type.Result.html">io::Result</a>。
+Rust 的標準函式庫中有許多叫做 <code>Result</code> 的型別：一般的 <a href="https://doc.rust-lang.org/std/result/enum.Result.html">Result</a> 與子函式庫的特別版本，像 <code>io::Result</code>。</p>
+<p>這種 <code>Result</code> 型別的目的是把錯誤處理訊息編碼。
+<code>Result</code> 型別的值與其他任何型別一樣，有定義它自己的方法。
+此處的 <code>io::Result</code> 有 <a href="https://doc.rust-lang.org/std/result/enum.Result.html#method.expect">expect() 方法</a>，可以用來取得呼叫它的結果值，如果呼叫它的結果不是成功的值，就會 <a href="error-handling.html">panic!</a> 且帶著你傳給它的訊息。
+這樣的 <code>panic!</code> 會讓你的程式當機，並顯示出你傳給它的訊息。</p>
+<p>如果我們去掉這個方法的呼叫，我們的程式仍可以編譯成功，但是我們會看到警告訊息：</p>
 <pre><code class="language-bash">$ cargo build
    Compiling guessing_game v0.1.0 (file:///home/you/projects/guessing_game)
 src/main.rs:10:5: 10:39 warning: unused result which must be used,
@@ -651,27 +647,27 @@ src/main.rs:10:5: 10:39 warning: unused result which must be used,
 src/main.rs:10     io::stdin().read_line(&amp;mut guess);
                    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 </code></pre>
-<p>Rust warns us that we haven’t used the <code>Result</code> value. This warning comes from
-a special annotation that <code>io::Result</code> has. Rust is trying to tell you that
-you haven’t handled a possible error. The right way to suppress the error is
-to actually write error handling. Luckily, if we want to crash if there’s
-a problem, we can use these two little methods. If we can recover from the
-error somehow, we’d do something else, but we’ll save that for a future
-project.</p>
-<p>There’s only one line of this first example left:</p>
+<p>Rust 警告我們沒有使用 <code>Result</code> 的值。
+這個警告來自 <code>io::Result</code> 的特殊註釋 (annotation)。
+Rust 會試圖告訴你你沒有處理可能的錯誤。
+處理錯誤的正確方式應該是撰寫錯誤處理的程式碼。
+幸運的是，如果我們只想要一有問題就當機，我們可以直接使用這兩個方法。
+而如果我們想從錯誤中恢復正常，我們必須做一些其他的事，但我們留在之後的專案再說。</p>
+<p>這個範例現在只剩下一行：</p>
 <pre><code class="language-rust,ignore">    println!(&quot;You guessed: {}&quot;, guess);
 }
 </code></pre>
-<p>This prints out the string we saved our input in. The <code>{}</code>s are a placeholder,
-and so we pass it <code>guess</code> as an argument. If we had multiple <code>{}</code>s, we would
-pass multiple arguments:</p>
+<p>這行印出我們所存的輸入值。
+<code>{}</code> 是個 placeholder，因此我們傳遞 <code>guess</code> 作為參數。
+如果我們有多個 <code>{}</code>，我們需要傳遞多個參數：</p>
 <pre><code class="language-rust">let x = 5;
 let y = 10;
 
 println!(&quot;x and y: {} and {}&quot;, x, y);
 </code></pre>
-<p>Easy.</p>
-<p>Anyway, that’s the tour. We can run what we have with <code>cargo run</code>:</p>
+<p>簡單吧。</p>
+<p>總之，這就像個導覽。
+我們可以用 <code>cargo run</code> 執行我們的專案：</p>
 <pre><code class="language-bash">$ cargo run
    Compiling guessing_game v0.1.0 (file:///home/you/projects/guessing_game)
      Running `target/debug/guessing_game`
@@ -680,36 +676,31 @@ Please input your guess.
 6
 You guessed: 6
 </code></pre>
-<p>All right! Our first part is done: we can get input from the keyboard,
-and then print it back out.</p>
-<h1>Generating a secret number</h1>
-<p>Next, we need to generate a secret number. Rust does not yet include random
-number functionality in its standard library. The Rust team does, however,
-provide a <a href="https://crates.io/crates/rand"><code>rand</code> crate</a>. A ‘crate’ is a package of Rust code.
-We’ve been building a ‘binary crate’, which is an executable. <code>rand</code> is a
-‘library crate’, which contains code that’s intended to be used with other
-programs.</p>
-<p>Using external crates is where Cargo really shines. Before we can write
-the code using <code>rand</code>, we need to modify our <code>Cargo.toml</code>. Open it up, and
-add these few lines at the bottom:</p>
+<p>好吧！我們的第一部份完成了：我們可以從鍵盤取得輸入值，然後印出來。</p>
+<h2>產生祕密數字</h2>
+<p>接著，我們需要產生一個祕密數字。
+Rust 的標準函式庫還沒有包含亂數功能。
+但是 Rust 團隊提供了 <a href="https://crates.io/crates/rand">rand crate</a>。
+這個 &quot;crate&quot; 是一包 Rust 程式碼。
+我們會建置可以執行的 &quot;binary crate&quot;。
+<code>rand</code> 是個 &quot;library crate&quot;，包含了可以被其他程式使用的程式碼。</p>
+<p>使用外部的 crates 是 Cargo 的亮點。
+在我們使用 <code>rand</code> 撰寫程式碼前，我們要修改 <code>Cargo.toml</code>。
+打開它，然後加入以下幾行：</p>
 <pre><code class="language-toml">[dependencies]
 
 rand=&quot;0.3.0&quot;
 </code></pre>
-<p>The <code>[dependencies]</code> section of <code>Cargo.toml</code> is like the <code>[package]</code> section:
-everything that follows it is part of it, until the next section starts.
-Cargo uses the dependencies section to know what dependencies on external
-crates you have, and what versions you require. In this case, we’ve specified version <code>0.3.0</code>,
-which Cargo understands to be any release that’s compatible with this specific version.
-Cargo understands <a href="http://semver.org">Semantic Versioning</a>, which is a standard for writing version
-numbers. A bare number like above is actually shorthand for <code>^0.3.0</code>,
-meaning &quot;anything compatible with 0.3.0&quot;.
-If we wanted to use only <code>0.3.0</code> exactly, we could say <code>rand=&quot;=0.3.0&quot;</code>
-(note the two equal signs).
-And if we wanted to use the latest version we could use <code>*</code>.
-We could also use a range of versions.
-<a href="http://doc.crates.io/crates-io.html">Cargo’s documentation</a> contains more details.</p>
-<p>Now, without changing any of our code, let’s build our project:</p>
+<p><code>Cargo.toml</code> 的 <code>[dependencies]</code> 一節跟 <code>[package]</code> 類似：它後面的所有東西都是它的一部份，直到下一節的開始為止。
+Cargo 使用 dependencies 來瞭解你需要的外部 crates 以及版本。
+在這個例子中，我們特別指定版本 <code>0.3.0</code>，所以 Cargo 瞭解知道任何發行版都要跟這個版本相容。
+Cargo 能瞭解 <a href="http://semver.org">Semantic Versioning</a> 的版本編碼方式，這是撰寫版本號碼的一種標準。
+上面的版號實際上可以寫成 <code>^0.3.0</code>，代表 &quot;所有跟 0.3.0 相容的版本&quot;。
+如果我們想要確實的只用 <code>0.3.0</code>，我們可以寫成 <code>rand=&quot;=0.3.0&quot;</code>（請注意兩個等號）。
+而當我們想要使用最新版，我們可以使用 <code>*</code>。
+我們也可以使用一個範圍內的版本。
+<a href="http://doc.crates.io/crates-io.html">Cargo 的說明文件</a> 有更多細節。</p>
+<p>現在，不修改任何我們的程式碼，讓我們建置我們的專案：</p>
 <pre><code class="language-bash">$ cargo build
     Updating registry `https://github.com/rust-lang/crates.io-index`
  Downloading rand v0.3.8
@@ -718,52 +709,41 @@ We could also use a range of versions.
    Compiling rand v0.3.8
    Compiling guessing_game v0.1.0 (file:///home/you/projects/guessing_game)
 </code></pre>
-<p>(You may see different versions, of course.)</p>
-<p>Lots of new output! Now that we have an external dependency, Cargo fetches the
-latest versions of everything from the registry, which is a copy of data from
-<a href="https://crates.io">Crates.io</a>. Crates.io is where people in the Rust ecosystem
-post their open source Rust projects for others to use.</p>
-<p>After updating the registry, Cargo checks our <code>[dependencies]</code> and downloads
-any we don’t have yet. In this case, while we only said we wanted to depend on
-<code>rand</code>, we’ve also grabbed a copy of <code>libc</code>. This is because <code>rand</code> depends on
-<code>libc</code> to work. After downloading them, it compiles them, and then compiles
-our project.</p>
-<p>If we run <code>cargo build</code> again, we’ll get different output:</p>
+<p>（當然，你可能會看到不同版本。）</p>
+<p>有很多新的輸出資訊！
+現在我們有了外部的 dependency，Cargo 會從註冊表取得最新版，這個註冊表是 <a href="https://crates.io">Crates.io</a> 的複本。
+Crates.io 是 Rust 生態系中，讓人們發表他們的 Rust 開放原始碼專案給其他人使用的地方。</p>
+<p>更新了註冊表之後，Cargo 會檢查我們的 <code>[dependencies]</code> 然後下載任何我們還沒有的東西。
+在這邊的例子，雖然說我們只說想要相依 <code>rand</code>，但我們仍需要取得 <code>libc</code> 的複本。
+這是因為 <code>rand</code> 相依於 <code>libc</code> 才能運作。
+下載它們之後，Cargo 會編譯他們，然後編譯我們的專案。</p>
+<p>如果我們再次執行 <code>cargo build</code>，我們將會看到不同的輸出結果：</p>
 <pre><code class="language-bash">$ cargo build
 </code></pre>
-<p>That’s right, no output! Cargo knows that our project has been built, and that
-all of its dependencies are built, and so there’s no reason to do all that
-stuff. With nothing to do, it simply exits. If we open up <code>src/main.rs</code> again,
-make a trivial change, and then save it again, we’ll only see one line:</p>
+<p>沒錯，沒有輸出！
+Cargo 知道我們的專案已經建置好了，而且所有的 dependencies 也建置好了，所以他沒有任何理由再做一遍。
+因為沒事情做，它就簡單地結束了。
+如果我們再次開啟 <code>src/main.rs</code>，做一些簡單的修改，然後存檔再試一次，我們只會看到一行：</p>
 <pre><code class="language-bash">$ cargo build
    Compiling guessing_game v0.1.0 (file:///home/you/projects/guessing_game)
 </code></pre>
-<p>So, we told Cargo we wanted any <code>0.3.x</code> version of <code>rand</code>, and so it fetched the latest
-version at the time this was written, <code>v0.3.8</code>. But what happens when next
-week, version <code>v0.3.9</code> comes out, with an important bugfix? While getting
-bugfixes is important, what if <code>0.3.9</code> contains a regression that breaks our
-code?</p>
-<p>The answer to this problem is the <code>Cargo.lock</code> file you’ll now find in your
-project directory. When you build your project for the first time, Cargo
-figures out all of the versions that fit your criteria, and then writes them
-to the <code>Cargo.lock</code> file. When you build your project in the future, Cargo
-will see that the <code>Cargo.lock</code> file exists, and then use that specific version
-rather than do all the work of figuring out versions again. This lets you
-have a repeatable build automatically. In other words, we’ll stay at <code>0.3.8</code>
-until we explicitly upgrade, and so will anyone who we share our code with,
-thanks to the lock file.</p>
-<p>What about when we <em>do</em> want to use <code>v0.3.9</code>? Cargo has another command,
-<code>update</code>, which says ‘ignore the lock, figure out all the latest versions that
-fit what we’ve specified. If that works, write those versions out to the lock
-file’. But, by default, Cargo will only look for versions larger than <code>0.3.0</code>
-and smaller than <code>0.4.0</code>. If we want to move to <code>0.4.x</code>, we’d have to update
-the <code>Cargo.toml</code> directly. When we do, the next time we <code>cargo build</code>, Cargo
-will update the index and re-evaluate our <code>rand</code> requirements.</p>
-<p>There’s a lot more to say about <a href="http://doc.crates.io">Cargo</a> and <a href="http://doc.crates.io/crates-io.html">its
-ecosystem</a>, but for now, that’s all we need to know. Cargo makes
-it really easy to re-use libraries, and so Rustaceans tend to write smaller
-projects which are assembled out of a number of sub-packages.</p>
-<p>Let’s get on to actually <em>using</em> <code>rand</code>. Here’s our next step:</p>
+<p>所以，我們告訴 Cargo 想要任何 <code>rand</code> 的 <code>0.3.x</code> 版，所以它抓了當下的最新版 <code>v0.3.8</code>。
+但如果下週，一個帶有重要問題修正的 <code>v0.3.9</code> 版出現之後會發生什麼事情？
+雖然取得問題的修正很重要，但是如果 <code>0.3.9</code> 包含了會弄壞我們程式碼的 regression 呢？</p>
+<p>這個問題的答案是在專案中能找到的 <code>Cargo.lock</code> 檔。
+當你第一次建置專案時，Cargo 會檢查所有符合你的條件的版本，然後寫入 <code>Cargo.lock</code> 檔。
+未來當你再次建置你的專案時，Cargo 會視 <code>Cargo.lock</code> 檔案是否已經存在，然後使用裡面的特定版本，而非再次尋找所有版本。
+這讓你有一個可以重複建置的環境。
+也就是說，我們會停在 <code>0.3.8</code> 直到我們確定要升級，這也對任何我們與之分享程式碼的人有效，感謝 lock 檔。</p>
+<p>當我們 <em>真的</em> 想要用 <code>0.3.9</code> 時怎麼辦？
+Cargo 有另一個指令 <code>update</code>，代表著 &quot;忽略 lock 檔，尋找所有符合我們指定條件的最新版。如果運行成功，把這些版本寫入 lock 檔&quot;。
+但是，預設 Cargo 只會尋找大於 <code>0.3.0</code> 及小於 <code>0.4.0</code> 的版本。
+如果我們想要換到 <code>0.4.x</code>，我們必須直接更新 <code>Cargo.toml</code>。
+當我們這樣做，下次 <code>cargo build</code> 時，Cargo 將會更新索引並重新評估 <code>rand</code> 的需求。</p>
+<p>關於 <a href="http://doc.crates.io">Cargo</a> 和其<a href="http://doc.crates.io/crates-io.html">生態系</a>還有很多可以說，但是現在，這就是我們所需知道的全部了。
+Cargo 讓重新使用函式庫變得很簡單，讓 Rustaceans 易於寫出由許多子套件 (sub-packages) 組成的小專案。</p>
+<p>接著讓我們真正的 <em>用用看</em> <code>rand</code> 吧。
+這是我們的下一步：</p>
 <pre><code class="language-rust,ignore">extern crate rand;
 
 use std::io;
@@ -786,32 +766,28 @@ fn main() {
     println!(&quot;You guessed: {}&quot;, guess);
 }
 </code></pre>
-<p>The first thing we’ve done is change the first line. It now says
-<code>extern crate rand</code>. Because we declared <code>rand</code> in our <code>[dependencies]</code>, we
-can use <code>extern crate</code> to let Rust know we’ll be making use of it. This also
-does the equivalent of a <code>use rand;</code> as well, so we can make use of anything
-in the <code>rand</code> crate by prefixing it with <code>rand::</code>.</p>
-<p>Next, we added another <code>use</code> line: <code>use rand::Rng</code>. We’re going to use a
-method in a moment, and it requires that <code>Rng</code> be in scope to work. The basic
-idea is this: methods are defined on something called ‘traits’, and for the
-method to work, it needs the trait to be in scope. For more about the
-details, read the <a href="traits.html">traits</a> section.</p>
-<p>There are two other lines we added, in the middle:</p>
+<p>第一步是修改第一行。
+現在他是 <code>extern crate rand</code>。
+因為在 <code>[dependencies]</code> 中我們宣告了 <code>rand</code>，我們可以使用 <code>extern crate</code> 讓 Rust 知道我們要使用它。
+這也等同於 <code>use rand;</code>，所以我們可以透過 <code>rand::</code> 前綴詞來使用任何 <code>rand</code> crate 內的東西。</p>
+<p>接著，我們加入另一行 <code>use</code>：<code>use rand::Rng</code>。
+我們即將使用一個方法 (method)，這個方法需要 <code>Rng</code> 在有效範圍 (scope) 中才能運作。
+基本的概念是：方法被定義在某些被稱為 &quot;traits&quot; 的東西上，trait 必須要在有效範圍中，方法才能運作。
+更多細節可以閱讀 <a href="traits.html">traits</a> 一節。</p>
+<p>我們還加入了其他兩行在中間：</p>
 <pre><code class="language-rust,ignore">    let secret_number = rand::thread_rng().gen_range(1, 101);
 
     println!(&quot;The secret number is: {}&quot;, secret_number);
 </code></pre>
-<p>We use the <code>rand::thread_rng()</code> function to get a copy of the random number
-generator, which is local to the particular <a href="concurrency.html">thread</a> of execution
-we’re in. Because we <code>use rand::Rng</code>’d above, it has a <code>gen_range()</code> method
-available. This method takes two arguments, and generates a number between
-them. It’s inclusive on the lower bound, but exclusive on the upper bound,
-so we need <code>1</code> and <code>101</code> to get a number ranging from one to a hundred.</p>
-<p>The second line prints out the secret number. This is useful while
-we’re developing our program, so we can easily test it out. But we’ll be
-deleting it for the final version. It’s not much of a game if it prints out
-the answer when you start it up!</p>
-<p>Try running our new program a few times:</p>
+<p>我們使用 <code>rand::thread_rng()</code> 函式去取得隨機數字產生器的複本，這個複本位於我們正在執行的特定<a href="concurrency.html">執行緒</a> (thread) 之上。
+因為我們前面已經 <code>use rand::Rng</code>，所以 <code>gen_rang()</code> 方法可以使用。
+這個方法需要兩個參數，然後產生一個在兩個參數之間的數字。
+包含了下限值，但不包含上限值，所以我們需要 <code>1</code> 和 <code>101</code> 去取得 1 到 100 範圍內的數字。</p>
+<p>第二行印出祕密數字。
+當我們正在開發程式時這很有用，讓我們可以簡單的測試一下。
+不過我們在最後會刪掉它。
+沒什麼遊戲會在一開始就印出答案的！</p>
+<p>試著執行我們的新程式幾次：</p>
 <pre><code class="language-bash">$ cargo run
    Compiling guessing_game v0.1.0 (file:///home/you/projects/guessing_game)
      Running `target/debug/guessing_game`
@@ -828,10 +804,11 @@ Please input your guess.
 5
 You guessed: 5
 </code></pre>
-<p>Great! Next up: comparing our guess to the secret number.</p>
-<h1>Comparing guesses</h1>
-<p>Now that we’ve got user input, let’s compare our guess to the secret number.
-Here’s our next step, though it doesn’t quite compile yet:</p>
+<p>太棒了！
+接著：就要開始比較我們的猜測值和祕密數字。</p>
+<h2>比較猜測值</h2>
+<p>現在，我們拿到了使用者的輸入值，讓我們來比較猜測值和祕密數字。
+以下是我們的下一步，雖然這還沒編譯過：</p>
 <pre><code class="language-rust,ignore">extern crate rand;
 
 use std::io;
@@ -861,41 +838,40 @@ fn main() {
     }
 }
 </code></pre>
-<p>A few new bits here. The first is another <code>use</code>. We bring a type called
-<code>std::cmp::Ordering</code> into scope. Then, five new lines at the bottom that use
-it:</p>
+<p>這裡有些新東西。
+首先是另一個 <code>use</code>。
+我們用了稱為 <code>std::cmp::Ordering</code> 的型別到有效範圍中。
+然後底下有五行程式碼用到它：</p>
 <pre><code class="language-rust,ignore">match guess.cmp(&amp;secret_number) {
     Ordering::Less    =&gt; println!(&quot;Too small!&quot;),
     Ordering::Greater =&gt; println!(&quot;Too big!&quot;),
     Ordering::Equal   =&gt; println!(&quot;You win!&quot;),
 }
 </code></pre>
-<p>The <code>cmp()</code> method can be called on anything that can be compared, and it
-takes a reference to the thing you want to compare it to. It returns the
-<code>Ordering</code> type we <code>use</code>d earlier. We use a [<code>match</code>]<a href="match.html">match</a> statement to
-determine exactly what kind of <code>Ordering</code> it is. <code>Ordering</code> is an
-[<code>enum</code>]<a href="enums.html">enum</a>, short for ‘enumeration’, which looks like this:</p>
+<p><code>cmp()</code> 方法可以被任何能用來比較的東西呼叫，且它會要求傳入你想比較的東西的參照。
+它回傳我們前面 <code>use</code> 的 <code>Ordering</code> 型別。
+我們使用 <a href="match.html">match</a> 陳述去判定它實際上是哪種 <code>Ordering</code>。
+<code>Ordering</code> 是個 <a href="enums.html">enum</a>，枚舉 (enumeration) 的簡寫，看起來會有點像這樣：</p>
 <pre><code class="language-rust">enum Foo {
     Bar,
     Baz,
 }
 </code></pre>
-<p>With this definition, anything of type <code>Foo</code> can be either a
-<code>Foo::Bar</code> or a <code>Foo::Baz</code>. We use the <code>::</code> to indicate the
-namespace for a particular <code>enum</code> variant.</p>
-<p>The [<code>Ordering</code>]<a href="../std/cmp/enum.Ordering.html">ordering</a> <code>enum</code> has three possible variants: <code>Less</code>, <code>Equal</code>,
-and <code>Greater</code>. The <code>match</code> statement takes a value of a type, and lets you
-create an ‘arm’ for each possible value. Since we have three types of
-<code>Ordering</code>, we have three arms:</p>
+<p>這裡定義了任何 <code>Foo</code> 不是 <code>Foo::Bar</code> 就是 <code>Foo::Baz</code>。
+我們使用 <code>::</code> 來表示特定 <code>enum</code> 變數的命名空間 (namespace)。</p>
+<p><a href="https://doc.rust-lang.org/std/cmp/enum.Ordering.html">Ordering</a> <code>enum</code> 有三個可能的變數：<code>Less</code>、<code>Equal</code>、及 <code>Greater</code>。
+<code>match</code> 陳述式取得型別的值，讓你能為每個可能的值建立一條執行的分支。
+因為 <code>Ordering</code> 有三種型別，我們就有三個分支：</p>
 <pre><code class="language-rust,ignore">match guess.cmp(&amp;secret_number) {
     Ordering::Less    =&gt; println!(&quot;Too small!&quot;),
     Ordering::Greater =&gt; println!(&quot;Too big!&quot;),
     Ordering::Equal   =&gt; println!(&quot;You win!&quot;),
 }
 </code></pre>
-<p>If it’s <code>Less</code>, we print <code>Too small!</code>, if it’s <code>Greater</code>, <code>Too big!</code>, and if
-<code>Equal</code>, <code>You win!</code>. <code>match</code> is really useful, and is used often in Rust.</p>
-<p>I did mention that this won’t quite compile yet, though. Let’s try it:</p>
+<p>如果它是 <code>Less</code>，我們印出 <code>Too small!</code>，如果是 <code>Greater</code> 則印出 <code>Too big!</code>，如果是 <code>Equal</code> 就印出 <code>You win!</code>。
+<code>match</code> 非常有用，而且在 Rust 中常會用到。</p>
+<p>雖然我確實提到過我們還不能編譯成功。
+讓我們還是試試看：</p>
 <pre><code class="language-bash">$ cargo build
    Compiling guessing_game v0.1.0 (file:///home/you/projects/guessing_game)
 src/main.rs:28:21: 28:35 error: mismatched types:
@@ -908,18 +884,18 @@ src/main.rs:28     match guess.cmp(&amp;secret_number) {
 error: aborting due to previous error
 Could not compile `guessing_game`.
 </code></pre>
-<p>Whew! This is a big error. The core of it is that we have ‘mismatched types’.
-Rust has a strong, static type system. However, it also has type inference.
-When we wrote <code>let guess = String::new()</code>, Rust was able to infer that <code>guess</code>
-should be a <code>String</code>, and so it doesn’t make us write out the type. And with
-our <code>secret_number</code>, there are a number of types which can have a value
-between one and a hundred: <code>i32</code>, a thirty-two-bit number, or <code>u32</code>, an
-unsigned thirty-two-bit number, or <code>i64</code>, a sixty-four-bit number or others.
-So far, that hasn’t mattered, and so Rust defaults to an <code>i32</code>. However, here,
-Rust doesn’t know how to compare the <code>guess</code> and the <code>secret_number</code>. They
-need to be the same type. Ultimately, we want to convert the <code>String</code> we
-read as input into a real number type, for comparison. We can do that
-with two more lines. Here’s our new program:</p>
+<p>噢！這裡有個大問題。
+它的核心問題是我們有 &quot;無法匹配的型別&quot; (mismatched types)。
+Rust 有個強大的靜態型別系統 (static type system)。
+但是，它也有型別推斷 (type inference) 系統。
+當我們寫到 <code>let guess = String::new()</code> 時，Rust 會推斷 <code>guess</code> 應該是 <code>String</code>，因此不需要我們特別寫出型別。
+而我們的 <code>secret_number</code> 則有多種可能的型別都可以存 1 到 100 的值：32 位元整數 <code>i32</code>、非帶號 (unsigned) 32 位元整數 <code>u32</code>、64 位元整數 <code>i64</code> 或其他等等。
+目前這些都不重要，所以 Rust 預設為 <code>i32</code>。
+然而，Rust 不知道怎麼去比對 <code>guess</code> 與 <code>secret_number</code>。
+它們必須是相同型別。
+最終，為了可以比較，我們想要把輸入的 <code>String</code> 轉換為一個真正的數字型別。
+我們可以用額外的兩行做到。
+以下是我們的新程式：</p>
 <pre><code class="language-rust,ignore">extern crate rand;
 
 use std::io;
@@ -952,36 +928,35 @@ fn main() {
     }
 }
 </code></pre>
-<p>The new two lines:</p>
+<p>新加的兩行：</p>
 <pre><code class="language-rust,ignore">    let guess: u32 = guess.trim().parse()
         .expect(&quot;Please type a number!&quot;);
 </code></pre>
-<p>Wait a minute, I thought we already had a <code>guess</code>? We do, but Rust allows us
-to ‘shadow’ the previous <code>guess</code> with a new one. This is often used in this
-exact situation, where <code>guess</code> starts as a <code>String</code>, but we want to convert it
-to an <code>u32</code>. Shadowing lets us re-use the <code>guess</code> name, rather than forcing us
-to come up with two unique names like <code>guess_str</code> and <code>guess</code>, or something
-else.</p>
-<p>We bind <code>guess</code> to an expression that looks like something we wrote earlier:</p>
+<p>等等，我想我們已經有 <code>guess</code> 了吧？
+沒錯，但是 Rust 允許我們用新的 <code>guess</code> 去 &quot;遮蔽&quot; (shadow) 前一個。
+一開始 <code>guess</code> 是 <code>String</code>，但我們希望能轉換為 <code>u32</code>，像是這樣的情況下我們很常會用到。
+遮蔽讓我們可以重複利用 <code>guess</code> 的命名，而非強迫我們去想出兩個獨特的命名，像是 <code>guess_str</code> 和 <code>guess</code>，或其他的名稱。</p>
+<p>我們把 <code>guess</code> 綁定在我們前面所寫的表達式上：</p>
 <pre><code class="language-rust,ignore">guess.trim().parse()
 </code></pre>
-<p>Here, <code>guess</code> refers to the old <code>guess</code>, the one that was a <code>String</code> with our
-input in it. The <code>trim()</code> method on <code>String</code>s will eliminate any white space at
-the beginning and end of our string. This is important, as we had to press the
-‘return’ key to satisfy <code>read_line()</code>. This means that if we type <code>5</code> and hit
-return, <code>guess</code> looks like this: <code>5\n</code>. The <code>\n</code> represents ‘newline’, the
-enter key. <code>trim()</code> gets rid of this, leaving our string with only the <code>5</code>. The
-<a href="../std/primitive.str.html#method.parse"><code>parse()</code> method on strings</a> parses a string into some kind of number.
-Since it can parse a variety of numbers, we need to give Rust a hint as to the
-exact type of number we want. Hence, <code>let guess: u32</code>. The colon (<code>:</code>) after
-<code>guess</code> tells Rust we’re going to annotate its type. <code>u32</code> is an unsigned,
-thirty-two bit integer. Rust has <a href="primitive-types.html#numeric-types">a number of built-in number types</a>,
-but we’ve chosen <code>u32</code>. It’s a good default choice for a small positive number.</p>
-<p>Just like <code>read_line()</code>, our call to <code>parse()</code> could cause an error. What if
-our string contained <code>A👍%</code>? There’d be no way to convert that to a number. As
-such, we’ll do the same thing we did with <code>read_line()</code>: use the <code>expect()</code>
-method to crash if there’s an error.</p>
-<p>Let’s try our program out!</p>
+<p>這邊的 <code>guess</code> 參考到存著我們輸入值的舊的 <code>guess</code>。
+而 <code>String</code> 中的 <code>trim()</code> 方法則會去除任何字串開頭結尾的空白。
+這很重要，因為我們必須按下 &quot;Return&quot; 按鍵去符合 <code>read_line()</code> 的輸入條件。
+也就是說如果我們輸入 <code>5</code> 然後按下 Return，那 <code>guess</code> 看起來就會像是：<code>5\n</code>。
+<code>\n</code> 代表 &quot;新的一行&quot; (newline)、enter 鍵。
+<code>trim()</code> 會去除這些，只留下我們的字串 <code>5</code>。
+而<a href="https://doc.rust-lang.org/std/primitive.str.html#method.parse">字串的 parse() 方法</a>則會把字串分析為數字。
+因為它可以被分析為很多種數字型別，我們必須給 Rust 我們確切想要的數字型別的提示。
+因次我們給它 <code>let guess: u32</code>。
+<code>guess</code> 後面的分號（<code>:</code>）告訴 Rust 我們要註釋它的型別。
+<code>u32</code> 是沒有帶正負號的 32 位元整數。
+Rust 有<a href="primitive-types.html#%E6%95%B8%E5%AD%97%E5%9E%8B%E5%88%A5">許多內建的數字型別</a>，我們選了 <code>u32</code>。
+對於不大的正整數來說，它是個好選擇。</p>
+<p>跟 <code>read_line()</code> 一樣，我們呼叫 <code>parse()</code> 時可能會發生錯誤。
+如果我們的字串包含了 <code>A👍%</code> 怎麼辦？
+我們可無法把它轉換為數字。
+為此我們做了與之前替 <code>read_line()</code> 所做的事一樣的事：使用 <code>expect()</code> 方法，讓它出錯時當機。</p>
+<p>讓我們試試我們的程式！</p>
 <pre><code class="language-bash">$ cargo run
    Compiling guessing_game v0.1.0 (file:///home/you/projects/guessing_game)
      Running `target/guessing_game`
@@ -992,13 +967,14 @@ Please input your guess.
 You guessed: 76
 Too big!
 </code></pre>
-<p>Nice! You can see I even added spaces before my guess, and it still figured
-out that I guessed 76. Run the program a few times, and verify that guessing
-the number works, as well as guessing a number too small.</p>
-<p>Now we’ve got most of the game working, but we can only make one guess. Let’s
-change that by adding loops!</p>
-<h1>Looping</h1>
-<p>The <code>loop</code> keyword gives us an infinite loop. Let’s add that in:</p>
+<p>不錯！
+你可以看到我在猜測值前面加入空白，它仍可以認出我猜的是 76。
+多執行程式幾次，然後驗證看看猜中正確的數字，和猜一個比較小的數字。</p>
+<p>現在我們的遊戲大致上能運作了，但是我們只能猜一次。
+讓我們加入迴圈 (loops) 來修改它。</p>
+<h2>迴圈</h2>
+<p>關鍵字 <code>loop</code> 會給我們一個無限迴圈。
+讓我們加上它：</p>
 <pre><code class="language-rust,ignore">extern crate rand;
 
 use std::io;
@@ -1033,9 +1009,11 @@ fn main() {
     }
 }
 </code></pre>
-<p>And try it out. But wait, didn’t we just add an infinite loop? Yup. Remember
-our discussion about <code>parse()</code>? If we give a non-number answer, we’ll <code>panic!</code>
-and quit. Observe:</p>
+<p>然後試試看。
+等等，我們不是加了個無限迴圈嗎？
+沒錯，還記得我們討論過的 <code>parse()</code> 嗎？
+如果我們輸入一個不是數字的答案，我們就會 <code>panic!</code> 然後結束。
+看著：</p>
 <pre><code class="language-bash">$ cargo run
    Compiling guessing_game v0.1.0 (file:///home/you/projects/guessing_game)
      Running `target/guessing_game`
@@ -1057,8 +1035,11 @@ Please input your guess.
 quit
 thread '&lt;main&gt;' panicked at 'Please type a number!'
 </code></pre>
-<p>Ha! <code>quit</code> actually quits. As does any other non-number input. Well, this is
-suboptimal to say the least. First, let’s actually quit when you win the game:</p>
+<p>哈！
+<code>quit</code> 真的退出了。
+就跟任何其他不是數字的輸入一樣。
+好吧，這至少是個還可以的做法。
+接著，讓我們能在贏了遊戲的時候真的退出：</p>
 <pre><code class="language-rust,ignore">extern crate rand;
 
 use std::io;
@@ -1096,11 +1077,10 @@ fn main() {
     }
 }
 </code></pre>
-<p>By adding the <code>break</code> line after the <code>You win!</code>, we’ll exit the loop when we
-win. Exiting the loop also means exiting the program, since it’s the last
-thing in <code>main()</code>. We have only one more tweak to make: when someone inputs a
-non-number, we don’t want to quit, we want to ignore it. We can do that
-like this:</p>
+<p>透過在 <code>You win!</code> 之後加入 <code>break</code>，我們可以在贏了之後離開迴圈。
+因為它同時是 <code>main()</code> 的最後一部份，所以離開迴圈也代表著退出程式。
+我們剩下最後一點需要修改：當輸入一個不是數字的輸入，我們不想退出程式，我們要忽略它。
+我們可以像以下這樣做：</p>
 <pre><code class="language-rust,ignore">extern crate rand;
 
 use std::io;
@@ -1140,23 +1120,20 @@ fn main() {
     }
 }
 </code></pre>
-<p>These are the lines that changed:</p>
+<p>這是我們所修改的部分：</p>
 <pre><code class="language-rust,ignore">let guess: u32 = match guess.trim().parse() {
     Ok(num) =&gt; num,
     Err(_) =&gt; continue,
 };
 </code></pre>
-<p>This is how you generally move from ‘crash on error’ to ‘actually handle the
-error’, by switching from <code>expect()</code> to a <code>match</code> statement. The <code>Result</code>
-returned by <code>parse()</code> is an <code>enum</code>  like <code>Ordering</code>, but in this case, each
-variant has some data associated with it: <code>Ok</code> is a success, and <code>Err</code> is a
-failure. Each contains more information: the successfully parsed integer, or an
-error type. In this case, we <code>match</code> on <code>Ok(num)</code>, which sets the inner value
-of the <code>Ok</code> to the name <code>num</code>, and then we  return it on the right-hand
-side. In the <code>Err</code> case, we don’t care what kind of error it is, so we
-use <code>_</code> instead of a name. This ignores the error, and <code>continue</code> causes us
-to go to the next iteration of the <code>loop</code>.</p>
-<p>Now we should be good! Let’s try:</p>
+<p>把 <code>expect()</code> 改為 <code>match</code> 陳述的方式，大致上就是如何把 &quot;錯誤時當機&quot; 改為 &quot;實際處理錯誤&quot; 的方法。
+<code>parse()</code> 回傳的 <code>Result</code> 是個跟 <code>Ordering</code> 類似的 <code>enum</code>，但是這裡的變數跟資料有關：<code>Ok</code> 代表成功，<code>Err</code> 則是錯誤。
+它們個別包含更多的資訊：成功的分析出整數，或是一個錯誤型別。
+在本例中，當我們 <code>match</code> 到 <code>Ok(num)</code> 時，會把 <code>Ok</code> 內的值設給 <code>num</code> 這個名稱，然後在右邊回傳它。
+在 <code>Err</code> 的情況，我們不在意發生了什麼錯誤，所以我們使用 <code>_</code> 沒有取名。
+這樣會忽略錯誤，接著 <code>continue</code> 讓我們可以繼續 <code>loop</code> 的下一次疊代 (iteration)。</p>
+<p>現在應該弄好了！
+讓我們試試看：</p>
 <pre><code class="language-bash">$ cargo run
    Compiling guessing_game v0.1.0 (file:///home/you/projects/guessing_game)
      Running `target/guessing_game`
@@ -1177,10 +1154,12 @@ Please input your guess.
 You guessed: 61
 You win!
 </code></pre>
-<p>Awesome! With one tiny last tweak, we have finished the guessing game. Can you
-think of what it is? That’s right, we don’t want to print out the secret
-number. It was good for testing, but it kind of ruins the game. Here’s our
-final source:</p>
+<p>太棒了！
+剩下最後一個小修改，我們就完成了猜數字遊戲。
+你能猜到是什麼嗎？
+沒錯，我們不希望印出祕密數字。
+在測試時它很好，但是它會毀掉遊戲。
+這是我們最終的程式碼：</p>
 <pre><code class="language-rust,ignore">extern crate rand;
 
 use std::io;
@@ -1218,11 +1197,14 @@ fn main() {
     }
 }
 </code></pre>
-<h1>Complete!</h1>
-<p>At this point, you have successfully built the Guessing Game! Congratulations!</p>
-<p>This first project showed you a lot: <code>let</code>, <code>match</code>, methods, associated
-functions, using external crates, and more. Our next project will show off
-even more.</p>
+<h2>完成！</h2>
+<p>此時此刻，你成功的建置了猜謎遊戲！
+恭喜你！</p>
+<p>這第一個專案告訴你不少東西：<code>let</code>、<code>match</code>、方法 (methods)、關聯函式 (associated functions)、使用外部的 crates、等等。
+我們的下個專案會告訴你更多東西。</p>
+<blockquote>
+<p>譯註：實作 <code>dining-philosophers</code> 專案的章節已經被移除了，所以後續會接到語法的部分。</p>
+</blockquote>
 <blockquote>
 <p><em>commit edd5f33</em></p>
 </blockquote>
@@ -1242,7 +1224,7 @@ even more.</p>
 }
 </code></pre>
 <p>在所有範例中放入 <code>fn main() {</code> 有點冗餘，所以我們在後面都會省略它。
-如果你一路看下去，請記得寫上 <code>main()</code> 韓式，不要忘記了。
+如果你一路看下去，請記得寫上 <code>main()</code> 函式，不要忘記了。
 否則你會得到錯誤訊息。</p>
 <h2>模式 (Patterns)</h2>
 <p>在很多語言，變數綁定被叫做 <em>變數</em> (variable)，但是 Rust 的變數綁定藏有秘招。
@@ -13747,6 +13729,7 @@ Munksgaard's master's thesis. Research for Servo.</li>
 <tr><td>arity                  </td><td> 元數                          </td><td> 所需運算元的數量。參考：<a href="https://zh.wikipedia.org/zh-tw/%E5%85%83%E6%95%B0">維基百科</a></td></tr>
 <tr><td>array                  </td><td> 陣列                          </td><td> 參考：<a href="https://zh.wikipedia.org/zh-tw/%E6%95%B0%E7%BB%84">維基百科</a></td></tr>
 <tr><td>assignment             </td><td> 賦值                          </td></tr>
+<tr><td>associated function    </td><td> 關聯函式                      </td></tr>
 <tr><td>best-practice          </td><td> 最佳做法                      </td></tr>
 <tr><td>bit                    </td><td> 位元                          </td><td> 參考：<a href="https://zh.wikipedia.org/zh-tw/%E4%BD%8D%E5%85%83">維基百科</a></td></tr>
 <tr><td>block                  </td><td> 區塊                          </td></tr>
@@ -13778,6 +13761,7 @@ Munksgaard's master's thesis. Research for Servo.</li>
 <tr><td>formalization          </td><td> 正規化                        </td></tr>
 <tr><td>function               </td><td> 函式                          </td><td> 參考：<a href="https://zh.wikipedia.org/zh-tw/%E5%AD%90%E7%A8%8B%E5%BA%8F">維基百科</a></td></tr>
 <tr><td>generics               </td><td> 泛型                          </td><td> 參考：<a href="https://zh.wikipedia.org/zh-tw/%E6%B3%9B%E5%9E%8B">維基百科</a></td></tr>
+<tr><td>instance               </td><td> 實體                          </td></tr>
 <tr><td>iterative              </td><td> 疊代                          </td><td> 參考：<a href="https://zh.wikipedia.org/zh-tw/%E8%BF%AD%E4%BB%A3">維基百科</a></td></tr>
 <tr><td>iterator               </td><td> 疊代器                        </td><td> 參考：<a href="https://zh.wikipedia.org/zh-tw/%E8%BF%AD%E4%BB%A3%E5%99%A8">維基百科</a></td></tr>
 <tr><td>immutable              </td><td> 不可變                        </td><td> 參考：<a href="https://zh.wikipedia.org/zh-tw/%E4%B8%8D%E5%8F%AF%E8%AE%8A%E7%89%A9%E4%BB%B6">維基百科</a></td></tr>
@@ -13791,9 +13775,12 @@ Munksgaard's master's thesis. Research for Servo.</li>
 <tr><td>mutable                </td><td> 可變                          </td><td> 參考：<a href="https://zh.wikipedia.org/zh-tw/%E4%B8%8D%E5%8F%AF%E8%AE%8A%E7%89%A9%E4%BB%B6">維基百科</a></td></tr>
 <tr><td>mutability             </td><td> 可變性                        </td></tr>
 <tr><td>mutation               </td><td> 可變數                        </td></tr>
+<tr><td>namespace              </td><td> 命名空間                      </td><td> 參考：<a href="https://zh.wikipedia.org/zh-tw/%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4">維基百科</a></td></tr>
 <tr><td>operators              </td><td> 運算子                        </td><td> 參考：<a href="https://zh.wikipedia.org/zh-tw/C%E5%92%8CC%2B%2B%E9%81%8B%E7%AE%97%E5%AD%90">維基百科</a></td></tr>
 <tr><td>ownership              </td><td> 所有權                        </td></tr>
 <tr><td>package                </td><td> 套件                          </td><td> 參考：<a href="https://zh.wikipedia.org/zh-tw/%E8%BD%AF%E4%BB%B6%E5%8C%85">維基百科</a></td></tr>
+<tr><td>parse                  </td><td> 分析、分析語法                </td></tr>
+<tr><td>parser                 </td><td> 語法分析器                    </td><td> 參考：<a href="https://zh.wikipedia.org/zh-tw/%E8%AA%9E%E6%B3%95%E5%88%86%E6%9E%90%E5%99%A8">維基百科</a></td></tr>
 <tr><td>pattern                </td><td> 模式                          </td><td> 參考：<a href="https://zh.wikipedia.org/zh-tw/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F_(%E8%AE%A1%E7%AE%97%E6%9C%BA)">維基百科</a></td></tr>
 <tr><td>plugins                </td><td> 外掛                          </td></tr>
 <tr><td>pointer                </td><td> 指標                          </td><td> 參考：<a href="https://zh.wikipedia.org/zh-tw/%E6%8C%87%E6%A8%99_(%E9%9B%BB%E8%85%A6%E7%A7%91%E5%AD%B8)">維基百科</a></td></tr>
@@ -13837,6 +13824,7 @@ Munksgaard's master's thesis. Research for Servo.</li>
 <tr><td>destructuring let      </td><td>                               </td><td> 用於存取 tuple</td></tr>
 <tr><td>fully-strict           </td><td>                               </td></tr>
 <tr><td>hash                   </td><td>                               </td></tr>
+<tr><td>import                 </td><td>                               </td></tr>
 <tr><td>linker                 </td><td>                               </td></tr>
 <tr><td>linking                </td><td>                               </td></tr>
 <tr><td>master                 </td><td>                               </td><td> git branch</td></tr>
@@ -13844,7 +13832,10 @@ Munksgaard's master's thesis. Research for Servo.</li>
 <tr><td>metaprogramming        </td><td>                               </td></tr>
 <tr><td>non-strict             </td><td>                               </td></tr>
 <tr><td>patches                </td><td>                               </td></tr>
+<tr><td>placeholder            </td><td>                               </td></tr>
+<tr><td>prelude                </td><td>                               </td><td> 預先載入的函式庫</td></tr>
 <tr><td>profiles               </td><td>                               </td></tr>
+<tr><td>regression             </td><td>                               </td></tr>
 <tr><td>repository             </td><td>                               </td></tr>
 <tr><td>root                   </td><td>                               </td></tr>
 <tr><td>shell                  </td><td>                               </td></tr>
