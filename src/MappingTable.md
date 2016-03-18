@@ -10,6 +10,7 @@ annotations            | 註釋                          |
 arity                  | 元數                          | 所需運算元的數量。參考：[維基百科][arity]
 array                  | 陣列                          | 參考：[維基百科][array]
 assignment             | 賦值                          |
+associated function    | 關聯函式                      |
 best-practice          | 最佳做法                      |
 bit                    | 位元                          | 參考：[維基百科][bit]
 block                  | 區塊                          |
@@ -41,6 +42,7 @@ fault                  | 錯誤                          |
 formalization          | 正規化                        |
 function               | 函式                          | 參考：[維基百科][function]
 generics               | 泛型                          | 參考：[維基百科][generics]
+instance               | 實體                          |
 iterative              | 疊代                          | 參考：[維基百科][iterative]
 iterator               | 疊代器                        | 參考：[維基百科][iterator]
 immutable              | 不可變                        | 參考：[維基百科][immutable]
@@ -54,9 +56,12 @@ module                 | 模組                          | 參考：[維基百�
 mutable                | 可變                          | 參考：[維基百科][immutable]
 mutability             | 可變性                        |
 mutation               | 可變數                        |
+namespace              | 命名空間                      | 參考：[維基百科][namespace]
 operators              | 運算子                        | 參考：[維基百科][operators]
 ownership              | 所有權                        |
 package                | 套件                          | 參考：[維基百科][package]
+parse                  | 分析、分析語法                |
+parser                 | 語法分析器                    | 參考：[維基百科][parser]
 pattern                | 模式                          | 參考：[維基百科][pattern]
 plugins                | 外掛                          |
 pointer                | 指標                          | 參考：[維基百科][pointer]
@@ -117,8 +122,10 @@ zero-cost abstractions | 無成本抽象化                  |
 [main function]: https://zh.wikipedia.org/zh-tw/%E4%B8%BB%E5%87%BD%E5%BC%8F
 [method]: https://zh.wikipedia.org/zh-tw/%E6%96%B9%E6%B3%95_(%E9%9B%BB%E8%85%A6%E7%A7%91%E5%AD%B8)
 [module]: https://zh.wikipedia.org/zh-tw/%E6%A8%A1%E7%B5%84_(%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88)
+[namespace]: https://zh.wikipedia.org/zh-tw/%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4
 [operators]: https://zh.wikipedia.org/zh-tw/C%E5%92%8CC%2B%2B%E9%81%8B%E7%AE%97%E5%AD%90
 [package]: https://zh.wikipedia.org/zh-tw/%E8%BD%AF%E4%BB%B6%E5%8C%85
+[parser]: https://zh.wikipedia.org/zh-tw/%E8%AA%9E%E6%B3%95%E5%88%86%E6%9E%90%E5%99%A8
 [pattern]: https://zh.wikipedia.org/zh-tw/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F_(%E8%AE%A1%E7%AE%97%E6%9C%BA)
 [pointer]: https://zh.wikipedia.org/zh-tw/%E6%8C%87%E6%A8%99_(%E9%9B%BB%E8%85%A6%E7%A7%91%E5%AD%B8)
 [primitive type]: https://zh.wikipedia.org/zh-tw/%E5%8E%9F%E5%A7%8B%E5%9E%8B%E5%88%A5
@@ -160,8 +167,10 @@ mata                   |                               |
 metaprogramming        |                               |
 non-strict             |                               |
 patches                |                               |
+placeholder            |                               |
 prelude                |                               | 預先載入的函式庫
 profiles               |                               |
+regression             |                               |
 repository             |                               |
 root                   |                               |
 shell                  |                               |
