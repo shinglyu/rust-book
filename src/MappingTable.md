@@ -166,6 +166,7 @@ master                 |                               | git branch
 mata                   |                               |
 metaprogramming        |                               |
 non-strict             |                               |
+panic                  |                               |
 patches                |                               |
 placeholder            |                               |
 prelude                |                               | 預先載入的函式庫

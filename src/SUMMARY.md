@@ -13,7 +13,7 @@
     * [所有權](ownership.md)
     * [參照與借用](references-and-borrowing.md)
     * [生命週期](lifetimes.md)
-    * [Mutability](mutability.md)
+    * [可變性](mutability.md)
     * [Structs](structs.md)
     * [Enums](enums.md)
     * [Match](match.md)
