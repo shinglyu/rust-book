@@ -35,5 +35,10 @@ Rust 同時也旨在實現“無成本抽象化” (zero-cost abstractions) ，�
 
 [book]: https://github.com/rust-lang/rust/tree/master/src/doc/book
 
+> 譯註：正體中文的翻譯原始檔位於此 [GitHub][book-zh-TW]，如有錯誤歡迎協助修正。
+> 目前仍持續翻譯中⋯
+
+[book-zh-TW]: https://github.com/askeing/rust-book
+
 
 > *commit 3a6dbb3*
