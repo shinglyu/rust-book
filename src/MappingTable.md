@@ -19,6 +19,7 @@ bounds-check           | 邊界檢查                      | 參考：[維基百
 borrowing              | 借用                          |
 bug                    | 程式錯誤                      |
 byte                   | 位元組                        | 參考：[維基百科][byte]
+camel case             | 駝峰式大小寫                  | 參考：[維基百科][camel case]
 collection             | 集合                          | 參考：[維基百科][collection]
 concurrency            | 並行                          | 參考：[維基百科][concurrency]
 conditional            | 條件運算                      | 參考：[維基百科][conditional]
@@ -101,6 +102,7 @@ zero-cost abstractions | 無成本抽象化                  |
 [boolean]: https://zh.wikipedia.org/wiki/%E5%B8%83%E7%88%BE_(%E6%95%B8%E6%93%9A%E9%A1%9E%E5%9E%8B)
 [bounds-check]: https://zh.wikipedia.org/zh-tw/%E8%BE%B9%E7%95%8C%E6%A3%80%E6%9F%A5
 [byte]: https://zh.wikipedia.org/zh-tw/%E5%AD%97%E8%8A%82
+[camel case]: https://zh.wikipedia.org/zh-tw/%E9%A7%9D%E5%B3%B0%E5%BC%8F%E5%A4%A7%E5%B0%8F%E5%AF%AB
 [collection]: https://zh.wikipedia.org/zh-tw/%E9%9B%86%E5%90%88_(%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6)
 [concurrency]: https://zh.wikipedia.org/zh-tw/%E5%B9%B6%E5%8F%91%E8%AE%A1%E7%AE%97
 [conditional]: https://zh.wikipedia.org/zh-tw/%E6%A2%9D%E4%BB%B6%E9%81%8B%E7%AE%97%E5%BC%8F

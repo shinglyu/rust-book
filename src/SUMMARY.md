@@ -14,7 +14,7 @@
     * [參照與借用](references-and-borrowing.md)
     * [生命週期](lifetimes.md)
     * [可變性](mutability.md)
-    * [Structs](structs.md)
+    * [結構體](structs.md)
     * [Enums](enums.md)
     * [Match](match.md)
     * [Patterns](patterns.md)
