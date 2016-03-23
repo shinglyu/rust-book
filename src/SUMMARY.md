@@ -15,7 +15,7 @@
     * [生命週期](lifetimes.md)
     * [可變性](mutability.md)
     * [結構體](structs.md)
-    * [Enums](enums.md)
+    * [枚舉](enums.md)
     * [Match](match.md)
     * [Patterns](patterns.md)
     * [Method Syntax](method-syntax.md)

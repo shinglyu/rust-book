@@ -569,9 +569,9 @@ enum Foo {
 [enum]: enums.html
 
 這裡定義了任何 `Foo` 不是 `Foo::Bar` 就是 `Foo::Baz`。
-我們使用 `::` 來表示特定 `enum` 變數的命名空間 (namespace)。
+我們使用 `::` 來表示特定 `enum` 變體的命名空間 (namespace)。
 
-[Ordering][ordering] `enum` 有三個可能的變數：`Less`、`Equal`、及 `Greater`。
+[Ordering][ordering] `enum` 有三個可能的變體：`Less`、`Equal`、及 `Greater`。
 `match` 陳述式取得型別的值，讓你能為每個可能的值建立一條執行的分支。
 因為 `Ordering` 有三種型別，我們就有三個分支：
 
@@ -884,7 +884,7 @@ let guess: u32 = match guess.trim().parse() {
 ```
 
 把 `expect()` 改為 `match` 陳述的方式，大致上就是如何把 "錯誤時當機" 改為 "實際處理錯誤" 的方法。
-`parse()` 回傳的 `Result` 是個跟 `Ordering` 類似的 `enum`，但是這裡的變數跟資料有關：`Ok` 代表成功，`Err` 則是錯誤。
+`parse()` 回傳的 `Result` 是個跟 `Ordering` 類似的 `enum`，但是這裡的變體跟資料有關：`Ok` 代表成功，`Err` 則是錯誤。
 它們個別包含更多的資訊：成功的分析出整數，或是一個錯誤型別。
 在本例中，當我們 `match` 到 `Ok(num)` 時，會把 `Ok` 內的值設給 `num` 這個名稱，然後在右邊回傳它。
 在 `Err` 的情況，我們不在意發生了什麼錯誤，所以我們使用 `_` 沒有取名。

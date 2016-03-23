@@ -25,6 +25,7 @@ concurrency            | 並行                          | 參考：[維基百�
 conditional            | 條件運算                      | 參考：[維基百科][conditional]
 configuration          | 配置                          |
 constant               | 常數                          | 參考：[維基百科][constant]
+constructor            | 建構子                        |
 crash                  | 當機                          |
 dangling pointer       | 迷途指標                      | 參考：[維基百科][dangling pointer]
 data race              | 資料競爭                      |
@@ -32,6 +33,7 @@ declaration statements | 宣告陳述式                    |
 deque                  | 雙向佇列                      | Double-ended queue
 diverging functions    | 發散函式                      | 不回傳值的函式
 enumerate              | 枚舉                          | 參考：[維基百科][enumerate]
+equality               | 等式                          |
 executable             | 執行檔                        |
 expression             | 表達式                        |
 expression-oriented    | 表達式導向                    |
@@ -90,6 +92,7 @@ type inference         | 型別推斷                      | 參考：[維基百
 unsigned integer       | 非帶號整數                    | 參考：[維基百科][integer]
 values                 | 值、數值                      |
 variables              | 變數                          |
+variant                | 變體                          |
 vector                 | 向量                          |
 view                   | 視圖                          | 參考：[維基百科][view]
 zero-cost abstractions | 無成本抽象化                  |
@@ -155,6 +158,7 @@ alignment              |                               |
 backtrace              |                               |
 bootstrap              |                               |
 build                  |                               | 名詞，例：create a "build"
+closures               |                               |
 commit                 |                               | git commit
 crates                 |                               |
 dependencies           |                               |
