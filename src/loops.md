@@ -1,10 +1,8 @@
 # 迴圈
 
-Rust 目前提供三種方式去執行一些疊代行為。
+Rust 目前提供三種方式去執行一些疊代行為 (iterative activity)。
 它們是 `loop`、`while`、及 `for`。
 它們各有各自的用途。
-
-> 譯註：iterative activity 這邊參考[維基百科](https://zh.wikipedia.org/wiki/%E8%BF%AD%E4%BB%A3)，故使用疊代來翻譯。
 
 ## loop
 
