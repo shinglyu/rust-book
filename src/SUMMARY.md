@@ -17,7 +17,7 @@
     * [結構體](structs.md)
     * [枚舉](enums.md)
     * [Match](match.md)
-    * [Patterns](patterns.md)
+    * [模式](patterns.md)
     * [Method Syntax](method-syntax.md)
     * [Vectors](vectors.md)
     * [Strings](strings.md)
