@@ -1,9 +1,9 @@
-% Match
+# Match
 
-Often, a simple [`if`][if]/`else` isn’t enough, because you have more than two
-possible options. Also, conditions can get quite complex. Rust
-has a keyword, `match`, that allows you to replace complicated `if`/`else`
-groupings with something more powerful. Check it out:
+簡單的 [if/else][if] 往往是不夠用的，因為你可能會有兩個以上的可能性。
+而且你的條件運算也可能會變得很複雜。
+Rust 有個更強大的 `match` 關鍵字可以讓你取代複雜的 `if`/`else` 組合。
+來看看吧：
 
 ```rust
 let x = 5;
@@ -20,30 +20,27 @@ match x {
 
 [if]: if.html
 
-`match` takes an expression and then branches based on its value. Each ‘arm’ of
-the branch is of the form `val => expression`. When the value matches, that arm’s
-expression will be evaluated. It’s called `match` because of the term ‘pattern
-matching’, which `match` is an implementation of. There’s a [separate section on
-patterns][patterns] that covers all the patterns that are possible here.
+`match` 使用表達式，並根據它的值進行分支。
+每一條執行的分支都是以 `val => expression` 的形式表示。
+當值符合的時候，該分支的表達式就會被執行。
+它會被稱為 `match` 是因為 `match` 是 "模式配對" (pattern matching) 的實作。
+[模式][patterns] (pattern) 有一個單獨的章節會涵蓋所有可能的模式。
 
 [patterns]: patterns.html
 
-One of the many advantages of `match` is it enforces ‘exhaustiveness checking’. 
-For example if we remove the last arm with the underscore `_`, the compiler will 
-give us an error:
+`match` 的許多優點之一是它的強制 "徹底檢查" (exhaustiveness checking)。
+舉例來說，當我們刪除最後一條有著 `_` 的執行分支，編譯器將會給我們錯誤訊息：
 
 ```text
 error: non-exhaustive patterns: `_` not covered
 ```
 
-Rust is telling us that we forgot a value. The compiler infers from `x` that it
-can have any positive 32bit value; for example 1 to 2,147,483,647. The `_` acts 
-as a 'catch-all', and will catch all possible values that *aren't* specified in 
-an arm of `match`. As you can see with the previous example, we provide `match` 
-arms for integers 1-5, if `x` is 6 or any other value, then it is caught by `_`.
+Rust 告訴我們，我們忘了一個值。
+編譯器從 `x` 推斷出它可能是任何 32 位元正整數；從 1 到 2,147,483,647 都有可能。
+而 `_` 就像是 "接住全部" (catch-all) _沒有_ 被特別列在 `match` 執行分支中的可能值。
+在上述例子中可以看到，我們給 `match` 整數 1-5 的執行分支，當 `x` 是 6 或其他值的時候，就會被 `_` 接去執行。
 
-`match` is also an expression, which means we can use it on the right-hand
-side of a `let` binding or directly where an expression is used:
+`match` 也是表達式，這代表我們可以在 `let` 綁定的右邊使用它，或直接將它用在任何表達式可以使用的地方：
 
 ```rust
 let x = 5;
@@ -58,13 +55,11 @@ let number = match x {
 };
 ```
 
-Sometimes it’s a nice way of converting something from one type to another; in 
-this example the integers are converted to `String`.
+有時候這是把東西從一個型別轉換為另一個型別的好方法；上面的例子是把整數轉換為 `String`。
 
-# Matching on enums
+## 枚舉的配對
 
-Another important use of the `match` keyword is to process the possible
-variants of an enum:
+另一個 `match` 的重要作用是處理枚舉 (enum) 的可能變體們：
 
 ```rust
 enum Message {
@@ -88,14 +83,11 @@ fn process_message(msg: Message) {
 }
 ```
 
-Again, the Rust compiler checks exhaustiveness, so it demands that you
-have a match arm for every variant of the enum. If you leave one off, it
-will give you a compile-time error unless you use `_` or provide all possible 
-arms.
+再次地，Rust 編譯器會徹底的檢查，它要求枚舉的所有變體都必須要有配對的執行分支。
+如果你漏掉了一個，它會給你一個編譯期錯誤，除非你使用 `_`，或替所有可能的變體都提供執行分支。
 
-Unlike the previous uses of `match`, you can’t use the normal `if`
-statement to do this. You can use the [`if let`][if-let] statement,
-which can be seen as an abbreviated form of `match`.
+與 `match` 之前的用法不同，你無法使用一般的 `if` 陳述式去達成一樣的功能。
+但你可以使用 [if let][if-let] 陳述式，它可被視為 `match` 的簡略版。
 
 [if-let]: if-let.html
 
