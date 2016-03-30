@@ -184,7 +184,6 @@ shell                  |                               |
 slices                 |                               | 其他資料結構的參考
 tabs                   |                               |
 target triple          |                               |
-trait                  |                               |
 work stealing          |                               |
 
 

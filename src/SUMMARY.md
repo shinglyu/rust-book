@@ -20,7 +20,7 @@
     * [模式](patterns.md)
     * [Method Syntax](method-syntax.md)
     * [Vectors](vectors.md)
-    * [Strings](strings.md)
+    * [字串](strings.md)
     * [Generics](generics.md)
     * [Traits](traits.md)
     * [Drop](drop.md)
