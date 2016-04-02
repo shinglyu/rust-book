@@ -31,6 +31,7 @@ dangling pointer       | 迷途指標                      | 參考：[維基百
 data race              | 資料競爭                      |
 declaration statements | 宣告陳述式                    |
 deque                  | 雙向佇列                      | Double-ended queue
+dereference            | 取值                          | 即 `*` 運算子
 diverging functions    | 發散函式                      | 不回傳值的函式
 enumerate              | 枚舉                          | 參考：[維基百科][enumerate]
 equality               | 等式                          |
@@ -85,6 +86,7 @@ subscript              | 下標                          | 指的是 `a[1]` 中�
 symbols                | 符號                          |
 syntax                 | 語法                          |
 thread                 | 執行緒                        | 參考：[維基百科][thread]
+trait                  | 特徵                          | 參考：[維基百科][trait]
 tuple                  | 多元組                        | 參考：[維基百科][tuple]
 two’s complement       | 二補數                        | 參考：[維基百科][two’s complement]
 type                   | 型別                          | 參考：[維基百科][type]
@@ -143,6 +145,7 @@ zero-cost abstractions | 無成本抽象化                  |
 [struct]: https://zh.wikipedia.org/zh-tw/C%2B%2B%E7%B1%BB
 [struct_2]: https://zh.wikipedia.org/zh-tw/%E7%BB%93%E6%9E%84%E4%BD%93_(C%E8%AF%AD%E8%A8%80)
 [thread]: https://zh.wikipedia.org/zh-tw/%E7%BA%BF%E7%A8%8B
+[trait]: https://zh.wikipedia.org/wiki/Traits_%28%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6%29
 [tuple]: https://zh.wikipedia.org/zh-tw/%E5%A4%9A%E5%85%83%E7%BB%84
 [two’s complement]: https://zh.wikipedia.org/zh-tw/%E4%BA%8C%E8%A3%9C%E6%95%B8
 [type]: https://zh.wikipedia.org/zh-tw/%E8%B3%87%E6%96%99%E9%A1%9E%E5%9E%8B

@@ -109,33 +109,32 @@ let dog = hachiko.chars().nth(1); // kinda like hachiko[1]
 ```
 這種方法強調我們必須從頭開始循序的尋找一連串的 `chars`。
 
-## Slicing
+## 切片 (Slicing)
 
-You can get a slice of a string with slicing syntax:
+你可以用切片語法得到一個字串的切片：
 
 ```rust
 let dog = "hachiko";
 let hachi = &dog[0..5];
 ```
 
-But note that these are _byte_ offsets, not _character_ offsets. So
-this will fail at runtime:
+但是請注意這是*位元*的位置而非*字母*的位置。所以以下的程式會在執行時失敗：
 
 ```rust,should_panic
 let dog = "忠犬ハチ公";
 let hachi = &dog[0..2];
 ```
 
-with this error:
+你會看到以下錯誤訊息：
 
 ```text
 thread '<main>' panicked at 'index 0 and/or 2 in `忠犬ハチ公` do not lie on
 character boundary'
 ```
 
-## Concatenation
+## 接續 (Concatination)
 
-If you have a `String`, you can concatenate a `&str` to the end of it:
+如果你有一個 `String`, 你可以把一個 `&str` 接續到它後面：
 
 ```rust
 let hello = "Hello ".to_string();
@@ -144,7 +143,7 @@ let world = "world!";
 let hello_world = hello + world;
 ```
 
-But if you have two `String`s, you need an `&`:
+但是如果你有兩個 `String`, 你必須使用 `&`：
 
 ```rust
 let hello = "Hello ".to_string();
@@ -153,8 +152,7 @@ let world = "world!".to_string();
 let hello_world = hello + &world;
 ```
 
-This is because `&String` can automatically coerce to a `&str`. This is a
-feature called ‘[`Deref` coercions][dc]’.
+這是因為 `&String` 可以自動強迫轉型 (coerce) 成一個 `&str`。這個功能被稱作「[取值強迫轉型][dc]」 (`Deref` coercisons)。
 
 [dc]: deref-coercions.html
 [connect]: ../std/net/struct.TcpStream.html#method.connect
